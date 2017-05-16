@@ -1,6 +1,23 @@
 import React, { Component } from 'react';
+import Rating from './Rating';
+import base from '../base';
 
 class Book extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      user: null
+    }
+  }
+
+  componentWillMount() {
+    const user = base.auth().currentUser;
+    this.setState({
+      user
+    })
+  }
+
   render() {
      return (
       <div className="book">
@@ -19,6 +36,13 @@ class Book extends Component {
               </p>
             ) : (
               <p>&nbsp;</p>
+            )
+          }
+
+          { this.state.user && this.props.rate ? (
+            <Rating book-to-rate={this.props.book.title} />
+            ) : (
+              <p></p>
             )
           }
       </div>

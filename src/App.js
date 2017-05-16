@@ -41,8 +41,7 @@ class App extends Component {
     this.setState({
       authenticated: false,
       user: ''
-    })
-    
+    });
   }
 
   componentDidMount() {
@@ -58,11 +57,12 @@ class App extends Component {
   }
 
   render() {
+    const user = base.auth().currentUser;
     return (
       <div className="App">
         <header>
           <h1>Prestige Worldwide Literary Society</h1>
-          { this.state.authenticated === false ? (
+          { user === false ? (
             <button onClick={() => this.authenticate()}>Login</button>
             ) : (
             <button onClick={() => this.logout()}>Logout</button>
