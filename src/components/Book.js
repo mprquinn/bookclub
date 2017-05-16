@@ -17,12 +17,13 @@ class Book extends Component {
 
 
   generateAverageRating(ratings) {
-    const sum = ratings.reduce((a,b) => a + b);
-    const avg = sum / ratings.length;
+    const ratingsArray = Object.keys(ratings).map(key => parseInt(ratings[key]))
+    const sum = ratingsArray.reduce((a,b) => a + b);
+    const avg = sum / ratingsArray.length;
 
     this.setState({
       avgRating: avg
-    })
+    });
   }
 
   componentWillMount() {
