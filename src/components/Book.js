@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 
 class Book extends Component {
   render() {
-    const image = this.props.book.image;
-    console.log(image);
-    return (
+     return (
       <div className="book">
         <p className="book__title">
             <strong>
@@ -15,9 +13,14 @@ class Book extends Component {
             {this.props.book.author}
           </p>
           <img src={`${this.props.book.image}`} alt="" className="book__cover"/>
-          <p className="book__description">
-            {this.props.book.description}
-          </p>
+          { this.props.description ? (
+              <p className="book__description">
+                {this.props.book.description}
+              </p>
+            ) : (
+              <p>&nbsp;</p>
+            )
+          }
       </div>
     );
   }

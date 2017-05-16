@@ -3,9 +3,10 @@ import Book from './Book';
 
 class PastBooks extends Component {
   render() {
-    let bookArray = this.props.books.map(book => {
+    const pastBooks = this.props.books.filter(book => book.current !== true);
+    let bookArray = pastBooks.map(book => {
       return (
-        <Book book={book} />
+        <Book book={book} description={false} key={book.key} />
       )
     })
     return (
