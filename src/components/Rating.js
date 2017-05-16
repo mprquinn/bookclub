@@ -31,9 +31,12 @@ class Rating extends Component {
         context: this,
         asArray: true,
         then (rated) {
-          this.setState({
-            rated
-          });
+          console.log(rated[0]);
+          if (rated[0] !== null && rated[0] === true) {
+            this.setState({
+              rated: true
+            });
+          }
         }
       });
     }
@@ -43,6 +46,16 @@ class Rating extends Component {
   handleRating(e) {
     e.preventDefault();
     console.log(e, this.refs.rating.value);
+
+    const user = base.auth().currentUser.displayName;
+    const pushString = `Books/${this.props.bookToRate}/rated/${user}`;
+
+    base.push(pushString, {
+      data: true,
+      then(err) {
+        console.log(err);
+      }
+    });
   }
 
   render() {
