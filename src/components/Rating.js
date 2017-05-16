@@ -5,10 +5,13 @@ class Rating extends Component {
   constructor(props) {
     super(props);
     
+    this.checkRated = this.checkRated.bind(this);
     this.handleRating = this.handleRating.bind(this);
 
     this.state = {
       book: null,
+      ratings: '',
+      rated: false,
     }
   }
 
@@ -16,8 +19,25 @@ class Rating extends Component {
     this.setState({
       book: this.props.bookToRate
     });
-    // const rating = base.fetch();
-    // console.log(rating);
+    this.checkRated();
+  }
+
+  checkRated() {
+    const user = base.auth().currentUser;
+
+    if (user) {
+      const checkString = `Books/${this.props.bookToRate}/rated/${user.displayName}`;
+      base.fetch(checkString, {
+        context: this,
+        asArray: true,
+        then (rated) {
+          this.setState({
+            rated
+          });
+        }
+      });
+    }
+    
   }
 
   handleRating(e) {
@@ -28,23 +48,28 @@ class Rating extends Component {
   render() {
      return (
       <div>
-        <form>
+        
           <label>Your Rating</label>
-          <select name="rating" ref="rating">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-          <button onClick={this.handleRating}>Rate!</button>
-        </form>
+          { this.state.rated ? (
+            <p>Youve Rated this book!</p>) : (
+            <form>
+              <select name="rating" ref="rating">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <button onClick={this.handleRating}>Rate!</button>
+            </form>
+            )
+          }
       </div>
     );
   }
