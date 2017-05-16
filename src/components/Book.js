@@ -5,21 +5,23 @@ import base from '../base';
 class Book extends Component {
   constructor(props) {
     super(props);
-    
-    this.fetchRagings = this.fetchRatings.bind(this);
+
+    this.generateAverageRating = this.generateAverageRating.bind(this);
 
     this.state = {
-      user: null
+      user: null,
+      ratings: [],
+      avgRating: null,
     }
   }
 
-  fetchRatings() {
-    base.fetch(`Books/${this.props.book.title}`, {
-      context: this,
-      asArray: true,
-      then(data) {
-        console.log(data);
-      }
+
+  generateAverageRating(ratings) {
+    const sum = ratings.reduce((a,b) => a + b);
+    const avg = sum / ratings.length;
+
+    this.setState({
+      avgRating: avg
     })
   }
 
@@ -29,8 +31,12 @@ class Book extends Component {
       user
     });
 
-    this.fetchRatings();
+    if (this.props.ratings) {
+      this.generateAverageRating(this.props.ratings);  
+    }
+    
   }
+
 
   render() {
      return (
@@ -60,7 +66,7 @@ class Book extends Component {
             )
           }
 
-          <p>Average Rating: x</p>
+          <p>Average Rating: {this.state.avgRating}</p>
       </div>
     );
   }

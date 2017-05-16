@@ -8,7 +8,7 @@ class CurrentBookContainer extends Component {
     return (
       <div>
         { currentBook[0] !== undefined ? (
-          <Book book={currentBook[0]} description={true} rate={true} />
+          <Book book={currentBook[0]} description={true} rate={true} ratings={currentBook[0].ratings} />
         ) : (
           <p>Loading, please wait</p>
         )
