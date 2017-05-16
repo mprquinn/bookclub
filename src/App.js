@@ -90,7 +90,7 @@ class App extends Component {
         
         <div className="app-container">
           <PastBooks  books={this.state.books}/>
-          <CurrentBookContainer books={this.state.books} authenticated={this.state.authenticated} />
+          <CurrentBookContainer books={this.state.books} authenticated={this.state.authenticated} user={this.state.user} />
         </div>
 
       </div>

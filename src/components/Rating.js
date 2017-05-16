@@ -12,6 +12,7 @@ class Rating extends Component {
       book: null,
       ratings: '',
       rated: false,
+      userRating: null,
     }
   }
 
@@ -26,14 +27,14 @@ class Rating extends Component {
     const user = base.auth().currentUser;
 
     if (user) {
-      const checkString = `Books/${this.props.bookToRate}/rated/${user.displayName}`;
+      const checkString = `Books/${this.props.bookToRate}/rated/`;
       base.fetch(checkString, {
         context: this,
-        asArray: true,
+        asArray: false,
         then (rated) {
-          if (rated[0] !== undefined && rated[0] === true) {
+          if (rated[user.displayName] !== undefined) {
             this.setState({
-              rated: true
+              userRating: rated[user.displayName]
             });
           }
         }
@@ -48,17 +49,10 @@ class Rating extends Component {
     const rating = this.refs.rating.value;
 
     const user = base.auth().currentUser.displayName;
-    const pushStringFlag = `Books/${this.props.bookToRate}/rated/${user}`;
-    const pushStringRate = `Books/${this.props.bookToRate}/ratings/`
+    const pushString = `Books/${this.props.bookToRate}/rated/${user}`;
+    // const pushStringRate = `Books/${this.props.bookToRate}/ratings/`
 
-    base.push(pushStringFlag, {
-      data: true,
-      then(err) {
-        console.log(err);
-      }
-    });
-
-    base.push(pushStringRate, {
+    base.post(pushString, {
       data: rating,
       then(err) {
         console.log(err);
@@ -66,7 +60,8 @@ class Rating extends Component {
     });
 
     this.setState({
-      rated: true
+      rated: true,
+      userRating: rating
     });
   }
 
@@ -74,7 +69,7 @@ class Rating extends Component {
      return (
       <div>
         
-          <label>Your Rating</label>
+          <label>Your Rating: <span className="user-rating">{this.state.userRating}</span></label>
           { this.state.rated ? (
             <p>Youve Rated this book!</p>) : (
             <form>

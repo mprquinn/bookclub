@@ -18,7 +18,7 @@ class Book extends Component {
 
 
   generateAverageRating(ratings) {
-    const ratingsArray = Object.keys(ratings).map(key => parseInt(ratings[key]))
+    const ratingsArray = Object.keys(ratings).map(key => parseInt(ratings[key], 10))
     const sum = ratingsArray.reduce((a,b) => a + b);
     const avg = sum / ratingsArray.length;
 
