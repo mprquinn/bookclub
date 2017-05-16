@@ -6,7 +6,7 @@ class CurrentBookContainer extends Component {
     const currentBook = this.props.books.filter(book => (book.current === true));
 
     return (
-      <div>
+      <div className="current-book-wrapper">
         { currentBook[0] !== undefined ? (
           <Book book={currentBook[0]} description={true} rate={true} ratings={currentBook[0].ratings} authenticated={this.props.authenticated} />
         ) : (

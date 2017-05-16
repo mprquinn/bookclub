@@ -81,15 +81,19 @@ header h1 {
 .past-books {
   width: 22%;
   background: #efefef;
-  padding: 2em 1em;
+  padding: 2em;
+}
+
+.book {
+  margin-bottom: 3em;
 }
 
 .book__cover {
   max-width: 100%;
 }
 
-.current-book {
-  padding: 2em 1em;
+.current-book-wrapper {
+  padding: 2em;
   width: 88%;
   text-align: center;
 }
