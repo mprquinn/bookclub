@@ -4,19 +4,39 @@ import CurrentBookContainer from './components/CurrentBookContainer';
 import PastBooks from './components/PastBooks';
 import './App.css';
 
+import base from './base.js';
+
 class App extends Component {
+  constructor () {
+    super();
+
+    this.state = {
+      books: []
+    }
+  }
+
+  componentDidMount() {
+    base.fetch('Books', {
+      context: this,
+      asArray: true,
+      then(books) {
+        this.setState({
+          books
+        })
+      }
+    })
+  }
+
   render() {
     return (
-      <div className="App" link={[
-  { rel: 'stylesheet', href: 'https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css' }
-]}>
+      <div className="App">
         <header>
           <h1>Prestige Literary Worldwide</h1>  
         </header>
         
         <div className="app-container">
-          <PastBooks />
-          <CurrentBookContainer />
+          <PastBooks  books={this.state.books}/>
+          <CurrentBookContainer  />
         </div>
       </div>
     );
