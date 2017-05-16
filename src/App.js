@@ -62,7 +62,13 @@ class App extends Component {
       <div className="App">
         <header>
           <h1>Prestige Worldwide Literary Society</h1>
-          <button onClick={() => this.authenticate()}>Login</button>
+          { this.state.authenticated === false ? (
+            <button onClick={() => this.authenticate()}>Login</button>
+            ) : (
+            <button onClick={() => this.logout()}>Logout</button>
+            )
+          }
+          
         </header>
 
         { this.props.children }
