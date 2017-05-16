@@ -14,7 +14,7 @@ class Book extends Component {
   }
 
   fetchRatings() {
-    base.fetch(`Books/The Underground Railroad`, {
+    base.fetch(`Books/${this.props.book.title}`, {
       context: this,
       asArray: true,
       then(data) {
