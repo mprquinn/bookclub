@@ -6,16 +6,30 @@ class Book extends Component {
   constructor(props) {
     super(props);
     
+    this.fetchRagings = this.fetchRatings.bind(this);
+
     this.state = {
       user: null
     }
+  }
+
+  fetchRatings() {
+    base.fetch(`Books/The Underground Railroad`, {
+      context: this,
+      asArray: true,
+      then(data) {
+        console.log(data);
+      }
+    })
   }
 
   componentWillMount() {
     const user = base.auth().currentUser;
     this.setState({
       user
-    })
+    });
+
+    this.fetchRatings();
   }
 
   render() {
@@ -40,11 +54,13 @@ class Book extends Component {
           }
 
           { this.state.user && this.props.rate ? (
-            <Rating book-to-rate={this.props.book.title} />
+            <Rating bookToRate={this.props.book.title} />
             ) : (
               <p></p>
             )
           }
+
+          <p>Average Rating: x</p>
       </div>
     );
   }

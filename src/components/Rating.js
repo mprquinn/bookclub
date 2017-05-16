@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
+import base from '../base';
 
 class Rating extends Component {
   constructor(props) {
     super(props);
     
     this.handleRating = this.handleRating.bind(this);
+
+    this.state = {
+      book: null,
+    }
+  }
+
+  componentWillMount() {
+    this.setState({
+      book: this.props.bookToRate
+    });
+    // const rating = base.fetch();
+    // console.log(rating);
   }
 
   handleRating(e) {
