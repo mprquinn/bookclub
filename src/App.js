@@ -31,12 +31,12 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <h1>Prestige Literary Worldwide</h1>  
+          <h1>Prestige Worldwide Literary Society</h1>  
         </header>
         
         <div className="app-container">
           <PastBooks  books={this.state.books}/>
-          <CurrentBookContainer  />
+          <CurrentBookContainer books={this.state.books}  />
         </div>
       </div>
     );
