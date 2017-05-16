@@ -4,4 +4,9 @@
 
 ---
 
-A mostly static mockup right now.
+TODO
+
+- Use post rather than push for ratings
+- Single Book View
+- Comment on Books
+- Styles
