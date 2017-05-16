@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
 
 class Rating extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.handleRating = this.handleRating.bind(this);
+  }
+
+  handleRating(e) {
+    e.preventDefault();
+    console.log(e, this.refs.rating.value);
+  }
+
   render() {
      return (
+      <div>
         <form>
-          <label htmlFor="rating">Your Rating</label>
+          <label>Your Rating</label>
           <select name="rating" ref="rating">
             <option value="0">0</option>
             <option value="1">1</option>
@@ -18,7 +30,9 @@ class Rating extends Component {
             <option value="9">9</option>
             <option value="10">10</option>
           </select>
+          <button onClick={this.handleRating}>Rate!</button>
         </form>
+      </div>
     );
   }
 }
