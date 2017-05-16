@@ -12,6 +12,7 @@ class Book extends Component {
       user: null,
       ratings: [],
       avgRating: null,
+      authenticated: this.props.authenticated
     }
   }
 
@@ -60,7 +61,7 @@ class Book extends Component {
             )
           }
 
-          { this.state.user && this.props.rate ? (
+          { this.state.user && this.props.rate && this.props.authenticated ? (
             <Rating bookToRate={this.props.book.title} />
             ) : (
               <p></p>

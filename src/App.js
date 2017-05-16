@@ -42,6 +42,7 @@ class App extends Component {
       authenticated: false,
       user: ''
     });
+
   }
 
   componentDidMount() {
@@ -53,16 +54,24 @@ class App extends Component {
           books
         })
       }
-    })
+    });
+
+    const user = base.auth().currentUser;
+
+    if (user !== null) {
+      this.setState({ 
+        authenticated: true,
+        user: user.dislpayName
+      });
+    }
   }
 
   render() {
-    const user = base.auth().currentUser;
     return (
       <div className="App">
         <header>
           <h1>Prestige Worldwide Literary Society</h1>
-          { user === false ? (
+          { this.state.authenticated === false ? (
             <button onClick={() => this.authenticate()}>Login</button>
             ) : (
             <button onClick={() => this.logout()}>Logout</button>
@@ -75,7 +84,7 @@ class App extends Component {
         
         <div className="app-container">
           <PastBooks  books={this.state.books}/>
-          <CurrentBookContainer books={this.state.books}  />
+          <CurrentBookContainer books={this.state.books} authenticated={this.state.authenticated} />
         </div>
 
       </div>
