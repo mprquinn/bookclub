@@ -2,13 +2,39 @@ import React, { Component } from 'react';
 import Book from './Book';
 
 class CurrentBookContainer extends Component {
-  render() {
-    const currentBook = this.props.books.filter(book => (book.current === true));
 
+  constructor() {
+    super();
+
+    this.state = {
+      cleanRatings: [],
+      currentBook: null,
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+ 
+    const currentBook = nextProps.books.filter(book => (book.current === true));
+    let cleanRatings = [];
+
+    if (currentBook[0] !== undefined) {
+ 
+      const ratings = currentBook[0].rated;
+      cleanRatings = Object.keys(ratings).map(key => parseInt(ratings[key], 10));
+
+      this.setState({
+        cleanRatings,
+        currentBook: currentBook[0]
+      });
+
+    }
+  }
+
+  render() {
     return (
-      <div>
-        { currentBook[0] !== undefined ? (
-          <Book book={currentBook[0]} description={true}/>
+      <div className="current-book-wrapper">
+        { this.state.currentBook !== null ? (
+          <Book book={this.state.currentBook} description={true} rate={true} ratings={this.state.cleanRatings} authenticated={this.props.authenticated} />
         ) : (
           <p>Loading, please wait</p>
         )

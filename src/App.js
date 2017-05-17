@@ -33,6 +33,10 @@ class App extends Component {
       authenticated: true,
       user: authData.user.displayName
     });
+
+    localStorage.setItem('authenticated', JSON.stringify({authenticated:true,user: authData.user.displayName}));
+
+    console.log(this.state);
   }
 
   logout() {
@@ -41,8 +45,10 @@ class App extends Component {
     this.setState({
       authenticated: false,
       user: ''
-    })
-    
+    });
+
+    localStorage.setItem('authenticated', null);
+
   }
 
   componentDidMount() {
@@ -54,7 +60,16 @@ class App extends Component {
           books
         })
       }
-    })
+    });
+    
+    const savedUser = JSON.parse(localStorage.getItem('authenticated'));
+
+    if (savedUser !== null) {
+      this.setState({
+        authenticated: true,
+        user: savedUser.user
+      });
+    }
   }
 
   render() {
@@ -75,7 +90,7 @@ class App extends Component {
         
         <div className="app-container">
           <PastBooks  books={this.state.books}/>
-          <CurrentBookContainer books={this.state.books}  />
+          <CurrentBookContainer books={this.state.books} authenticated={this.state.authenticated} user={this.state.user} />
         </div>
 
       </div>

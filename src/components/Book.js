@@ -1,6 +1,56 @@
 import React, { Component } from 'react';
+import Rating from './Rating';
+import base from '../base';
 
 class Book extends Component {
+  constructor(props) {
+    super(props);
+
+    this.generateAverageRating = this.generateAverageRating.bind(this);
+
+    this.state = {
+      user: null,
+      ratings: [],
+      avgRating: [],
+      authenticated: this.props.authenticated
+    }
+  }
+
+
+  generateAverageRating(ratings) {
+    if (ratings.length) {
+      const sum = ratings.reduce((a,b) => parseInt(a,10) + parseInt(b,10));
+      const avg = sum / ratings.length;
+
+      this.setState({
+        avgRating: avg
+      });
+    }
+    
+  }
+
+  componentWillMount() {
+    const user = base.auth().currentUser;
+    this.setState({
+      user
+    });
+
+    const fetchString = `Books/${this.props.book.title}/rated/`;
+
+    base.listenTo(fetchString, {
+      context: this,
+      asArray: true,
+      then(ratings) {
+        this.generateAverageRating(ratings);
+      }
+    });
+    
+  }
+
+  componentDidMount() {
+    
+  }
+
   render() {
      return (
       <div className="book">
@@ -21,6 +71,15 @@ class Book extends Component {
               <p>&nbsp;</p>
             )
           }
+
+          { this.state.user && this.props.rate && this.props.authenticated ? (
+            <Rating bookToRate={this.props.book.title} />
+            ) : (
+              <p></p>
+            )
+          }
+
+          <p>Average Rating: {this.state.avgRating}</p>
       </div>
     );
   }
