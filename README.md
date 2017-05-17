@@ -6,7 +6,7 @@
 
 TODO
 
-- Use post rather than push for ratings
+- ~~Use post rather than push for ratings~~
 - Single Book View
 - Comment on Books
 - Styles
