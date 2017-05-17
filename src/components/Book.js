@@ -11,20 +11,22 @@ class Book extends Component {
     this.state = {
       user: null,
       ratings: [],
-      avgRating: null,
+      avgRating: [],
       authenticated: this.props.authenticated
     }
   }
 
 
   generateAverageRating(ratings) {
-    const ratingsArray = Object.keys(ratings).map(key => parseInt(ratings[key], 10))
-    const sum = ratingsArray.reduce((a,b) => a + b);
-    const avg = sum / ratingsArray.length;
+    if (ratings.length) {
+      const sum = ratings.reduce((a,b) => parseInt(a,10) + parseInt(b,10));
+      const avg = sum / ratings.length;
 
-    this.setState({
-      avgRating: avg
-    });
+      this.setState({
+        avgRating: avg
+      });
+    }
+    
   }
 
   componentWillMount() {
@@ -33,12 +35,21 @@ class Book extends Component {
       user
     });
 
-    if (this.props.ratings) {
-      this.generateAverageRating(this.props.ratings);  
-    }
+    const fetchString = `Books/${this.props.book.title}/rated/`;
+
+    base.listenTo(fetchString, {
+      context: this,
+      asArray: true,
+      then(ratings) {
+        this.generateAverageRating(ratings);
+      }
+    });
     
   }
 
+  componentDidMount() {
+    
+  }
 
   render() {
      return (

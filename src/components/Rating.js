@@ -55,7 +55,7 @@ class Rating extends Component {
     base.post(pushString, {
       data: rating,
       then(err) {
-        console.log(err);
+        // console.log(err);
       }
     });
 
