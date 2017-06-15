@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CurrentBookContainer from './components/CurrentBookContainer';
+import Event from './components/Event';
 import PastBooks from './components/PastBooks';
 import './App.css';
 import base from './base.js';
@@ -35,8 +35,6 @@ class App extends Component {
     });
 
     localStorage.setItem('authenticated', JSON.stringify({authenticated:true,user: authData.user.displayName}));
-
-    console.log(this.state);
   }
 
   logout() {
@@ -52,14 +50,16 @@ class App extends Component {
   }
 
   componentDidMount() {
-    base.fetch('Books', {
-      context: this,
-      asArray: true,
-      then(books) {
-        this.setState({
-          books
-        })
+    const test = base.database().ref('Books');
+    test.on('value', (snapshot) => {
+      let books = snapshot.val();
+      const newBooks = [];
+      for (let book in books) {
+        newBooks.push(books[book]);
       }
+      this.setState({
+        books: newBooks
+      });
     });
     
     const savedUser = JSON.parse(localStorage.getItem('authenticated'));
@@ -90,7 +90,7 @@ class App extends Component {
         
         <div className="app-container">
           <PastBooks  books={this.state.books}/>
-          <CurrentBookContainer books={this.state.books} authenticated={this.state.authenticated} user={this.state.user} />
+          <Event {...this.state} />
         </div>
 
       </div>

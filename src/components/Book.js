@@ -52,8 +52,12 @@ class Book extends Component {
   }
 
   render() {
+    let bookClass = 'book clearfix';
+    if (this.props.currentBook) {
+      bookClass = 'book book--current clearfix';
+    }
      return (
-      <div className="book">
+      <div className={bookClass}>
         <p className="book__title">
             <strong>
               {this.props.book.title}
