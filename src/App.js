@@ -51,8 +51,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const test = base.database().ref('Books');
-    test.on('value', (snapshot) => {
+    const dbBooks = base.database().ref('Books');
+    dbBooks.on('value', (snapshot) => {
       let books = snapshot.val();
       const newBooks = [];
       for (let book in books) {
@@ -75,7 +75,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <header>
           <h1>Prestige Worldwide Literary Society</h1>
           { this.state.authenticated === false ? (
