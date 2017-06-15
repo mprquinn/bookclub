@@ -67,7 +67,7 @@ class Rating extends Component {
 
   render() {
      return (
-      <div>
+      <div className="rate-book">
         
           <label>Your Rating: <span className="user-rating">{this.state.userRating}</span></label>
           { this.state.rated ? (
