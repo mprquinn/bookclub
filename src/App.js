@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Event from './components/Event';
 import PastBooks from './components/PastBooks';
-import './App.css';
+// import './App.css';
+import './css/styles.css';
 import base from './base.js';
 
 class App extends Component {
