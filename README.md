@@ -10,6 +10,7 @@ TODO
 - ~~Remove placeholder styles~~
 - ~~Setup gulp & SCSS~~
 - ~~Convert to BEM naming~~
+- Remove CurrentBookContainer and use Book
 - Add Event component
 - Add router
 - Single Book View
