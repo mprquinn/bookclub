@@ -47,6 +47,12 @@ table {
   border-spacing: 0;
 }
 
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -111,12 +117,4 @@ header h1 {
 .current-book__description {
   max-width: 66%;
   margin: 2em auto;
-}
-
-.event-details {
-  background: #efefef;
-  padding: 20px;
-  width: 95%;
-  margin: 2.5% auto;
-  box-shadow: 1px 1px 10px rgba(0,0,0,0.3);
 }

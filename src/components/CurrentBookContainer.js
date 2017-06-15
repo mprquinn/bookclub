@@ -37,7 +37,7 @@ class CurrentBookContainer extends Component {
     return (
       <div className="current-book-wrapper">
         { this.state.currentBook !== null ? (
-          <Book book={this.state.currentBook} description={true} rate={true} ratings={this.state.cleanRatings} authenticated={this.props.authenticated} />
+          <Book currentBook={true} book={this.state.currentBook} description={true} rate={true} ratings={this.state.cleanRatings} authenticated={this.props.authenticated} />
         ) : (
           <p>Loading, please wait</p>
         )
