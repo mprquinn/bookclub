@@ -13,20 +13,23 @@ class CurrentBookContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
- 
-    const currentBook = nextProps.books.filter(book => (book.current === true));
-    let cleanRatings = [];
+    if (nextProps != this.props) {
+      const currentBook = nextProps.books.filter(book => (book.current === true));
+      let cleanRatings = [];
 
-    if (currentBook[0] !== undefined) {
- 
-      const ratings = currentBook[0].rated;
-      cleanRatings = Object.keys(ratings).map(key => parseInt(ratings[key], 10));
+      if (currentBook[0] !== undefined) {
+        
+        if (currentBook[0].rated !== undefined) {
+          const ratings = currentBook[0].rated;
+          cleanRatings = Object.keys(ratings).map(key => parseInt(ratings[key], 10));
+        }
 
-      this.setState({
-        cleanRatings,
-        currentBook: currentBook[0]
-      });
+        this.setState({
+          cleanRatings,
+          currentBook: currentBook[0]
+        });
 
+      }
     }
   }
 

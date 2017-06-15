@@ -52,14 +52,17 @@ class App extends Component {
   }
 
   componentDidMount() {
-    base.fetch('Books', {
-      context: this,
-      asArray: true,
-      then(books) {
-        this.setState({
-          books
-        })
+    const test = base.database().ref('Books');
+    test.on('value', (snapshot) => {
+      let books = snapshot.val();
+      const newBooks = [];
+      console.log(books);
+      for (let book in books) {
+        newBooks.push(books[book]);
       }
+      this.setState({
+        books: newBooks
+      });
     });
     
     const savedUser = JSON.parse(localStorage.getItem('authenticated'));
