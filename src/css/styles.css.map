@@ -1,0 +1,1 @@
+{"version":3,"file":"styles.css","sources":["styles.scss","layout.scss","components/book.scss"],"sourcesContent":["@import 'layout.scss';\n\n//\n@import 'components/book.scss';\n","",".book {\r\n\r\n}\r\n\r\n.book--current {\r\n\r\n}\r\n\r\n.book__title {\r\n\r\n}"],"names":[],"mappings":"","sourceRoot":"css"}
