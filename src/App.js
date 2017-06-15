@@ -75,7 +75,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="app">
+      <div className="app clearfix">
         <header>
           <h1>Prestige Worldwide Literary Society</h1>
           { this.state.authenticated === false ? (
@@ -89,9 +89,14 @@ class App extends Component {
 
         { this.props.children }
         
-        <div className="app-container">
-          <PastBooks  books={this.state.books}/>
-          <Event {...this.state} />
+        <div className="app__container">
+          <section className="app__sidebar">
+            <PastBooks  books={this.state.books}/>
+          </section>
+
+          <section className="app__main">
+            <Event {...this.state} />
+          </section>
         </div>
 
       </div>

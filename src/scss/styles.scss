@@ -1,4 +1,12 @@
+// Vars
+$purple: #905782;
+$red: #a7497d;
+
+// structural
 @import 'layout.scss';
 
-// 
+// components
+@import 'components/header.scss';
+@import 'components/past-books.scss';
 @import 'components/book.scss';
+@import 'components/button.scss';

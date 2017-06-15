@@ -1,2 +1,74 @@
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background: url("../images/background.jpg") center center no-repeat;
+  background-size: cover;
+  font-family: Lato, sans-serif;
+  font-size: 18px;
+  line-height: 1.2em;
+}
+
+.app {
+  width: 90%;
+  margin: 5%;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(100, 0, 75, 0.3);
+}
+
+.app__sidebar {
+  width: 20%;
+  float: left;
+  background: #a7497d;
+  padding: 10px;
+}
+
+.app__main {
+  width: 80%;
+  float: left;
+}
+
+header {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1rem 2rem;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+header h1 {
+  font-size: 2rem;
+  text-transform: uppercase;
+  line-height: 1em;
+  color: #905782;
+}
+
+.past-books {
+  margin: 0;
+}
+
+.book__cover {
+  max-width: 100%;
+}
+
+button {
+  background: none;
+  font-weight: 700;
+  color: #905782;
+  padding: 0.66rem 1rem;
+  border: 2px solid #905782;
+  border-radius: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
 
 /*# sourceMappingURL=styles.css.map */
