@@ -13,7 +13,7 @@ class CurrentBookContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps != this.props) {
+    if (nextProps !== this.props) {
       const currentBook = nextProps.books.filter(book => (book.current === true));
       let cleanRatings = [];
 
