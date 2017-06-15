@@ -7,7 +7,7 @@ class PastBooks extends Component {
     const booksSorted = pastBooks.sort((bookA, bookB) => bookA.order > bookB.order ? -1 : 1);
     let bookArray = booksSorted.map(book => {
       return (
-        <Book book={book} description={false} key={book.order} ratings={book.ratings} />
+        <Book book={book} currentBook={false} pastBook={true} description={false} key={book.order} ratings={book.ratings} />
       )
     })
     return (
