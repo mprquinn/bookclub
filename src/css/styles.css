@@ -91,9 +91,9 @@ h1 {
 
 .fill {
   font-size: 1em;
-  color: #efefef;
+  color: #f36c9e;
   padding: 0.33em 1em;
-  background: linear-gradient(to right, #ac6cff 0%, #1588f0 100%);
+  background: #efefef;
 }
 
 @media screen and (min-width: 620px) {
@@ -127,7 +127,7 @@ header {
   top: 0;
   margin-left: 0;
   padding: 0.33em 1em;
-  background: #111111;
+  background: #ffffff;
   z-index: 9;
 }
 
@@ -153,6 +153,7 @@ header h1.toggled {
   display: none;
   margin-top: 0.5rem;
   margin-left: 0;
+  color: #f36c9e;
   transform: translateX(-100%);
   transition: all 0.5s ease-out;
 }
@@ -175,6 +176,8 @@ header button {
 .header--toggled button {
   top: 0.75em;
   right: 1em;
+  color: #f36c9e;
+  border-color: #f36c9e;
 }
 
 @media screen and (min-width: 780px) {
@@ -191,7 +194,7 @@ header button {
 
 .book--current {
   width: calc(100% + 40px);
-  background: #111111;
+  background: #efefef;
   padding: 0.33em 20px;
   box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.3);
 }
@@ -206,7 +209,7 @@ header button {
   width: calc(100% + 20px);
   height: 5px;
   margin-right: -20px;
-  background: #ac6cff;
+  background: #efefef;
   margin-bottom: 2rem;
 }
 
@@ -220,15 +223,19 @@ header button {
 
 .book__title {
   font-family: Montserrat, sans-serif;
-  color: #efefef;
+  color: #111111;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+.book--past .book__title {
+  color: #efefef;
 }
 
 .book__author {
   position: relative;
   font-size: 1rem;
-  color: #efefef;
+  color: #111111;
 }
 
 .book__author:before {
@@ -241,17 +248,25 @@ header button {
   background: #efefef;
 }
 
+.book--past .book__author {
+  color: #efefef;
+}
+
 .book--past .book__author:before {
   background: #efefef;
 }
 
 .book--current .book__author {
-  color: #efefef;
+  color: #111111;
 }
 
 .book__cover {
   width: calc(100% + 40px);
   margin-left: -20px;
+}
+
+.book--current .book__cover {
+  box-shadow: 10px 10px 0 #f093fa;
 }
 
 @media screen and (min-width: 530px) {
@@ -276,8 +291,7 @@ header button {
 
 .book__description {
   font-size: 1rem;
-  color: #efefef;
-  text-shadow: 0.5px 0.5px 0px rgba(0, 0, 0, 0.3);
+  color: #111111;
 }
 
 .book--past .fill {
@@ -318,7 +332,7 @@ header button {
 }
 
 .event-details__attendees {
-  background: #111111;
+  background: #efefef;
   padding: 0.33em 1em;
   margin-left: calc(-25% - 15px + 40px);
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
@@ -332,9 +346,9 @@ header button {
 
 .event-details__attendee {
   font-size: 1em;
-  color: #efefef;
+  color: #f36c9e;
   list-style: none;
-  border-bottom: 1px solid #efefef;
+  border-bottom: 1px solid #f36c9e;
   margin-bottom: 0.33em;
 }
 
@@ -353,7 +367,7 @@ button,
 .button--fill {
   border-image: none;
   border: none;
-  background: linear-gradient(to right, #1588f0 0%, #ac6cff 100%);
+  background: linear-gradient(to right, #f36c9e 0%, #f093fa 100%);
 }
 
 .rate-book label {
@@ -377,15 +391,16 @@ button,
 
 .rate-book select {
   padding: 0.33em 1em;
-  border: 2px solid #efefef;
+  margin: 1em 0 0;
+  border: 2px solid #f36c9e;
   background: none;
   font-family: Montserrat, sans-serif;
-  color: #efefef;
+  color: #f36c9e;
   font-weight: 700;
 }
 
 .rate-book option {
-  background: #ac6cff;
+  background: #f36c9e;
 }
 
 .rate-book .button,
@@ -397,7 +412,7 @@ button,
 @media screen and (min-width: 780px) {
   .rate-book .button,
   .rate-book select {
-    width: 25%;
+    width: 23%;
   }
 }
 

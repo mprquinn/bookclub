@@ -16,5 +16,6 @@ button,
 	border-image: none;
 	border: none;
 	// border-image: linear-gradient(to right, $purple, 20%) 0%, $blue 100%);
-	background: linear-gradient(to right, darken($blue, 20%) 0%, $purple 100%);
+	// background: linear-gradient(to right, darken($blue, 20%) 0%, $purple 100%);
+	background: linear-gradient(to right, #f36c9e 0%, #f093fa 100%);
 }

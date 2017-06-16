@@ -21,16 +21,17 @@
 
 .rate-book select {
 	padding: 0.33em 1em;
-	border: 2px solid $white;
+	margin: 1em 0 0;
+	border: 2px solid #f36c9e;
 	background: none;
 	font-family: Montserrat, sans-serif;
-	color: $white;
+	color: #f36c9e;
 	font-weight: 700;
 
 }
 
 .rate-book option {
-	background: $purple;
+	background: #f36c9e;
 }
 
 .rate-book .button,
@@ -39,7 +40,7 @@
 	width: 50%;
 
 	@media screen and (min-width: 780px) {
-		width: 25%;
+		width: 23%;
 	}
 }
 

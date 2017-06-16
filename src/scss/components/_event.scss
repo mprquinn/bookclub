@@ -33,7 +33,7 @@
 }
 
 .event-details__attendees {
-	background: $black;
+	background: $white;
 	padding: 0.33em 1em;
 	@include grid-push(-3);
 	box-shadow: 2px 2px 20px rgba(0,0,0,0.5);
@@ -45,8 +45,8 @@
 
 .event-details__attendee {
 	font-size: 1em;
-	color: $white;
+	color: #f36c9e;
 	list-style: none;
-	border-bottom: 1px solid $white;
+	border-bottom: 1px solid #f36c9e;
 	margin-bottom: 0.33em;
 }

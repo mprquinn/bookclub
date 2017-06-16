@@ -18,7 +18,7 @@ header {
 	top: 0;
 	margin-left: 0;
 	padding: 0.33em 1em;
-	background: $black;
+	background: #ffffff;
 	z-index: 9;
 
 	@media screen and (min-width: 550px) {
@@ -41,6 +41,7 @@ header h1.toggled {
 	display: none;
 	margin-top: 0.5rem;
 	margin-left: 0;
+	color: #f36c9e;
 	transform: translateX(-100%);
 	transition: all 0.5s ease-out;
 }
@@ -63,4 +64,6 @@ header button {
 .header--toggled button {
 	top: 0.75em;
 	right: 1em;
+	color: #f36c9e;
+	border-color: #f36c9e;
 }
