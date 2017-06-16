@@ -2,6 +2,8 @@
 
 ## A quick SPA for our bookclub
 
+### Only mobile styles have been done.
+
 ---
 
 TODO
