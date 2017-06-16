@@ -1,3 +1,9 @@
 .past-books {
 
 }
+
+.past-books__title {
+	width: 100%;
+	color: $black;
+	@include grid-push(-2);
+}

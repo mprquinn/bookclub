@@ -23,6 +23,12 @@ body.body--push {
   padding-top: 158px;
 }
 
+@media screen and (min-width: 550px) {
+  .app {
+    padding: 0 20px;
+  }
+}
+
 .app__container {
   clear: both;
   width: calc(83.33333% - 36.66667px);
@@ -107,6 +113,12 @@ header {
   z-index: 9;
 }
 
+@media screen and (min-width: 550px) {
+  .header--toggled {
+    left: 0;
+  }
+}
+
 header h1 {
   width: 66%;
   margin-left: calc(-16.66667% - 16.66667px + 40px);
@@ -138,6 +150,12 @@ header button {
 .header--toggled button {
   top: 0.75em;
   right: 1em;
+}
+
+.past-books__title {
+  width: 100%;
+  color: #111111;
+  margin-left: calc(-16.66667% - 16.66667px + 40px);
 }
 
 .book--current {
@@ -191,6 +209,14 @@ header button {
 .book__cover {
   width: calc(100% + 40px);
   margin-left: -20px;
+}
+
+@media screen and (min-width: 530px) {
+  .book--current .book__cover {
+    width: 50%;
+    float: left;
+    margin-right: 20px;
+  }
 }
 
 .book--past .book__cover {
