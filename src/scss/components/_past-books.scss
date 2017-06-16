@@ -1,5 +1,8 @@
 .past-books {
-
+	
+	@media screen and (min-width: 780px) {
+		padding-left: 20px;
+	}
 }
 
 .past-books__title {

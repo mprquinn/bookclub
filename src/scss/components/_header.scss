@@ -3,6 +3,12 @@ header {
 	@include grid-column(10 of 12);
 	@include grid-push(1);
 	transition: all 0.3s ease-out;
+
+	@media screen and (min-width: 780px) {
+		width: 100%;
+		margin-bottom: 2rem;
+		margin-left: 0;
+	}
 }
 
 .header--toggled {
@@ -23,6 +29,12 @@ header {
 header h1 {
 	width: 66%;
 	@include grid-push(-2);
+
+	@media screen and (min-width: 780px) {
+		max-width: 225px;
+		margin-left: 0;
+	}
+	
 }
 
 header h1.toggled {

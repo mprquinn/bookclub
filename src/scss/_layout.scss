@@ -34,7 +34,9 @@ body.body--push {
 	display: flex;
 	flex-direction: column;
 
-	@media screen and (min-width: 960px) {
+	@media screen and (min-width: 780px) {
+		width: 100%;
+		margin-left: auto;
 		flex-direction: row;
 	}
 }
@@ -45,10 +47,13 @@ body.body--push {
 	
 	background: $white;
 	margin-top: 2rem;
+	margin-right: 20px;
 
-	@media screen and (min-width: 960px) {
+	@media screen and (min-width: 780px) {
 		flex: 1;
 		order: 1;
+
+		margin-top: 0;
 	}
 }
 
@@ -58,8 +63,9 @@ body.body--push {
 
 	background: $white;
 
-	@media screen and (min-width: 960px) {
+	@media screen and (min-width: 780px) {
 		flex: 4;
 		order: 2;
+		background: none;
 	}
 }

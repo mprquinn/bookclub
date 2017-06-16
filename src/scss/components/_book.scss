@@ -7,6 +7,10 @@
 	background: $blue;
 	padding: 0.33em 20px;
 	box-shadow: 2px 2px 30px rgba(0,0,0,0.3);
+
+	@media screen and (min-width: 780px) {
+		width: calc(100% + 30px);
+	}
 }
 
 .book--past {
@@ -16,6 +20,14 @@
 		margin-right: -20px;
 		background: $purple;
 		margin-bottom: 2rem;
+	}
+
+	@media screen and (min-width: 780px) {
+		&:after {
+			width: 100%;
+			margin-right: 0;
+			margin-left: 10px;
+		}
 	}
 }
 
@@ -67,11 +79,17 @@
 			width: 50%;
 			float: left;
 			margin-right: 20px;
+			margin-left: 0;
 		}
 	}
 
 	.book--past & {
 		box-shadow: 2px 2px 30px rgba(0,0,0,0.3);
+
+		@media screen and (min-width: 780px) {
+			width: 100%;
+			margin-left: -30px;
+		}
 	}
 }
 

@@ -19,4 +19,11 @@ h1 {
 	color: $white;
 	padding: 0.33em 1em;
 	background: linear-gradient(to right, $purple 0%, darken($blue, 20%) 100%);
+
+	.book & {
+		@media screen and (min-width: 620px) {
+			display: inline-block;
+			width: 50%;
+		}
+	}
 }

@@ -3,7 +3,7 @@ import CurrentBookContainer from './CurrentBookContainer';
 class Event extends Component {
   render() {
     return (
-      <div className="event">
+      <div className="event clearfix">
           <div className="event-details">
             <h1 className="event-details__title">Next Event:</h1>
             <p className="event-details__date">June 23, 2016</p>
