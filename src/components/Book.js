@@ -55,6 +55,8 @@ class Book extends Component {
     let bookClass = 'book clearfix';
     if (this.props.currentBook) {
       bookClass = 'book book--current clearfix';
+    } else if (this.props.pastBook) {
+      bookClass = 'book book--past clearfix';
     }
      return (
       <div className={bookClass}>
@@ -72,7 +74,7 @@ class Book extends Component {
                 {this.props.book.description}
               </p>
             ) : (
-              <p>&nbsp;</p>
+              ``
             )
           }
 
@@ -83,7 +85,7 @@ class Book extends Component {
             )
           }
 
-          <p>Average Rating: {this.state.avgRating}</p>
+          <p className="fill">Average Rating: {this.state.avgRating}</p>
       </div>
     );
   }

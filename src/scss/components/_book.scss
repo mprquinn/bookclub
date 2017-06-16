@@ -1,0 +1,81 @@
+.book {
+
+}
+
+.book--current {
+	width: calc(100% + 40px);
+	background: $blue;
+	padding: 0.33em 20px;
+	box-shadow: 2px 2px 30px rgba(0,0,0,0.3);
+}
+
+.book--past {
+	&:after {
+		width: calc(100% + 20px);
+		height: 5px;
+		margin-right: -20px;
+		background: $purple;
+		margin-bottom: 2rem;
+	}
+}
+
+.book__title {
+	font-family: Montserrat, sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	
+	.book--past & {
+
+	}
+
+	.book--current & {
+		color: $white;
+	}
+}
+
+.book__author {
+	position: relative;
+	font-size: 1rem;
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: -10px;
+		left: -5px;
+		width: 20px;
+		height: 2px;
+		background: $white;
+	}
+
+	.book--past & {
+		&:before {
+			background: $black;
+		}
+	}
+
+	.book--current & {
+		color: $white;
+	}
+}
+
+.book__cover {
+	width: calc(100% + 40px);
+	margin-left: -20px;
+
+	.book--past & {
+		box-shadow: 2px 2px 30px rgba(0,0,0,0.3);
+	}
+}
+
+
+.book__description {
+	font-size: 1rem;
+	color: $white;
+	text-shadow: 0.5px 0.5px 0px rgba(0,0,0,0.3);
+}
+
+.book--past .fill {
+	display: inline-block;
+	width: auto;
+	@include grid-push(-4);
+}

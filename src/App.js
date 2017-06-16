@@ -71,13 +71,33 @@ class App extends Component {
         user: savedUser.user
       });
     }
+
+    this.toggleHeader();
+  }
+
+  toggleHeader() {
+    const header = document.querySelector('header'),
+          body = document.querySelector('body'),
+          trigger = Math.abs(header.getBoundingClientRect().top - header.getBoundingClientRect().bottom);
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+
+      if (scrolled >= trigger) {
+        header.classList.add('header--toggled');
+        body.classList.add('body--push');
+      } else {
+        header.classList.remove('header--toggled');
+        body.classList.remove('body--push');
+      }
+    });
   }
 
   render() {
     return (
-      <div className="app">
+      <div className="app clearfix">
         <header>
           <h1>Prestige Worldwide Literary Society</h1>
+          <h1 className="toggled">PWLS</h1>
           { this.state.authenticated === false ? (
             <button onClick={() => this.authenticate()}>Login</button>
             ) : (
@@ -89,9 +109,14 @@ class App extends Component {
 
         { this.props.children }
         
-        <div className="app-container">
-          <PastBooks  books={this.state.books}/>
-          <Event {...this.state} />
+        <div className="app__container">
+          <section className="app__sidebar">
+            <PastBooks  books={this.state.books}/>
+          </section>
+
+          <section className="app__main">
+            <Event {...this.state} />
+          </section>
         </div>
 
       </div>
