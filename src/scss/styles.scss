@@ -4,11 +4,16 @@ $red: #a7497d;
 $white: #efefef;
 $black: #111111;
 
+// neat grid
+@import 'neat';
+
 // structural
-@import 'layout.scss';
+@import '_layout.scss';
+
+@import '_type.scss';
 
 // components
-@import 'components/header.scss';
-@import 'components/past-books.scss';
-@import 'components/book.scss';
-@import 'components/button.scss';
+@import 'components/_header.scss';
+@import 'components/_past-books.scss';
+@import 'components/_book.scss';
+@import 'components/_button.scss';
