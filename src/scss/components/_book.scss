@@ -4,7 +4,9 @@
 
 .book--current {
 	width: calc(100% + 40px);
-	background: $blue;
+	// background: $white;
+	border: 2px solid $white;
+	background: #f18ae6; 
 	padding: 0.33em 20px;
 	box-shadow: 2px 2px 30px rgba(0,0,0,0.3);
 
@@ -61,7 +63,7 @@
 
 	.book--past & {
 		&:before {
-			background: $black;
+			background: $white;
 		}
 	}
 
