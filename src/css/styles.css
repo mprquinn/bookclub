@@ -279,7 +279,7 @@ header button {
 }
 
 .book--past .book__cover {
-  box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 10px 10px 0 #efefef;
 }
 
 @media screen and (min-width: 780px) {
@@ -390,8 +390,8 @@ button,
 }
 
 .rate-book select {
-  padding: 0.33em 1em;
-  margin: 1em 0 0;
+  padding: 0.3em 1em;
+  margin: 1em 2% 0;
   border: 2px solid #f36c9e;
   background: none;
   font-family: Montserrat, sans-serif;
@@ -412,7 +412,7 @@ button,
 @media screen and (min-width: 780px) {
   .rate-book .button,
   .rate-book select {
-    width: 23%;
+    width: 21%;
   }
 }
 
