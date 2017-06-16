@@ -86,7 +86,7 @@ class Rating extends Component {
                 <option value="9">9</option>
                 <option value="10">10</option>
               </select>
-              <button onClick={this.handleRating}>Rate!</button>
+              <button className="button button--fill" onClick={this.handleRating}>Rate!</button>
             </form>
             )
           }

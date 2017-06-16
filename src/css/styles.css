@@ -155,7 +155,8 @@ header button {
   font-size: 1rem;
 }
 
-button {
+button,
+.button {
   background: none;
   font-family: Montserrat, sans-serif;
   color: #efefef;
@@ -164,8 +165,52 @@ button {
   text-transform: uppercase;
   padding: 0.33em 1em;
   border: 2px solid transparent;
-  border-image: linear-gradient(to right, #deffc9 0%, #84c1ff 100%);
+  border-image: linear-gradient(to right, #e6d2ff 0%, #75b9f6 100%);
   border-image-slice: 1;
+}
+
+.button--fill {
+  border-image: none;
+  border: none;
+  background: linear-gradient(to right, #1588f0 0%, #ac6cff 100%);
+}
+
+.rate-book select {
+  padding: 0.33em 1em;
+  border: 2px solid #efefef;
+  background: none;
+  font-family: Montserrat, sans-serif;
+  color: #efefef;
+  font-weight: 700;
+}
+
+.rate-book label {
+  font-size: 1rem;
+  color: #efefef;
+  background: #111111;
+  padding: 0.33em 1em;
+  margin: 1em 0 1em calc(-16.66667% - 16.66667px + 25px);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.rate-book option {
+  background: #ac6cff;
+}
+
+.rate-book .button,
+.rate-book select {
+  display: inline-block;
+  width: 50%;
+}
+
+.rate-book .button {
+  padding: 0.55em 1em;
+}
+
+.rate-book p {
+  font-size: 1rem;
+  color: #efefef;
+  text-shadow: 0.5px 0.5px 0px rgba(0, 0, 0, 0.3);
 }
 
 /*# sourceMappingURL=styles.css.map */

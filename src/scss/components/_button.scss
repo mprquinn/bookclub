@@ -1,4 +1,5 @@
-button {
+button,
+.button {
 	background: none;
 	font-family: Montserrat, sans-serif;
 	color: $white;
@@ -7,6 +8,13 @@ button {
 	text-transform: uppercase;
 	padding: 0.33em 1em;
 	border: 2px solid transparent;
-	border-image: linear-gradient(to right, #deffc9 0%, #84c1ff 100%);
+	border-image: linear-gradient(to right, lighten($purple, 20%) 0%, $blue 100%);
 	border-image-slice: 1;
+}
+
+.button--fill {
+	border-image: none;
+	border: none;
+	// border-image: linear-gradient(to right, $purple, 20%) 0%, $blue 100%);
+	background: linear-gradient(to right, darken($blue, 20%) 0%, $purple 100%);
 }
