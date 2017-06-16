@@ -38,6 +38,8 @@ body {
 .app__sidebar {
   flex: 1;
   order: 2;
+  background: #efefef;
+  margin-top: 2rem;
 }
 
 @media screen and (min-width: 960px) {
@@ -107,6 +109,14 @@ header button {
   box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.3);
 }
 
+.book--past:after {
+  width: calc(100% + 20px);
+  height: 5px;
+  margin-right: -20px;
+  background: #ac6cff;
+  margin-bottom: 2rem;
+}
+
 .book__title {
   font-family: Montserrat, sans-serif;
   text-transform: uppercase;
@@ -132,6 +142,10 @@ header button {
   background: #efefef;
 }
 
+.book--past .book__author:before {
+  background: #111111;
+}
+
 .book--current .book__author {
   color: #efefef;
 }
@@ -141,10 +155,20 @@ header button {
   margin-left: -20px;
 }
 
+.book--past .book__cover {
+  box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.3);
+}
+
 .book__description {
   font-size: 1rem;
   color: #efefef;
   text-shadow: 0.5px 0.5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.book--past .fill {
+  display: inline-block;
+  width: auto;
+  margin-left: calc(-33.33333% - 13.33333px + 40px);
 }
 
 .event-details {

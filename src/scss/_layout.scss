@@ -34,6 +34,9 @@ body {
 .app__sidebar {
 	flex: 1;
 	order: 2;
+	
+	background: $white;
+	margin-top: 2rem;
 
 	@media screen and (min-width: 960px) {
 		flex: 1;
@@ -45,7 +48,7 @@ body {
 	flex: 1;
 	order: 1;
 
-	background: $white; 
+	background: $white;
 
 	@media screen and (min-width: 960px) {
 		flex: 4;
