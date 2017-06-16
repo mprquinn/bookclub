@@ -9,7 +9,10 @@
 }
 
 body {
-
+	background: #ac6cff; /* Old browsers */
+	background: -moz-linear-gradient(-45deg, #ac6cff 0%, #74bcf7 50%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(-45deg, #ac6cff 0%,#74bcf7 50%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(135deg, #ac6cff 0%,#74bcf7 50%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
 .app {
@@ -17,13 +20,35 @@ body {
 }
 
 .app__container {
+	clear: both;
+	@include grid-column(10 of 12);
+	@include grid-push(1);
+	display: flex;
+	flex-direction: column;
 
+	@media screen and (min-width: 960px) {
+		flex-direction: row;
+	}
 }
 
 .app__sidebar {
+	flex: 1;
+	order: 2;
 
+	@media screen and (min-width: 960px) {
+		flex: 1;
+		order: 1;
+	}
 }
 
 .app__main {
+	flex: 1;
+	order: 1;
 
+	background: $white; 
+
+	@media screen and (min-width: 960px) {
+		flex: 4;
+		order: 2;
+	}
 }

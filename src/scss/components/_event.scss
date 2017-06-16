@@ -1,0 +1,19 @@
+.event {
+
+}
+
+.event-details {
+	padding: 0 20px;
+}
+
+.event-details__title {
+	// push  -2 w padding offset
+	margin-left: calc(-16.66667% - 16.66667px + 10px);
+	color: $black;
+	letter-spacing: 2px;
+	margin-bottom: 0;
+}
+
+.event-details__date {
+	font-size: 1rem;
+}

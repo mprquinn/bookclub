@@ -1,7 +1,16 @@
 header {
-
+	position: relative;
+	@include grid-column(10 of 12);
+	@include grid-push(1);
 }
 
 header h1 {
+	width: 66%;
+	@include grid-push(-2);
+}
 
+header button {
+	position: absolute;
+	top: 1.33em;
+	right: 0;
 }

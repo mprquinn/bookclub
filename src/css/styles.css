@@ -9,9 +9,163 @@
 }
 
 body {
-  font-family: Lato, sans-serif;
+  background: #ac6cff;
+  /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #ac6cff 0%, #74bcf7 50%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #ac6cff 0%, #74bcf7 50%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #ac6cff 0%, #74bcf7 50%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.app__container {
+  clear: both;
+  width: calc(83.33333% - 36.66667px);
+  float: left;
+  margin-left: 20px;
+  margin-left: calc(8.33333% - 21.66667px + 40px);
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 960px) {
+  .app__container {
+    flex-direction: row;
+  }
+}
+
+.app__sidebar {
+  flex: 1;
+  order: 2;
+}
+
+@media screen and (min-width: 960px) {
+  .app__sidebar {
+    flex: 1;
+    order: 1;
+  }
+}
+
+.app__main {
+  flex: 1;
+  order: 1;
+  background: #efefef;
+}
+
+@media screen and (min-width: 960px) {
+  .app__main {
+    flex: 4;
+    order: 2;
+  }
+}
+
+body {
+  font-family: Montserrat, sans-serif !important;
   font-size: 18px;
   line-height: 1.2em;
+}
+
+h1 {
+  color: #efefef;
+  font-size: 1.5rem;
+  line-height: 1em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+header {
+  position: relative;
+  width: calc(83.33333% - 36.66667px);
+  float: left;
+  margin-left: 20px;
+  margin-left: calc(8.33333% - 21.66667px + 40px);
+}
+
+header h1 {
+  width: 66%;
+  margin-left: calc(-16.66667% - 16.66667px + 40px);
+}
+
+header button {
+  position: absolute;
+  top: 1.33em;
+  right: 0;
+}
+
+.book--current {
+  width: calc(100% + 40px);
+  background: #75b9f6;
+  padding: 0.33em 20px;
+  box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.3);
+}
+
+.book__title {
+  font-family: Montserrat, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.book--current .book__title {
+  color: #efefef;
+}
+
+.book__author {
+  position: relative;
+  font-size: 1rem;
+}
+
+.book__author:before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -5px;
+  width: 20px;
+  height: 2px;
+  background: #efefef;
+}
+
+.book--current .book__author {
+  color: #efefef;
+}
+
+.book__cover {
+  width: calc(100% + 40px);
+  margin-left: -20px;
+}
+
+.book__description {
+  font-size: 1rem;
+  color: #efefef;
+  text-shadow: 0.5px 0.5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.event-details {
+  padding: 0 20px;
+}
+
+.event-details__title {
+  margin-left: calc(-16.66667% - 16.66667px + 10px);
+  color: #111111;
+  letter-spacing: 2px;
+  margin-bottom: 0;
+}
+
+.event-details__date {
+  font-size: 1rem;
+}
+
+button {
+  background: none;
+  font-family: Montserrat, sans-serif;
+  color: #efefef;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0.33em 1em;
+  border: 2px solid transparent;
+  border-image: linear-gradient(to right, #deffc9 0%, #84c1ff 100%);
+  border-image-slice: 1;
 }
 
 /*# sourceMappingURL=styles.css.map */

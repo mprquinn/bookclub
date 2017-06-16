@@ -1,3 +1,12 @@
 button {
-
+	background: none;
+	font-family: Montserrat, sans-serif;
+	color: $white;
+	font-weight: 700;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	padding: 0.33em 1em;
+	border: 2px solid transparent;
+	border-image: linear-gradient(to right, #deffc9 0%, #84c1ff 100%);
+	border-image-slice: 1;
 }
