@@ -191,8 +191,7 @@ header button {
 
 .book--current {
   width: calc(100% + 40px);
-  border: 2px solid #efefef;
-  background: #f18ae6;
+  background: #111111;
   padding: 0.33em 20px;
   box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.3);
 }
@@ -221,17 +220,15 @@ header button {
 
 .book__title {
   font-family: Montserrat, sans-serif;
+  color: #efefef;
   text-transform: uppercase;
   letter-spacing: 1px;
-}
-
-.book--current .book__title {
-  color: #efefef;
 }
 
 .book__author {
   position: relative;
   font-size: 1rem;
+  color: #efefef;
 }
 
 .book__author:before {

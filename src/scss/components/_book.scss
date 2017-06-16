@@ -5,8 +5,8 @@
 .book--current {
 	width: calc(100% + 40px);
 	// background: $white;
-	border: 2px solid $white;
-	background: #f18ae6; 
+	// border: 2px solid $white;
+	background: $black; 
 	padding: 0.33em 20px;
 	box-shadow: 2px 2px 30px rgba(0,0,0,0.3);
 
@@ -35,21 +35,24 @@
 
 .book__title {
 	font-family: Montserrat, sans-serif;
+	color: $white;
 	text-transform: uppercase;
 	letter-spacing: 1px;
+
 	
 	.book--past & {
 
 	}
 
 	.book--current & {
-		color: $white;
+		
 	}
 }
 
 .book__author {
 	position: relative;
 	font-size: 1rem;
+	color: $white;
 
 	&:before {
 		content: '';
