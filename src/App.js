@@ -71,6 +71,25 @@ class App extends Component {
         user: savedUser.user
       });
     }
+
+    this.toggleHeader();
+  }
+
+  toggleHeader() {
+    const header = document.querySelector('header'),
+          body = document.querySelector('body'),
+          trigger = Math.abs(header.getBoundingClientRect().top - header.getBoundingClientRect().bottom);
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+
+      if (scrolled >= trigger) {
+        header.classList.add('header--toggled');
+        body.classList.add('body--push');
+      } else {
+        header.classList.remove('header--toggled');
+        body.classList.remove('body--push');
+      }
+    });
   }
 
   render() {
@@ -78,6 +97,7 @@ class App extends Component {
       <div className="app clearfix">
         <header>
           <h1>Prestige Worldwide Literary Society</h1>
+          <h1 className="toggled">PWLS</h1>
           { this.state.authenticated === false ? (
             <button onClick={() => this.authenticate()}>Login</button>
             ) : (

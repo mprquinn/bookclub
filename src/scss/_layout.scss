@@ -13,6 +13,11 @@ body {
 	background: -moz-linear-gradient(-45deg, #ac6cff 0%, #74bcf7 50%); /* FF3.6-15 */
 	background: -webkit-linear-gradient(-45deg, #ac6cff 0%,#74bcf7 50%); /* Chrome10-25,Safari5.1-6 */
 	background: linear-gradient(135deg, #ac6cff 0%,#74bcf7 50%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	// transition: all 0.3s ease-out;
+}
+
+body.body--push {
+	padding-top: 158px;
 }
 
 .app {
