@@ -11,8 +11,8 @@ class Event extends Component {
               <CurrentBookContainer books={this.props.books} authenticated={this.props.authenticated} user={this.props.user} />
             </div>
             <ul className="event-details__attendees">
-              <li>Attendee</li>
-              <li>Attendee 2</li>
+              <li className="event-details__attendee">Attendee</li>
+              <li className="event-details__attendee">Attendee 2</li>
             </ul>
           </div>
           

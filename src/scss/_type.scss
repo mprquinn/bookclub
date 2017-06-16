@@ -13,3 +13,10 @@ h1 {
 	text-transform: uppercase;
 	letter-spacing: 1px;
 }
+
+.fill {
+	font-size: 1em;
+	color: $white;
+	padding: 0.33em 1em;
+	background: linear-gradient(to right, $purple 0%, darken($blue, 20%) 100%);
+}

@@ -74,6 +74,13 @@ h1 {
   letter-spacing: 1px;
 }
 
+.fill {
+  font-size: 1em;
+  color: #efefef;
+  padding: 0.33em 1em;
+  background: linear-gradient(to right, #ac6cff 0%, #1588f0 100%);
+}
+
 header {
   position: relative;
   width: calc(83.33333% - 36.66667px);
@@ -155,6 +162,21 @@ header button {
   font-size: 1rem;
 }
 
+.event-details__attendees {
+  background: #111111;
+  padding: 0.33em 1em;
+  margin-left: calc(-25% - 15px + 40px);
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.event-details__attendee {
+  font-size: 1em;
+  color: #efefef;
+  list-style: none;
+  border-bottom: 1px solid #efefef;
+  margin-bottom: 0.33em;
+}
+
 button,
 .button {
   background: none;
@@ -175,15 +197,6 @@ button,
   background: linear-gradient(to right, #1588f0 0%, #ac6cff 100%);
 }
 
-.rate-book select {
-  padding: 0.33em 1em;
-  border: 2px solid #efefef;
-  background: none;
-  font-family: Montserrat, sans-serif;
-  color: #efefef;
-  font-weight: 700;
-}
-
 .rate-book label {
   font-size: 1rem;
   color: #efefef;
@@ -191,6 +204,19 @@ button,
   padding: 0.33em 1em;
   margin: 1em 0 1em calc(-16.66667% - 16.66667px + 25px);
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.rate-book form {
+  margin: 1em 0;
+}
+
+.rate-book select {
+  padding: 0.33em 1em;
+  border: 2px solid #efefef;
+  background: none;
+  font-family: Montserrat, sans-serif;
+  color: #efefef;
+  font-weight: 700;
 }
 
 .rate-book option {

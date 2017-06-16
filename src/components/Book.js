@@ -85,7 +85,7 @@ class Book extends Component {
             )
           }
 
-          <p>Average Rating: {this.state.avgRating}</p>
+          <p className="fill">Average Rating: {this.state.avgRating}</p>
       </div>
     );
   }

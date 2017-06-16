@@ -17,3 +17,18 @@
 .event-details__date {
 	font-size: 1rem;
 }
+
+.event-details__attendees {
+	background: $black;
+	padding: 0.33em 1em;
+	@include grid-push(-3);
+	box-shadow: 2px 2px 20px rgba(0,0,0,0.5);
+}
+
+.event-details__attendee {
+	font-size: 1em;
+	color: $white;
+	list-style: none;
+	border-bottom: 1px solid $white;
+	margin-bottom: 0.33em;
+}
