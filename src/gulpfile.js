@@ -8,14 +8,14 @@ gulp.task('default', function() {
 });
 
 gulp.task('scss', function (){
-  return gulp.src('./scss/styles.scss')
+  return gulp.src('./scss/styles.sass')
     .pipe(sourcemaps.init({
 			loadMaps: true,
 			identityMap: true
     }))
     .pipe(sass({ indentedSyntax: true, errLogToConsole: true, outputStyle: 'expanded' }))
     .pipe(sourcemaps.write('.', {
-			sourceRoot: './css'
+			sourceRoot: null
     }))
     .pipe(gulp.dest('./css'));
 });
