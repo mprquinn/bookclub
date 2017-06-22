@@ -16,9 +16,10 @@ h1 {
 
 .fill {
 	font-size: 1em;
-	color: $white;
+	color: #f36c9e;
 	padding: 0.33em 1em;
-	background: linear-gradient(to right, $purple 0%, darken($blue, 20%) 100%);
+	background: $white;
+	// background: linear-gradient(to right, #f093fa 0%, #f36c9e 100%);
 
 	.book & {
 		@media screen and (min-width: 620px) {

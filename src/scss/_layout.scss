@@ -44,7 +44,8 @@ body.body--push {
 	flex: 1;
 	order: 2;
 	
-	background: $white;
+	// background: $white;
+	border: 2px solid $white;
 	margin-top: 2rem;
 	margin-right: 20px;
 
@@ -60,7 +61,8 @@ body.body--push {
 	flex: 1;
 	order: 1;
 
-	background: $white;
+	// background: $white;
+	border: 2px solid $white;
 
 	@media screen and (min-width: 780px) {
 		flex: 4;

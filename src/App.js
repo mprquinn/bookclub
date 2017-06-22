@@ -78,7 +78,7 @@ class App extends Component {
   toggleHeader() {
     const header = document.querySelector('header'),
           body = document.querySelector('body'),
-          trigger = Math.abs(header.getBoundingClientRect().top - header.getBoundingClientRect().bottom);
+          trigger = Math.abs(header.getBoundingClientRect().top - header.getBoundingClientRect().bottom) /2;
     window.addEventListener('scroll', () => {
       const scrolled = window.pageYOffset;
 
