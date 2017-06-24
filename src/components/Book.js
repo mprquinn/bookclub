@@ -7,12 +7,14 @@ class Book extends Component {
     super(props);
 
     this.generateAverageRating = this.generateAverageRating.bind(this);
+    this.joinEvent = this.joinEvent.bind(this);
 
     this.state = {
       user: null,
       ratings: [],
       avgRating: [],
-      authenticated: this.props.authenticated
+      authenticated: this.props.authenticated,
+      attending: false
     }
   }
 
@@ -46,6 +48,29 @@ class Book extends Component {
     
   }
 
+  joinEvent(e) {
+    e.preventDefault();
+    const user = this.props.user;
+    const attendeeRef = `Events/${this.props.book.Title}/Attendees/`;
+
+    base.push(attendeeRef, {
+      data: user
+    });
+
+    this.setState({
+      attending: true
+    });
+  }
+
+  renderButton() {
+    let button;
+    if (this.state.attending) {
+      return <a className="button button--fill">Attending</a>
+    } else {
+      return <a href="#" onClick={this.joinEvent} className="button button--fill">Join Event</a>
+    }
+  }
+
   render() {
      return (
       <div className="book book--current clearfix">
@@ -60,6 +85,9 @@ class Book extends Component {
           <img src={`${this.props.book.Image}`} alt="" className="book__cover"/>
           <p className="book__description">
             {this.props.book.Description}
+          </p>
+          <p>
+            {this.renderButton()}
           </p>
       </div>
     );

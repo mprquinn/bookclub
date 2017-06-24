@@ -108,11 +108,11 @@ class App extends Component {
 
   }
 
+
   renderEvents() { 
     if (this.state.loaded && this.state.currentEvent) {
-      console.log(this.state.currentEvent);
       // yo dawg you probably shouldnt morph the currentEvent
-      return <Event user={this.state.user} date={this.state.currentEvent.Date} book={this.state.currentEvent.Book} attendees={this.state.currentEvent.Attendees} />
+      return <Event user={this.state.user} date={this.state.currentEvent.Date} book={this.state.currentEvent.Book} />
     } else {
       return (<div><p>
         <svg width="200px" height="200px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" className="lds-book">
