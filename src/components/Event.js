@@ -40,8 +40,13 @@ class Event extends Component {
               <Book book={this.props.book} user={this.props.user} />
             </div>
             <ul className="event-details__attendees">
-              <li className="event-details__attendee">Attendee</li>
-              <li className="event-details__attendee">Attendee 2</li>
+              {
+                this.props.attendees.map(attendee => {
+                  return (
+                    <li key={attendee} className="event-details__attendee">{attendee}</li>
+                  );
+                })
+              }
             </ul>
           </div>
           

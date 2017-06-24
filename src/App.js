@@ -163,7 +163,7 @@ class App extends Component {
         
         <div className="app__container">
           <section className="app__sidebar">
-            <h1 className="past-books__title">Past Books</h1>
+            <h1 className="past-books__title">Past Events</h1>
 
           </section>
 
