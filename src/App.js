@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Event from './components/Event';
-import PastBooks from './components/PastBooks';
+// import PastBooks from './components/PastBooks';
 // import './App.css';
 import './css/styles.css';
 import base from './base.js';
@@ -12,11 +12,16 @@ class App extends Component {
     this.authenticate = this.authenticate.bind(this);
     this.logout = this.logout.bind(this);
     this.authHandler = this.authHandler.bind(this);
+    this.renderEvents = this.renderEvents.bind(this);
+    this.getCurrent = this.getCurrent.bind(this);
 
     this.state = {
-      books: [],
+      events: [],
       authenticated: false,
-      user: ''
+      user: '',
+      loaded: false,
+      currentEvent: {},
+      pastEvents: []
     }
   }
 
@@ -51,16 +56,13 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const dbBooks = base.database().ref('Books');
-    dbBooks.on('value', (snapshot) => {
-      let books = snapshot.val();
-      const newBooks = [];
-      for (let book in books) {
-        newBooks.push(books[book]);
-      }
+    const eventsRef = base.database().ref('Events');
+    eventsRef.on('value', (snapshot) => {
       this.setState({
-        books: newBooks
+        events: snapshot.val(),
+        loaded: true
       });
+      this.getCurrent(snapshot.val());
     });
     
     const savedUser = JSON.parse(localStorage.getItem('authenticated'));
@@ -92,6 +94,56 @@ class App extends Component {
     });
   }
 
+  getCurrent(events) {
+    // obj loop
+    const current = Object.keys(events).filter((event) => {
+      return events[event].Current;
+    });
+    this.setState({
+      currentEvent: this.state.events[current]
+    });
+  }
+
+  getPast(events) {
+
+  }
+
+  renderEvents() {
+    if (this.state.loaded) {
+      return <Event />
+    } else {
+      return (<div><p>
+        <svg width="200px" height="200px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" className="lds-book">
+          <path d="M20 25L80 25L80 75L20 75Z"  fill="#ffffff" stroke="#f373af" strokeWidth="2"></path>
+          <path d="M 50 25 L 75 24.1667 L 75 75.8333 L 50 75" strokeLinejoin="round" strokeLinecap="round" fill="#ffffff" stroke="#f373af" strokeWidth="2">
+            <animate attributeName="d" calcMode="linear" values="M50 25L80 25L80 75L50 75;M50 25L50 20L50 80L50 75;M50 25L80 25L80 75L50 75;M50 25L80 25L80 75L50 75" keyTimes="0;0.5;0.501;1" dur="1" begin="0s" repeatCount="indefinite"></animate>
+            <animate attributeName="opacity" calcMode="linear" values="1;1;0;0" keyTimes="0;0.5;0.5001;1" dur="1" begin="0s" repeatCount="indefinite"></animate>
+          </path>
+          <path d="M 50 25 L 65.04 22.5067 L 65.04 77.4933 L 50 75" strokeLinejoin="round" strokeLinecap="round" fill="#ffffff" stroke="#f373af" strokeWidth="2">
+            <animate attributeName="d" calcMode="linear" values="M50 25L80 25L80 75L50 75;M50 25L50 20L50 80L50 75;M50 25L80 25L80 75L50 75;M50 25L80 25L80 75L50 75" keyTimes="0;0.5;0.501;1" dur="1" begin="-0.166s" repeatCount="indefinite"></animate>
+            <animate attributeName="opacity" calcMode="linear" values="1;1;0;0" keyTimes="0;0.5;0.5001;1" dur="1" begin="-0.166s" repeatCount="indefinite"></animate>
+          </path>
+          <path d="M 50 25 L 55.2 20.8667 L 55.2 79.1333 L 50 75" strokeLinejoin="round" strokeLinecap="round" fill="#ffffff" stroke="#f373af" strokeWidth="2">
+            <animate attributeName="d" calcMode="linear" values="M50 25L80 25L80 75L50 75;M50 25L50 20L50 80L50 75;M50 25L80 25L80 75L50 75;M50 25L80 25L80 75L50 75" keyTimes="0;0.5;0.501;1" dur="1" begin="-0.33s" repeatCount="indefinite"></animate>
+            <animate attributeName="opacity" calcMode="linear" values="1;1;0;0" keyTimes="0;0.5;0.5001;1" dur="1" begin="-0.33s" repeatCount="indefinite"></animate>
+          </path>
+          <path d="M 50 25 L 20 25 L 20 75 L 50 75" strokeLinejoin="round" strokeLinecap="round" fill="#ffffff" stroke="#f373af" strokeWidth="2">
+            <animate attributeName="d" calcMode="linear" values="M50 25L20 25L20 75L50 75;M50 25L20 25L20 75L50 75;M50 25L50 20L50 80L50 75;M50 25L20 25L20 75L50 75" keyTimes="0;0.499;0.5;1" dur="1" begin="-0.33s" repeatCount="indefinite"></animate>
+            <animate attributeName="opacity" calcMode="linear" values="0;0;1;1" keyTimes="0;0.4999;0.5;1" dur="1" begin="-0.33s" repeatCount="indefinite"></animate>
+          </path>
+          <path d="M 50 25 L 20 25 L 20 75 L 50 75" strokeLinejoin="round" strokeLinecap="round" fill="#ffffff" stroke="#f373af" strokeWidth="2">
+            <animate attributeName="d" calcMode="linear" values="M50 25L20 25L20 75L50 75;M50 25L20 25L20 75L50 75;M50 25L50 20L50 80L50 75;M50 25L20 25L20 75L50 75" keyTimes="0;0.499;0.5;1" dur="1" begin="-0.166s" repeatCount="indefinite"></animate>
+            <animate attributeName="opacity" calcMode="linear" values="0;0;1;1" keyTimes="0;0.4999;0.5;1" dur="1" begin="-0.166s" repeatCount="indefinite"></animate>
+          </path>
+          <path d="M 50 25 L 20 25 L 20 75 L 50 75" strokeLinejoin="round" strokeLinecap="round" fill="#ffffff" stroke="#f373af" strokeWidth="2">
+            <animate attributeName="d" calcMode="linear" values="M50 25L20 25L20 75L50 75;M50 25L20 25L20 75L50 75;M50 25L50 20L50 80L50 75;M50 25L20 25L20 75L50 75" keyTimes="0;0.499;0.5;1" dur="1" begin="0s" repeatCount="indefinite"></animate>
+            <animate attributeName="opacity" calcMode="linear" values="0;0;1;1" keyTimes="0;0.4999;0.5;1" dur="1" begin="0s" repeatCount="indefinite"></animate>
+          </path>
+        </svg>
+      </p></div>);
+    }
+  }
+
   render() {
     return (
       <div className="app clearfix">
@@ -106,17 +158,15 @@ class App extends Component {
           }
           
         </header>
-
-        { this.props.children }
         
         <div className="app__container">
           <section className="app__sidebar">
             <h1 className="past-books__title">Past Books</h1>
-            <PastBooks  books={this.state.books}/>
+
           </section>
 
           <section className="app__main">
-            <Event {...this.state} />
+            { this.renderEvents() }
           </section>
         </div>
 
