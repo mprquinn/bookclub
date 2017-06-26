@@ -118,30 +118,37 @@ class Event extends Component {
       return <p>Loading</p>;
     }
   }
+
   render() {
     if (this.state.loaded) {
       return ( 
         <div className="event clearfix">
             <div className="event-details">
-              <h1 className="event-details__title">Next Event:</h1>
+              {this.props.current && 
+                <h1 className="event-details__title">Next Event:</h1>
+              }
               <p className="event-details__date">{this.props.date}</p>
               <div className="event-details__book">
                 <Book book={this.props.book} user={this.props.user} />
-                <p>
-                  {this.renderButton()}
-                </p>
-              </div>
-              <ul className="event-details__attendees">
-                {
-                  this.state.attendees.map(attendee => {
-                    return (
-                      <li key={attendee.id} className="event-details__attendee">
-                        {attendee.name}
-                      </li>
-                    )
-                  })
+                {this.props.current && 
+                  <p>
+                    {this.renderButton()}
+                  </p>
                 }
-              </ul>
+              </div>
+              {this.props.current && 
+                <ul className="event-details__attendees">
+                  {
+                    this.state.attendees.map(attendee => {
+                      return (
+                        <li key={attendee.id} className="event-details__attendee">
+                          {attendee.name}
+                        </li>
+                      )
+                    })
+                  }
+                </ul>
+              }
             </div>
             
         </div>
