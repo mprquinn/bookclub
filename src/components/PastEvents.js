@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Book from './Book';
+import Event from './Event';
 
 class PastEvents extends Component {
   constructor(props) {
@@ -27,7 +28,8 @@ class PastEvents extends Component {
     const pastEvents = fullEventsArray.filter(event => event.event.Current !== true);
     return pastEvents.map(event => {
       return (
-        <Book book={event.event.Book} pastBook={true} user={this.props.user} />
+
+        <Event user={this.props.user} date={event.event.Date} book={event.event.Book} />
       )
     })
   }
