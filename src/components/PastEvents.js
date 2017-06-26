@@ -29,7 +29,7 @@ class PastEvents extends Component {
     return pastEvents.map(event => {
       return (
 
-        <Event user={this.props.user} date={event.event.Date} book={event.event.Book} />
+        <Event key={event.event.Book.Title} user={this.props.user} date={event.event.Date} book={event.event.Book} />
       )
     })
   }

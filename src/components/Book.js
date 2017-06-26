@@ -43,7 +43,7 @@ class Book extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.book);
+    
   }
 
   
