@@ -78,11 +78,11 @@ class Event extends Component {
 
   renderButton() {
     let button;
-    console.log(this.state.user);
-    if (this.state.attending && this.state.user !== undefined) {
+    
+    if (this.state.attending && this.props.user !== undefined) {
       console.log('test');
       return <a href="#" onClick={this.leaveEvent} className="button button--fill">Leave Event</a>;
-    } else if (!this.state.attending && this.state.user !== undefined) {
+    } else if (!this.state.attending && this.props.user !== undefined) {
       return <a href="#" onClick={this.joinEvent} className="button button--fill">Join Event</a>;
     }
   }

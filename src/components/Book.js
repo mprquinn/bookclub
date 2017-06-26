@@ -32,7 +32,6 @@ class Book extends Component {
 
   componentWillMount() {
     const fetchString = `Events/${this.props.book.Title}/Book/Ratings`;
-    console.log(fetchString);
     base.listenTo(fetchString, {
       context: this,
       asArray: true,
