@@ -78,10 +78,12 @@ class Event extends Component {
 
   renderButton() {
     let button;
-    if (this.state.attending) {
-      return <a href="#" onClick={this.leaveEvent} className="button button--fill">Leave Event</a>
-    } else {
-      return <a href="#" onClick={this.joinEvent} className="button button--fill">Join Event</a>
+    console.log(this.state.user);
+    if (this.state.attending && this.state.user !== undefined) {
+      console.log('test');
+      return <a href="#" onClick={this.leaveEvent} className="button button--fill">Leave Event</a>;
+    } else if (!this.state.attending && this.state.user !== undefined) {
+      return <a href="#" onClick={this.joinEvent} className="button button--fill">Join Event</a>;
     }
   }
 
@@ -124,7 +126,7 @@ class Event extends Component {
       );
     } else {
       return (
-        <p className="MIkeTEst">Loading</p>
+        <p>Loading</p>
       )
     }
   }
