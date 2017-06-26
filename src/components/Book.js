@@ -9,7 +9,6 @@ class Book extends Component {
     this.generateAverageRating = this.generateAverageRating.bind(this);
 
     this.state = {
-      user: null,
       ratings: [],
       avgRating: [],
       authenticated: this.props.authenticated,
@@ -43,7 +42,15 @@ class Book extends Component {
   }
 
   componentDidMount() {
-    
+    const fetchString = `Events/${this.props.book.Title}/Book/Ratings/`;
+
+    base.listenTo(fetchString, {
+      context: this,
+      asArray: true,
+      then(ratings) {
+        this.generateAverageRating(ratings);
+      }
+    });
   }
 
   
@@ -70,6 +77,10 @@ class Book extends Component {
             <p className="book__description">
               {this.props.book.Description}
             </p>
+          }
+          {
+            this.props.user &&
+            <Rating bookToRate={this.props.book.Title} />
           }
       </div>
     );
