@@ -111,6 +111,6 @@
 
 .book--past .fill {
 	display: inline-block;
-	width: auto;
-	@include grid-push(-4);
+	width: calc(100% + 40px);
+	margin-left: -10px;
 }
