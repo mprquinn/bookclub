@@ -45,17 +45,14 @@ class Event extends Component {
 
 
   componentDidUpdate(nextProps, nextState) {
-    if (nextState !== this.state && !this.state.loaded) {
-      this.setState({
-        loaded: true
-      })
+    if (nextState.attendees.length !== this.state.attendees.length) {
       if (this.props.user !== "" && this.state.attendees.length) {
         this.determineAttending(this.props.user);
+        return;
       } else {
         return;
       }
-    } else {
-      return;
+
     }
   }
 
