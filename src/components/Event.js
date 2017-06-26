@@ -129,7 +129,7 @@ class Event extends Component {
               }
               <p className="event-details__date">{this.props.date}</p>
               <div className="event-details__book">
-                <Book book={this.props.book} user={this.props.user} />
+                <Book book={this.props.book} user={this.props.user} current={this.props.current} />
                 {this.props.current && 
                   <p>
                     {this.renderButton()}

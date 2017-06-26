@@ -49,8 +49,14 @@ class Book extends Component {
   
 
   render() {
+    let bookClass = 'book clearfix';
+    if (this.props.current) {
+      bookClass = 'book book--current clearfix';
+    } else {
+      bookClass = 'book book--past clearfix';
+    }
      return (
-      <div className="book book--current clearfix">
+      <div className={bookClass}>
         <p className="book__title">
             <strong>
               {this.props.book.Title}
@@ -60,10 +66,11 @@ class Book extends Component {
             {this.props.book.Author}
           </p>
           <img src={`${this.props.book.Image}`} alt="" className="book__cover"/>
-          <p className="book__description">
-            {this.props.book.Description}
-          </p>
-
+          {this.props.current && 
+            <p className="book__description">
+              {this.props.book.Description}
+            </p>
+          }
       </div>
     );
   }
