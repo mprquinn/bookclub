@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Event from './components/Event';
-// import PastBooks from './components/PastBooks';
+import PastEvents from './components/PastEvents';
 // import './App.css';
 import './css/styles.css';
 import base from './base.js';
@@ -14,6 +14,7 @@ class App extends Component {
     this.authHandler = this.authHandler.bind(this);
     this.renderEvents = this.renderEvents.bind(this);
     this.getCurrent = this.getCurrent.bind(this);
+    this.renderPastEvents = this.renderPastEvents.bind(this);
 
     this.state = {
       events: [],
@@ -146,6 +147,14 @@ class App extends Component {
     }
   }
 
+  renderPastEvents() {
+    if (this.state.loaded) {
+      return (
+        <PastEvents events={this.state.events} user={this.state.user} />
+      );
+    }
+  }
+
   render() {
     return (
       <div className="app clearfix">
@@ -164,7 +173,7 @@ class App extends Component {
         <div className="app__container">
           <section className="app__sidebar">
             <h1 className="past-books__title">Past Events</h1>
-
+            { this.renderPastEvents() }
           </section>
 
           <section className="app__main">
