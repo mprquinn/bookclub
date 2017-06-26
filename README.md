@@ -12,6 +12,7 @@ TODO
 
 - ~Fix login error~
 - ~Check if user is attending~
-- Add Past Events section
+- ~Add Past Events section~
+- Change pastEvents to render Event component instead of Book
 - Add Book rating
 - Comments?
