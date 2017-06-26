@@ -11,6 +11,7 @@ class Event extends Component {
     this.joinEvent = this.joinEvent.bind(this);
     this.leaveEvent = this.leaveEvent.bind(this);
     this.checkAttending = this.checkAttending.bind(this);
+    this.determineAttending = this.determineAttending.bind(this);
 
     this.state = {
       loaded: false,
@@ -39,6 +40,29 @@ class Event extends Component {
         attendees: newAttendees,
         loaded: true
       });
+    });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    
+  }
+
+  componentDidUpdate(nextProps, nextState) {
+    console.log(this.state.attendees);
+    if (this.props.user !== "" && this.state.attendees.length) {
+      this.determineAttending(this.props.user);
+    }
+  }
+
+  determineAttending(user) {
+    const attendees = this.state.attendees;
+    attendees.forEach(attendee => {
+      console.log(attendee.name);
+      if (user === attendee.name) {
+        this.setState({
+          attending: true
+        });
+      }
     });
   }
 
@@ -78,11 +102,11 @@ class Event extends Component {
 
   renderButton() {
     let button;
-    
-    if (this.state.attending && this.props.user !== undefined) {
+    console.log(this.state.attending, this.props.user);
+    if (this.state.attending && this.props.user !== "") {
       console.log('test');
       return <a href="#" onClick={this.leaveEvent} className="button button--fill">Leave Event</a>;
-    } else if (!this.state.attending && this.props.user !== undefined) {
+    } else if (!this.state.attending && this.props.user !== "") {
       return <a href="#" onClick={this.joinEvent} className="button button--fill">Join Event</a>;
     }
   }
