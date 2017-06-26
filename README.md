@@ -15,5 +15,6 @@ TODO
 - ~Add Past Events section~
 - ~Change pastEvents to render Event component instead of Book~
 - ~Sort PastEvents by date~
+- Auto update the attending state on login
 - Add Book rating
 - Comments?

@@ -136,7 +136,7 @@ class Event extends Component {
                   </p>
                 }
               </div>
-              {this.props.current && 
+              {this.props.current && this.props.user !=="" &&
                 <ul className="event-details__attendees">
                   {
                     this.state.attendees.map(attendee => {
