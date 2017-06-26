@@ -79,9 +79,10 @@ class Book extends Component {
             </p>
           }
           {
-            this.props.user &&
+            this.props.user && this.props.current &&
             <Rating bookToRate={this.props.book.Title} />
           }
+          <p className="fill">Average Rating: {this.state.avgRating}</p>
       </div>
     );
   }

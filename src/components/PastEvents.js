@@ -29,19 +29,12 @@ class PastEvents extends Component {
     const pastEventsSorted = pastEvents.sort((eventA, eventB) => eventA.event.Date > eventB.event.Date ? -1 : 1);
     return pastEventsSorted.map(event => {
       return (
-        <Event key={event.event.Book.Title} user={this.props.user} date={event.event.Date} book={event.event.Book} current={false} />
+        <Event key={event.event.Book.Title} user={this.props.user} date={event.event.Date} book={event.event.Book} current={false} ratings={event.event.Book.Ratings} />
       )
     })
   }
 
   render() {
-    // const pastBooks = this.props.books.filter(book => book.current !== true);
-    // const booksSorted = pastBooks.sort((bookA, bookB) => bookA.order > bookB.order ? -1 : 1);
-    // let bookArray = booksSorted.map(book => {
-    //   return (
-    //     <Book book={book} currentBook={false} pastBook={true} description={false} key={book.order} ratings={book.ratings} />
-    //   )
-    // })
     return (
       <ul className="past-books">
       	{ this.renderPastEvents() }
