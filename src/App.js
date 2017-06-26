@@ -31,16 +31,16 @@ class App extends Component {
 
   authHandler(err, authData) {
     if (err) {
-      console.log(err);
       return;
     }
+
+
+    localStorage.setItem('authenticated', JSON.stringify({authenticated:true,user: authData.user.displayName}));
 
     this.setState({
       authenticated: true,
       user: authData.user.displayName
     });
-
-    localStorage.setItem('authenticated', JSON.stringify({authenticated:true,user: authData.user.displayName}));
   }
 
   logout() {
@@ -66,7 +66,7 @@ class App extends Component {
     });
     
     const savedUser = JSON.parse(localStorage.getItem('authenticated'));
-
+ 
     if (savedUser !== null) {
       this.setState({
         authenticated: true,

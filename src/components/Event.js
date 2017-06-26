@@ -43,21 +43,25 @@ class Event extends Component {
     });
   }
 
-  componentWillReceiveProps(nextProps) {
-    
-  }
 
   componentDidUpdate(nextProps, nextState) {
-    console.log(this.state.attendees);
-    if (this.props.user !== "" && this.state.attendees.length) {
-      this.determineAttending(this.props.user);
+    if (nextState !== this.state && !this.state.loaded) {
+      this.setState({
+        loaded: true
+      })
+      if (this.props.user !== "" && this.state.attendees.length) {
+        this.determineAttending(this.props.user);
+      } else {
+        return;
+      }
+    } else {
+      return;
     }
   }
 
   determineAttending(user) {
     const attendees = this.state.attendees;
     attendees.forEach(attendee => {
-      console.log(attendee.name);
       if (user === attendee.name) {
         this.setState({
           attending: true
@@ -70,7 +74,6 @@ class Event extends Component {
     e.preventDefault();
     const user = this.props.user;
     const attendeeRef = `Events/${this.props.book.Title}/Attendees/`;
-
     base.push(attendeeRef, {
       data: user
     });
@@ -102,9 +105,7 @@ class Event extends Component {
 
   renderButton() {
     let button;
-    console.log(this.state.attending, this.props.user);
     if (this.state.attending && this.props.user !== "") {
-      console.log('test');
       return <a href="#" onClick={this.leaveEvent} className="button button--fill">Leave Event</a>;
     } else if (!this.state.attending && this.props.user !== "") {
       return <a href="#" onClick={this.joinEvent} className="button button--fill">Join Event</a>;
