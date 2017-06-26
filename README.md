@@ -13,6 +13,7 @@ TODO
 - ~Fix login error~
 - ~Check if user is attending~
 - ~Add Past Events section~
-- Change pastEvents to render Event component instead of Book
+- ~Change pastEvents to render Event component instead of Book~
+- Sort PastEvents by date
 - Add Book rating
 - Comments?
