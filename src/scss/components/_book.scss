@@ -28,8 +28,9 @@
 	@media screen and (min-width: 780px) {
 		&:after {
 			width: 100%;
-			margin-right: 0;
-			margin-left: 10px;
+			margin-top: 2em;
+			margin-right: -30px;
+			margin-left: auto;
 		}
 	}
 }
@@ -95,7 +96,7 @@
 		box-shadow: 10px 10px 0 $white;
 
 		@media screen and (min-width: 780px) {
-			width: 100%;
+			width: calc(100% + 20px);
 			margin-left: -30px;
 		}
 	}

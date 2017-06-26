@@ -216,8 +216,9 @@ header button {
 @media screen and (min-width: 780px) {
   .book--past:after {
     width: 100%;
-    margin-right: 0;
-    margin-left: 10px;
+    margin-top: 2em;
+    margin-right: -30px;
+    margin-left: auto;
   }
 }
 
@@ -284,7 +285,7 @@ header button {
 
 @media screen and (min-width: 780px) {
   .book--past .book__cover {
-    width: 100%;
+    width: calc(100% + 20px);
     margin-left: -30px;
   }
 }
