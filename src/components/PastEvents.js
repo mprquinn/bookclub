@@ -26,7 +26,9 @@ class PastEvents extends Component {
     //   console.log(event);
     // })
     const pastEvents = fullEventsArray.filter(event => event.event.Current !== true);
-    return pastEvents.map(event => {
+    console.log(pastEvents);
+    const pastEventsSorted = pastEvents.sort((eventA, eventB) => eventA.event.Date > eventB.event.Date ? -1 : 1);
+    return pastEventsSorted.map(event => {
       return (
 
         <Event key={event.event.Book.Title} user={this.props.user} date={event.event.Date} book={event.event.Book} current={false} />
