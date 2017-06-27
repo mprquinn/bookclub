@@ -26,7 +26,8 @@ class Suggestions extends Component {
       loaded: false,
       currentEvent: false,
       pastEvents: [],
-      searchBook: ''
+      searchBook: '',
+      lastStamp: 0
     }
   }
 
@@ -84,31 +85,39 @@ class Suggestions extends Component {
   searchBooks(e) {
     const _this = this;
     e.preventDefault();
-    
+
     const string = e.target.value;
+    const searchString = `https://www.googleapis.com/books/v1/volumes?q=${string}&maxResults=1&key=${gBooksKey}`;
 
-    const test = `https://www.googleapis.com/books/v1/volumes?q=${string}&maxResults=1&key=${gBooksKey}`;
-    console.log(test);
+    if (this.state.lastStamp !== 0 && e.timeStamp - this.state.lastStamp > 100) {
+      fetch(searchString).then(function(response) { 
+      // Convert to JSON
+        return response.json();
+      }).then(function(book) {
+        // Yay, `j` is a JavaScript object
+        if (book.items.length) {
+          const foundBook = book.items[0].volumeInfo;
+          const title = foundBook.title;
+          const image = foundBook.imageLinks.thumbnail;
+          const author = foundBook.authors[0];
+          const description = foundBook.description;
 
-    fetch(test).then(function(response) { 
-    // Convert to JSON
-      return response.json();
-    }).then(function(book) {
-      // Yay, `j` is a JavaScript object
-      const foundBook = book.items[0].volumeInfo;
-      const title = foundBook.title;
-      const image = foundBook.imageLinks.thumbnail;
-      const description = foundBook.description;
+          const result = {
+            title,
+            image,
+            author
+          };
 
-      const result = {
-        title,
-        image,
-        description
-      };
-
-      _this.setState({
-        searchBook: result
-      });
+          _this.setState({
+            searchBook: result
+          });
+        }
+        
+      });  
+    }
+    
+    this.setState({
+      lastStamp: e.timeStamp
     });
   }
 
@@ -216,13 +225,11 @@ class Suggestions extends Component {
                 <label htmlFor="suggestion">Book Title</label><br />
                 <input type="text" name="suggestion" placeholder="Book Title" ref="suggestion" onChange={this.searchBooks} />
                 { this.state.searchBook !== "" &&
-                  
-                      <div>
-                        <p><strong>{this.state.searchBook.title}</strong></p>
-                        <img src={this.state.searchBook.image} />
-                        <p>{this.state.searchBook.description}</p>
-                      </div>
-                    
+                  <div>
+                    <p><strong>{this.state.searchBook.title}</strong><br />
+                    {this.state.searchBook.author}</p>
+                    <img src={this.state.searchBook.image} />
+                  </div>
                 }
                 <input type="submit" />
               </form>
