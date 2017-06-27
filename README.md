@@ -2,9 +2,7 @@
 
 ## A quick SPA for our bookclub
 
-### Only mobile styles have been done.
-
-I'm working on this in no particular order; whatever I feel like at the time.
+Let's call this an Alpha
 
 ---
 
