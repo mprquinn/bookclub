@@ -103,9 +103,9 @@ class Event extends Component {
   renderButton() {
     let button;
     if (this.state.attending && this.props.user !== "") {
-      return <a href="#" onClick={this.leaveEvent} className="button button--fill button--fill--white">Leave Event</a>;
+      return <a href="#" onClick={this.leaveEvent} className="button button--event">Leave Event</a>;
     } else if (!this.state.attending && this.props.user !== "") {
-      return <a href="#" onClick={this.joinEvent} className="button button--fill button--fill--white">Join Event</a>;
+      return <a href="#" onClick={this.joinEvent} className="button button--event">Join Event</a>;
     }
   }
 

@@ -47,10 +47,12 @@ class Favourites extends Component {
 
   render() {
     return (
-      <ul className="favourite-books">
+      <div className="favourite-books__wrapper">
         <h1>Prestige's Favourites</h1>
-      	{ this.renderFavEvents() }
-      </ul>
+        <ul className="favourite-books">
+        	{ this.renderFavEvents() }
+        </ul>
+      </div>
     );
   }
 }

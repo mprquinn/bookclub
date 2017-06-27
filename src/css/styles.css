@@ -211,7 +211,6 @@ header button {
   width: calc(100% + 40px);
   background: #ffffff;
   padding: 0.33em 20px;
-  box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.3);
 }
 
 @media screen and (min-width: 780px) {
@@ -359,7 +358,6 @@ header button {
   background: #ffffff;
   padding: 0.33em 1em;
   margin-left: calc(-25% - 15px + 40px);
-  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
 }
 
 @media screen and (min-width: 780px) {
@@ -386,13 +384,28 @@ button,
   text-transform: uppercase;
   padding: 0.33em 1em;
   border: 2px solid #ffffff;
+  text-decoration: none;
 }
 
-.event-details .event-details__date + p button, .event-details .event-details__date + p
-.button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+button.button--event,
+.button.button--event {
+  display: block;
+  width: 100%;
+  position: relative;
+  margin: 1em auto;
+  float: none;
+  text-align: center;
+}
+
+@media screen and (min-width: 630px) {
+  button.button--event,
+  .button.button--event {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: auto;
+    text-align: left;
+  }
 }
 
 .button--fill {
@@ -416,7 +429,6 @@ button,
   background: #111111;
   padding: 0.33em 1em;
   margin: 1em 0 1em calc(-16.66667% - 16.66667px + 25px);
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 @media screen and (min-width: 780px) {
@@ -463,17 +475,29 @@ button,
 .rate-book p {
   font-size: 1rem;
   color: #ffffff;
-  text-shadow: 0.5px 0.5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.favourite-books__wrapper {
+  padding-left: 20px;
 }
 
 .favourite-books {
   list-style: none;
+  margin-left: 0;
+  padding: 0;
 }
 
 .favourite-books__book {
   display: inline-block;
-  width: 25%;
+  width: 50%;
   float: left;
+  text-align: center;
+}
+
+@media screen and (min-width: 940px) {
+  .favourite-books__book {
+    width: 25%;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

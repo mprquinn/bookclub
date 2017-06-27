@@ -1,11 +1,22 @@
+.favourite-books__wrapper {
+	padding-left: 20px;
+}
+
 .favourite-books {
 	list-style: none;
+	margin-left: 0;
+	padding: 0;
 }
 
 .favourite-books__book {
 	display: inline-block;
-	width: 25%;
+	width: 50%;
 	float: left;
+	text-align: center;
+
+	@media screen and (min-width: 940px) {
+		width: 25%;
+	}
 }
 
 

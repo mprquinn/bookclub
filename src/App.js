@@ -190,7 +190,6 @@ class App extends Component {
             { this.renderEvents() }
 
             <section className="app__footer">
-              <hr />
               { this.renderFavourites() }
             </section>
           </section>
