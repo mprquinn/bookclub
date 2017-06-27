@@ -215,7 +215,7 @@ class Suggestions extends Component {
               <form>
                 <label htmlFor="suggestion">Book Title</label><br />
                 <input type="text" name="suggestion" placeholder="Book Title" ref="suggestion" onChange={this.searchBooks} />
-                {
+                { this.state.searchBook !== "" &&
                   
                       <div>
                         <p><strong>{this.state.searchBook.title}</strong></p>
