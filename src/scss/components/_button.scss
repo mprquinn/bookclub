@@ -8,13 +8,25 @@ button,
 	text-transform: uppercase;
 	padding: 0.33em 1em;
 	border: 2px solid $white;
+	text-decoration: none;
 	// border-image: linear-gradient(to right, lighten($purple, 20%) 0%, $blue 100%);
 	// border-image-slice: 1;
 
-	.event-details .event-details__date + p & {
-		position: absolute;
-		top: 20px;
-		right: 20px;
+	&.button--event {
+		display: block;
+		width: 100%;
+		position: relative;
+		margin: 1em auto;
+		float: none;
+		text-align: center;
+		
+		@media screen and (min-width: 630px) {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			width: auto;
+			text-align: left;
+		}
 	}
 }
 

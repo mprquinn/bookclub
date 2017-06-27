@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Book from './Book';
 import Event from './Event';
 
 class PastEvents extends Component {

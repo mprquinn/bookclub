@@ -8,7 +8,7 @@
 	// border: 2px solid $white;
 	background: $white; 
 	padding: 0.33em 20px;
-	box-shadow: 2px 2px 30px rgba(0,0,0,0.3);
+	// box-shadow: 2px 2px 30px rgba(0,0,0,0.3);
 
 	@media screen and (min-width: 780px) {
 		width: calc(100% + 30px);
@@ -99,6 +99,13 @@
 			width: calc(100% + 20px);
 			margin-left: -30px;
 		}
+	}
+
+	.favourite-books__book & {
+		width: auto;
+		margin-left: 0;
+		margin-right: auto;
+		max-height: 150px;
 	}
 }
 
