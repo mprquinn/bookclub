@@ -17,5 +17,5 @@ TODO
 - ~Sort PastEvents by date~
 - ~Auto update the attending state on login~
 - ~Add Book rating~
-- Fav Books
+- ~Fav Books~
 - Comments?
