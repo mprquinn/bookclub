@@ -235,7 +235,7 @@ class Suggestions extends Component {
           </section>
 
           <section className="app__main">
-            <div className="suggest">
+            <div className="suggestion">
               <h1>Submit a new Book</h1>
               <form>
                 <label htmlFor="suggestion">Book Title</label><br />
@@ -248,7 +248,7 @@ class Suggestions extends Component {
                   </div>
                 }
                 {this.state.chosen === 'suggestion__choice suggestion__choice--chosen' &&
-                  <input type="submit" />
+                  <input type="submit" className="button button--fill button--fill--white" />
                 }
               </form>
             </div>

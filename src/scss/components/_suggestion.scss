@@ -1,0 +1,25 @@
+.suggestion {
+
+}
+
+.suggestion__choice {
+	width: 75%;
+	padding: 0 20px 20px;
+	margin: 2em auto;
+	border: 2px solid $white;
+	color: $white;
+	cursor: pointer;
+	text-align: center;
+
+	&.suggestion__choice--chosen {
+		background: $white;
+		color: $pink;
+		box-shadow: 5px 5px 0px $pink;
+	}
+}
+
+.suggestion .button {
+	display: block;
+	float: none;
+	margin: 0 auto;
+}
