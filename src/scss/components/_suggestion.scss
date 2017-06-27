@@ -38,6 +38,11 @@
 	&:-moz-placeholder { /* Firefox 18- */
 	  color: $white;
 	}
+
+	&:focus {
+		background: $white;
+		color: $pink;
+	}
 }
 
 .suggestion__choice {
@@ -68,4 +73,5 @@
 	display: block;
 	float: none;
 	margin: 0 auto;
+	cursor: pointer;
 }

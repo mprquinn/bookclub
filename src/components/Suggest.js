@@ -19,6 +19,7 @@ class Suggestions extends Component {
     this.renderFavourites = this.renderFavourites.bind(this);
     this.searchBooks = this.searchBooks.bind(this);
     this.chooseBook = this.chooseBook.bind(this);
+    this.suggestBook = this.suggestBook.bind(this);
 
     this.state = {
       events: [],
@@ -201,6 +202,7 @@ class Suggestions extends Component {
   }
 
   chooseBook(e) {
+
     if (this.state.chosen === 'suggestion__choice') {
       this.setState({
         chosen: 'suggestion__choice suggestion__choice--chosen'
@@ -211,6 +213,23 @@ class Suggestions extends Component {
       });
     }
     
+  }
+
+  suggestBook(e) {
+    e.preventDefault();
+
+    const book = {
+      title: this.state.searchBook.title,
+      author: this.state.searchBook.author,
+      image: this.state.searchBook.image,
+      description: this.state.searchBook.description
+    }
+    const bookTitle = book.title;
+    const pushString = `Suggestions`;
+
+    base.push(pushString, {
+      data: book
+    });
   }
 
   render() {
@@ -237,7 +256,7 @@ class Suggestions extends Component {
           <section className="app__main">
             <div className="suggestion">
               <h1>Submit a new Book</h1>
-              <form className="suggestion__form">
+              <form className="suggestion__form" onSubmit={this.suggestBook}>
                 <label htmlFor="suggestion">Book Title</label><br />
                 <input type="text" name="suggestion" placeholder="Book Title" ref="suggestion" onChange={this.searchBooks} />
                 { this.state.searchBook !== "" &&

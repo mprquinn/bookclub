@@ -546,6 +546,11 @@ button.button--event,
   color: #ffffff;
 }
 
+.suggestion__form input[type="text"]:focus {
+  background: #ffffff;
+  color: #f36c9e;
+}
+
 .suggestion__choice {
   width: 75%;
   padding: 0 20px 20px;
@@ -574,6 +579,7 @@ button.button--event,
   display: block;
   float: none;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 .suggestions {
