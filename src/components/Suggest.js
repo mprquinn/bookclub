@@ -237,7 +237,7 @@ class Suggestions extends Component {
           <section className="app__main">
             <div className="suggestion">
               <h1>Submit a new Book</h1>
-              <form>
+              <form className="suggestion__form">
                 <label htmlFor="suggestion">Book Title</label><br />
                 <input type="text" name="suggestion" placeholder="Book Title" ref="suggestion" onChange={this.searchBooks} />
                 { this.state.searchBook !== "" &&

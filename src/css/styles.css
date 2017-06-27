@@ -500,6 +500,51 @@ button.button--event,
   }
 }
 
+.suggestion h1 {
+  margin-left: -40px;
+}
+
+.suggestion__form {
+  margin: 0 20px;
+  color: #ffffff;
+}
+
+.suggestion__form label {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.suggestion__form input[type="text"] {
+  padding: 0.6em;
+  font-weight: 800;
+  color: #ffffff;
+  background: none;
+  margin-top: 0.3em;
+  border: 2px solid #ffffff;
+  text-transform: uppercase;
+}
+
+.suggestion__form input[type="text"]::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #ffffff;
+}
+
+.suggestion__form input[type="text"]::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #ffffff;
+}
+
+.suggestion__form input[type="text"]:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #ffffff;
+}
+
+.suggestion__form input[type="text"]:-moz-placeholder {
+  /* Firefox 18- */
+  color: #ffffff;
+}
+
 .suggestion__choice {
   width: 75%;
   padding: 0 20px 20px;
