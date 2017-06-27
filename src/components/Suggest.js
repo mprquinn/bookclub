@@ -5,6 +5,7 @@ import Favourites from '../components/Favourites';
 // import './App.css';
 import '../css/styles.css';
 import base from '../base.js';
+import gBooksKey from '../gbooks';
 
 class Suggestions extends Component {
   constructor () {
@@ -25,7 +26,7 @@ class Suggestions extends Component {
       loaded: false,
       currentEvent: false,
       pastEvents: [],
-      searchBooks: []
+      searchBook: ''
     }
   }
 
@@ -81,19 +82,33 @@ class Suggestions extends Component {
   }
 
   searchBooks(e) {
-    
+    const _this = this;
     e.preventDefault();
     
     const string = e.target.value;
 
-    const test = `https://www.googleapis.com/books/v1/volumes?q=${string}`;
+    const test = `https://www.googleapis.com/books/v1/volumes?q=${string}&maxResults=1&key=${gBooksKey}`;
+    console.log(test);
 
     fetch(test).then(function(response) { 
     // Convert to JSON
       return response.json();
     }).then(function(book) {
       // Yay, `j` is a JavaScript object
-      console.log(book); 
+      const foundBook = book.items[0].volumeInfo;
+      const title = foundBook.title;
+      const image = foundBook.imageLinks.thumbnail;
+      const description = foundBook.description;
+
+      const result = {
+        title,
+        image,
+        description
+      };
+
+      _this.setState({
+        searchBook: result
+      });
     });
   }
 
@@ -200,6 +215,15 @@ class Suggestions extends Component {
               <form>
                 <label htmlFor="suggestion">Book Title</label><br />
                 <input type="text" name="suggestion" placeholder="Book Title" ref="suggestion" onChange={this.searchBooks} />
+                {
+                  
+                      <div>
+                        <p><strong>{this.state.searchBook.title}</strong></p>
+                        <img src={this.state.searchBook.image} />
+                        <p>{this.state.searchBook.description}</p>
+                      </div>
+                    
+                }
                 <input type="submit" />
               </form>
             </div>
