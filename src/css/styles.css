@@ -110,6 +110,14 @@ h1 {
   }
 }
 
+.favourite-books__book .fill.fill {
+  width: 100%;
+  font-size: 0.8em;
+  float: left;
+  margin-right: auto;
+  margin-left: 0;
+}
+
 header {
   position: relative;
   width: calc(83.33333% - 36.66667px);
@@ -295,6 +303,13 @@ header button {
     width: calc(100% + 20px);
     margin-left: -30px;
   }
+}
+
+.favourite-books__book .book__cover {
+  width: auto;
+  margin-left: 0;
+  margin-right: auto;
+  max-height: 150px;
 }
 
 .book__description {

@@ -59,6 +59,8 @@ class Book extends Component {
     let bookClass = 'book clearfix';
     if (this.props.current) {
       bookClass = 'book book--current clearfix';
+    } else if (!this.props.current && this.props.type === "favourites") {
+      bookClass = 'book book--favourites clearfix';
     } else {
       bookClass = 'book book--past clearfix';
     }

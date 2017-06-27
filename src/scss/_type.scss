@@ -27,4 +27,12 @@ h1 {
 			width: 50%;
 		}
 	}
+
+	.favourite-books__book &.fill {
+		width: 100%;
+		font-size: 0.8em;
+		float: left;
+		margin-right: auto;
+		margin-left: 0;
+	}
 }
