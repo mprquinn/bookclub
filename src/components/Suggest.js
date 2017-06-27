@@ -18,6 +18,7 @@ class Suggestions extends Component {
     this.renderPastEvents = this.renderPastEvents.bind(this);
     this.renderFavourites = this.renderFavourites.bind(this);
     this.searchBooks = this.searchBooks.bind(this);
+    this.chooseBook = this.chooseBook.bind(this);
 
     this.state = {
       events: [],
@@ -27,7 +28,8 @@ class Suggestions extends Component {
       currentEvent: false,
       pastEvents: [],
       searchBook: '',
-      lastStamp: 0
+      chosen: 'suggestion__choice',
+      lastStamp: 0,
     }
   }
 
@@ -89,7 +91,7 @@ class Suggestions extends Component {
     const string = e.target.value;
     const searchString = `https://www.googleapis.com/books/v1/volumes?q=${string}&maxResults=1&key=${gBooksKey}`;
 
-    if (this.state.lastStamp !== 0 && e.timeStamp - this.state.lastStamp > 100) {
+    if (this.state.lastStamp !== 0 && e.timeStamp - this.state.lastStamp > 100 && string !== '') {
       fetch(searchString).then(function(response) { 
       // Convert to JSON
         return response.json();
@@ -99,13 +101,14 @@ class Suggestions extends Component {
           const foundBook = book.items[0].volumeInfo;
           const title = foundBook.title;
           const image = foundBook.imageLinks.thumbnail;
-          const author = foundBook.authors[0];
+          const author = '' || foundBook.authors[0];
           const description = foundBook.description;
 
           const result = {
             title,
             image,
-            author
+            author,
+            description
           };
 
           _this.setState({
@@ -197,6 +200,19 @@ class Suggestions extends Component {
     }
   }
 
+  chooseBook(e) {
+    if (this.state.chosen === 'suggestion__choice') {
+      this.setState({
+        chosen: 'suggestion__choice suggestion__choice--chosen'
+      });
+    } else {
+      this.setState({
+      chosen: 'suggestion__choice'
+      });
+    }
+    
+  }
+
   render() {
     return (
       <div className="app clearfix">
@@ -225,13 +241,15 @@ class Suggestions extends Component {
                 <label htmlFor="suggestion">Book Title</label><br />
                 <input type="text" name="suggestion" placeholder="Book Title" ref="suggestion" onChange={this.searchBooks} />
                 { this.state.searchBook !== "" &&
-                  <div>
+                  <div className={this.state.chosen} onClick={this.chooseBook}>
                     <p><strong>{this.state.searchBook.title}</strong><br />
                     {this.state.searchBook.author}</p>
                     <img src={this.state.searchBook.image} />
                   </div>
                 }
-                <input type="submit" />
+                {this.state.chosen === 'suggestion__choice suggestion__choice--chosen' &&
+                  <input type="submit" />
+                }
               </form>
             </div>
 
