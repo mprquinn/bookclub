@@ -127,14 +127,16 @@ class Event extends Component {
               {this.props.current && 
                 <h1 className="event-details__title">Next Event:</h1>
               }
-              <p className="event-details__date">{this.props.date}</p>
+              {this.props.type !== "favourites" && 
+                <p className="event-details__date">{this.props.date}</p>
+              }
               {this.props.current && 
                 <p>
                   {this.renderButton()}
                 </p>
               }
               <div className="event-details__book">
-                <Book book={this.props.book} user={this.props.user} current={this.props.current} />
+                <Book book={this.props.book} user={this.props.user} current={this.props.current} type={this.props.type} />
               </div>
               {this.props.current && this.props.user !=="" &&
                 <ul className="event-details__attendees">

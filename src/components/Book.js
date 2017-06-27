@@ -64,14 +64,18 @@ class Book extends Component {
     }
      return (
       <div className={bookClass}>
-        <p className="book__title">
+        {this.props.type !== "favourites" &&
+          <p className="book__title">
             <strong>
               {this.props.book.Title}
             </strong>
           </p>
+        }
+        {this.props.type !== "favourites" &&
           <p className="book__author">  
             {this.props.book.Author}
           </p>
+        }  
           <img src={`${this.props.book.Image}`} alt="" className="book__cover"/>
           {this.props.current && 
             <p className="book__description">

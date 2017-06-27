@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Event from './components/Event';
 import PastEvents from './components/PastEvents';
+import Favourites from './components/Favourites';
 // import './App.css';
 import './css/styles.css';
 import base from './base.js';
@@ -15,6 +16,7 @@ class App extends Component {
     this.renderEvents = this.renderEvents.bind(this);
     this.getCurrent = this.getCurrent.bind(this);
     this.renderPastEvents = this.renderPastEvents.bind(this);
+    this.renderFavourites = this.renderFavourites.bind(this);
 
     this.state = {
       events: [],
@@ -155,6 +157,14 @@ class App extends Component {
     }
   }
 
+  renderFavourites() {
+    if (this.state.loaded) {
+      return (
+        <Favourites events={this.state.events} current={false} />
+      )
+    }
+  }
+
   render() {
     return (
       <div className="app clearfix">
@@ -178,7 +188,13 @@ class App extends Component {
 
           <section className="app__main">
             { this.renderEvents() }
+
+            <section className="app__footer">
+              <hr />
+              { this.renderFavourites() }
+            </section>
           </section>
+          
         </div>
 
       </div>

@@ -35,6 +35,7 @@ body.body--push {
   margin-left: calc(8.33333% - 21.66667px + 40px);
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
 }
 
 @media screen and (min-width: 780px) {
@@ -73,6 +74,12 @@ body.body--push {
     order: 2;
     background: none;
   }
+}
+
+.app__footer {
+  width: 100%;
+  order: 3;
+  flex-wrap: wrap;
 }
 
 body {
@@ -442,6 +449,16 @@ button,
   font-size: 1rem;
   color: #ffffff;
   text-shadow: 0.5px 0.5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.favourite-books {
+  list-style: none;
+}
+
+.favourite-books__book {
+  display: inline-block;
+  width: 25%;
+  float: left;
 }
 
 /*# sourceMappingURL=styles.css.map */
