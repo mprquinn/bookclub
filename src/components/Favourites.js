@@ -47,9 +47,9 @@ class Favourites extends Component {
 
   render() {
     return (
-      <div className="favourite-books__wrapper">
+      <div className="favourite-books__wrapper clearfix">
         <h1>Prestige's Favourites</h1>
-        <ul className="favourite-books">
+        <ul className="favourite-books clearfix">
         	{ this.renderFavEvents() }
         </ul>
       </div>

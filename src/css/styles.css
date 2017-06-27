@@ -477,8 +477,9 @@ button.button--event,
   color: #ffffff;
 }
 
-.favourite-books__wrapper {
-  padding-left: 20px;
+.favourite-books__wrapper h1 {
+  margin-top: 2em;
+  padding: 0 20px;
 }
 
 .favourite-books {
@@ -561,10 +562,25 @@ button.button--event,
   box-shadow: 5px 5px 0px #f36c9e;
 }
 
+.suggestion__choice img {
+  border: 2px solid #ffffff;
+}
+
+.suggestion__choice--chosen img {
+  border: 2px solid #f36c9e;
+}
+
 .suggestion .button {
   display: block;
   float: none;
   margin: 0 auto;
+}
+
+.suggestions {
+  color: #ffffff;
+  margin: 2em auto 0;
+  padding: 0 20px;
+  text-transform: uppercase;
 }
 
 /*# sourceMappingURL=styles.css.map */

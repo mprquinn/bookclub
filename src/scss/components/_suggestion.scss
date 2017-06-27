@@ -56,6 +56,14 @@
 	}
 }
 
+.suggestion__choice img {
+	border: 2px solid $white;
+}
+
+.suggestion__choice--chosen img {
+	border: 2px solid $pink;
+}
+
 .suggestion .button {
 	display: block;
 	float: none;
