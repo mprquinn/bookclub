@@ -83,10 +83,10 @@ class Suggestions extends Component {
   searchBooks(e) {
     
     e.preventDefault();
-    console.log(e);
-    console.log(this.target.value);
+    
+    const string = e.target.value;
 
-    const test = 'https://www.googleapis.com/books/v1/volumes?q=GravitysRainbow';
+    const test = `https://www.googleapis.com/books/v1/volumes?q=${string}`;
 
     fetch(test).then(function(response) { 
     // Convert to JSON
@@ -197,9 +197,9 @@ class Suggestions extends Component {
           <section className="app__main">
             <div className="suggest">
               <h1>Submit a new Book</h1>
-              <form onSubmit={this.searchBooks}>
+              <form>
                 <label htmlFor="suggestion">Book Title</label><br />
-                <input type="text" name="suggestion" placeholder="Book Title" ref="suggestion" />
+                <input type="text" name="suggestion" placeholder="Book Title" ref="suggestion" onChange={this.searchBooks} />
                 <input type="submit" />
               </form>
             </div>
