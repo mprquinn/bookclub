@@ -172,15 +172,17 @@ class App extends Component {
         <header>
           <h1>Prestige Worldwide Literary Society</h1>
           <h1 className="toggled">PWLS</h1>
-          { this.state.authenticated &&
-            <Link to={`suggest`} className="button button--suggest">SUggest a Book</Link>
-          }
-          { this.state.authenticated === false ? (
-            <button onClick={() => this.authenticate()}>Login</button>
-            ) : (
-            <button onClick={() => this.logout()}>Logout</button>
-            )
-          }
+          <div className="header__menu">
+            { this.state.authenticated &&
+              <Link to={`suggest`} className="button button--suggest">SUggest a Book</Link>
+            }
+            { this.state.authenticated === false ? (
+              <button onClick={() => this.authenticate()}>Login</button>
+              ) : (
+              <button onClick={() => this.logout()}>Logout</button>
+              )
+            }
+          </div>
           
         </header>
         

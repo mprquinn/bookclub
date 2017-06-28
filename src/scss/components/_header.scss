@@ -1,4 +1,6 @@
 header {
+	display: flex;
+	align-items: center;
 	position: relative;
 	@include grid-column(10 of 12);
 	@include grid-push(1);
@@ -18,12 +20,16 @@ header {
 	top: 0;
 	margin-left: 0;
 	padding: 0.33em 1em;
-	background: #ffffff;
+	background: $white;
 	z-index: 9;
 
 	@media screen and (min-width: 550px) {
 		left: 0;	
 	}
+}
+
+.header__menu {
+	margin-left: auto;
 }
 
 header h1 {
@@ -51,15 +57,15 @@ header h1.toggled {
 	transform: translateX(0);
 }
 
+header button {
+	margin: 0 0 0 2em;
+	font-size: 1em;
+}
+
 .header--toggled h1 {
 	display: none;		
 }
 
-header button {
-	position: absolute;
-	top: 1.33em;
-	right: 0;
-}
 
 .header--toggled button {
 	top: 0.75em;

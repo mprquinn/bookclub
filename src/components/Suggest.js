@@ -278,32 +278,35 @@ class Suggestions extends Component {
           </section>
 
           <section className="app__main">
-            <div className="suggestion">
-              <h1>Submit a new Book</h1>
-              <form className="suggestion__form" onSubmit={this.suggestBook}>
-                <label htmlFor="suggestion">Book Title</label><br />
-                <input type="text" name="suggestion" placeholder="Book Title" ref="suggestion" onChange={this.searchBooks} />
-                { this.state.searchBook !== "" &&  !this.state.submitted &&
-                  <div className={this.state.chosen} onClick={this.chooseBook}>
-                    <p><strong>{this.state.searchBook.Title}</strong><br />
-                    {this.state.searchBook.Author}</p>
-                    <img src={this.state.searchBook.Image} />
-                  </div>
-                }
-                
-                { this.state.submitting && !this.state.submitted &&
-                  <p><strong>Submitting...</strong></p>
-                }
-                
-                { this.state.submitted && !this.state.submitting && 
-                    <p><strong>Submitted!</strong></p>
-                }
-                
-                {this.state.chosen === 'suggestion__choice suggestion__choice--chosen' && !this.state.submitted &&
-                  <input type="submit" className="button button--fill button--fill--white" />
-                }
-              </form>
-            </div>
+
+            {this.state.user !== "" && 
+              <div className="suggestion">
+                <h1>Submit a new Book</h1>
+                <form className="suggestion__form" onSubmit={this.suggestBook}>
+                  <label htmlFor="suggestion">Book Title</label><br />
+                  <input type="text" name="suggestion" placeholder="Book Title" ref="suggestion" onChange={this.searchBooks} />
+                  { this.state.searchBook !== "" &&  !this.state.submitted &&
+                    <div className={this.state.chosen} onClick={this.chooseBook}>
+                      <p><strong>{this.state.searchBook.Title}</strong><br />
+                      {this.state.searchBook.Author}</p>
+                      <img src={this.state.searchBook.Image} />
+                    </div>
+                  }
+                  
+                  { this.state.submitting && !this.state.submitted &&
+                    <p><strong>Submitting...</strong></p>
+                  }
+                  
+                  { this.state.submitted && !this.state.submitting && 
+                      <p><strong>Submitted!</strong></p>
+                  }
+                  
+                  {this.state.chosen === 'suggestion__choice suggestion__choice--chosen' && !this.state.submitted &&
+                    <input type="submit" className="button button--fill button--fill--white" />
+                  }
+                </form>
+              </div>
+            }
 
             <div className="suggestions">
               <p>

@@ -119,6 +119,8 @@ h1 {
 }
 
 header {
+  display: flex;
+  align-items: center;
   position: relative;
   width: calc(83.33333% - 36.66667px);
   float: left;
@@ -152,6 +154,10 @@ header {
   }
 }
 
+.header__menu {
+  margin-left: auto;
+}
+
 header h1 {
   width: 66%;
   margin-left: calc(-16.66667% - 16.66667px + 40px);
@@ -178,14 +184,13 @@ header h1.toggled {
   transform: translateX(0);
 }
 
-.header--toggled h1 {
-  display: none;
+header button {
+  margin: 0 0 0 2em;
+  font-size: 1em;
 }
 
-header button {
-  position: absolute;
-  top: 1.33em;
-  right: 0;
+.header--toggled h1 {
+  display: none;
 }
 
 .header--toggled button {
@@ -426,11 +431,6 @@ button.button--event,
   background: linear-gradient(to right, #f36c9e 0%, #f093fa 100%);
 }
 
-.button--suggest {
-  float: left;
-  margin: 0 0 1em;
-}
-
 .button--fill--white {
   background: #ffffff;
   color: #f36c9e;
@@ -535,6 +535,7 @@ button.button--event,
 
 .suggestion__form input[type="text"] {
   padding: 0.6em;
+  font-size: 1em;
   font-weight: 800;
   color: #ffffff;
   background: none;
@@ -601,10 +602,10 @@ button.button--event,
 }
 
 .suggestions {
-  width: calc(100% + 20px);
+  width: calc(100% + 10px);
   background: #ffffff;
   color: #f36c9e;
-  margin: 2em -40px 2em 20px;
+  margin: 2em -20px 2em 10px;
   padding: 0 20px;
   float: left;
   text-transform: uppercase;
