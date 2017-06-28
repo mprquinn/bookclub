@@ -426,6 +426,11 @@ button.button--event,
   background: linear-gradient(to right, #f36c9e 0%, #f093fa 100%);
 }
 
+.button--suggest {
+  float: left;
+  margin: 0 0 1em;
+}
+
 .button--fill--white {
   background: #ffffff;
   color: #f36c9e;

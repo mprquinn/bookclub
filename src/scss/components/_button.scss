@@ -38,6 +38,11 @@ button,
 	background: linear-gradient(to right, #f36c9e 0%, #f093fa 100%);
 }
 
+.button--suggest {
+	float: left;
+	margin: 0 0 1em;
+}
+
 .button--fill--white {
 	background: $white;
 	color: $pink;

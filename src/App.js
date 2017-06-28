@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Event from './components/Event';
 import PastEvents from './components/PastEvents';
 import Favourites from './components/Favourites';
+import { Link } from 'react-router';
 // import './App.css';
 import './css/styles.css';
 import base from './base.js';
@@ -171,6 +172,9 @@ class App extends Component {
         <header>
           <h1>Prestige Worldwide Literary Society</h1>
           <h1 className="toggled">PWLS</h1>
+          { this.state.authenticated &&
+            <Link to={`suggest`} className="button button--suggest">SUggest a Book</Link>
+          }
           { this.state.authenticated === false ? (
             <button onClick={() => this.authenticate()}>Login</button>
             ) : (
