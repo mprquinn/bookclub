@@ -24,6 +24,10 @@ class App extends Component {
       authenticated: false,
       user: '',
       loaded: false,
+
+
+
+      
       currentEvent: false,
       pastEvents: []
     };
