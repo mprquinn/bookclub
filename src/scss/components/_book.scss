@@ -46,6 +46,10 @@
 		color: $white;
 	}
 
+	.book--suggested & {
+		color: $pink;
+	}
+
 	.book--current & {
 		
 	}
@@ -70,6 +74,13 @@
 		color: $white;
 		&:before {
 			background: $white;
+		}
+	}
+
+	.book--suggested & {
+		color: $pink;
+		&:before {
+			background: $pink;
 		}
 	}
 

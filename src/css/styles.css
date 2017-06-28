@@ -247,6 +247,10 @@ header button {
   color: #ffffff;
 }
 
+.book--suggested .book__title {
+  color: #f36c9e;
+}
+
 .book__author {
   position: relative;
   font-size: 1rem;
@@ -269,6 +273,14 @@ header button {
 
 .book--past .book__author:before {
   background: #ffffff;
+}
+
+.book--suggested .book__author {
+  color: #f36c9e;
+}
+
+.book--suggested .book__author:before {
+  background: #f36c9e;
 }
 
 .book--current .book__author {
@@ -583,10 +595,45 @@ button.button--event,
 }
 
 .suggestions {
-  color: #ffffff;
-  margin: 2em auto 0;
+  width: calc(100% + 20px);
+  background: #ffffff;
+  color: #f36c9e;
+  margin: 2em -40px 2em 20px;
   padding: 0 20px;
+  float: left;
   text-transform: uppercase;
+}
+
+.suggestions ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0 20px;
+}
+
+.suggestions li {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  list-style: none;
+  margin: 0 0 2em;
+}
+
+@media screen and (min-width: 940px) {
+  .suggestions li {
+    width: 25%;
+  }
+}
+
+.suggestions li p {
+  max-width: 80%;
+}
+
+.suggestions .book__cover {
+  width: auto;
+  margin: 0 auto;
 }
 
 /*# sourceMappingURL=styles.css.map */

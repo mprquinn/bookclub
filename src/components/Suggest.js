@@ -114,7 +114,7 @@ class Suggestions extends Component {
         if (book.items.length) {
           const foundBook = book.items[0].volumeInfo;
           const Title = foundBook.title;
-          const Image = foundBook.imageLinks.thumbnail;
+          const Image = foundBook.imageLinks.smallThumbnail;
           const Author = '' || foundBook.authors[0];
           const Description = foundBook.description;
 
@@ -250,7 +250,8 @@ class Suggestions extends Component {
        _this.setState({
           submitting: false,
           submitted: true
-        }); 
+        });
+       _this.reset();
       }
     });
   }

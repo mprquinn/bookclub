@@ -61,7 +61,10 @@ class Book extends Component {
       bookClass = 'book book--current clearfix';
     } else if (!this.props.current && this.props.type === "favourites") {
       bookClass = 'book book--favourites clearfix';
-    } else {
+    } else if (this.props.suggested) {
+      bookClass = 'book book--suggested clearfix';
+    }
+     else {
       bookClass = 'book book--past clearfix';
     }
      return (
@@ -88,7 +91,9 @@ class Book extends Component {
             this.props.user && this.props.current &&
             <Rating bookToRate={this.props.book.Title} />
           }
-          <p className="fill">Average Rating: {this.state.avgRating}</p>
+          {!this.props.suggested && 
+            <p className="fill">Average Rating: {this.state.avgRating}</p>
+          }
       </div>
     );
   }
