@@ -442,7 +442,9 @@ class Suggestions extends Component {
                     >
                       <p>
                         <strong>
-                          {this.state.searchBook.Title}
+                          {this.state.searchBook.Title }
+
+                          
                         </strong>
                         <br />
                         {this.state.searchBook.Author}
