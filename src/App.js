@@ -45,8 +45,26 @@ class App extends Component {
         user: savedUser.user
       });
     }
+
+    this.toggleHeader();
   }
 
+  toggleHeader() {
+    const header = document.querySelector('header'),
+          body = document.querySelector('body'),
+          trigger = Math.abs(header.getBoundingClientRect().top - header.getBoundingClientRect().bottom) /2;
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+
+      if (scrolled >= trigger) {
+        header.classList.add('header--toggled');
+        body.classList.add('body--push');
+      } else {
+        header.classList.remove('header--toggled');
+        body.classList.remove('body--push');
+      }
+    });
+  }
 
   getCurrent(events) {
     // obj loop

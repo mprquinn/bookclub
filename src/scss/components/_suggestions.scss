@@ -17,25 +17,23 @@
 
 .suggestions li {
 	display: flex;
-	width: 100%;
+	flex: 43%;
 	flex-direction: row;
 	flex-wrap: wrap;
 	list-style: none;
-	margin: 0 0 2em;
+	margin: 0 20px 2em;
+	border: 2px solid $pink;
+	text-align: center;
 
 	@media screen and (min-width: 780px) {
 		width: 50%;
 		flex-direction: column;
 		justify-content: flex-end;
 	}
-
-	@media screen and (min-width: 940px) {
-		width: 25%;
-	}
 }
 
 .suggestions li p {
-	max-width: 80%;
+	// max-width: 80%;
 }
 
 .suggestions .book {

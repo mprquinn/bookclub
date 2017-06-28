@@ -80,6 +80,7 @@
 	.book--suggested & {
 		color: $pink;
 		&:before {
+			left: 50%;
 			background: $pink;
 		}
 	}
