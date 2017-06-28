@@ -16,6 +16,9 @@ class App extends Component {
     this.renderPastEvents = this.renderPastEvents.bind(this);
     this.renderFavourites = this.renderFavourites.bind(this);
     this.authenticate = this.authenticate.bind(this);
+
+
+    
     this.authHandler = this.authHandler.bind(this);
     this.logout = this.logout.bind(this);
 
@@ -27,7 +30,7 @@ class App extends Component {
 
 
 
-      
+
       currentEvent: false,
       pastEvents: []
     };
