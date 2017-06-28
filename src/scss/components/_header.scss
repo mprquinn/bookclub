@@ -73,3 +73,21 @@ header button {
 	color: #f36c9e;
 	border-color: #f36c9e;
 }
+
+// hamburger
+
+.hamburger {
+	color: $white;
+}
+
+.hamburger:focus {
+	outline: none;
+}
+
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+	background-color: $white !important;
+
+	.header--toggled & {
+		background-color: $pink !important;
+	}
+}
