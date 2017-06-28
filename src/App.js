@@ -17,6 +17,10 @@ class App extends Component {
     this.renderFavourites = this.renderFavourites.bind(this);
     this.authenticate = this.authenticate.bind(this);
     this.authHandler = this.authHandler.bind(this);
+
+
+
+    
     this.logout = this.logout.bind(this);
 
     this.state = {
