@@ -8,7 +8,7 @@ import './css/styles.css';
 import base from './base.js';
 
 class App extends Component {
-  constructor( )   {
+  constructor() {
     super();
 
     this.renderEvents = this.renderEvents.bind(this);
