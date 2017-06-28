@@ -32,7 +32,7 @@ body.body--push {
   width: calc(83.33333% - 36.66667px);
   float: left;
   margin-left: 20px;
-  margin-left: calc(8.33333% - 21.66667px + 40px);
+  margin-left: calc( 8.33333% - 21.66667px + 40px);
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -125,7 +125,7 @@ header {
   width: calc(83.33333% - 36.66667px);
   float: left;
   margin-left: 20px;
-  margin-left: calc(8.33333% - 21.66667px + 40px);
+  margin-left: calc( 8.33333% - 21.66667px + 40px);
   transition: all 0.3s ease-out;
 }
 
@@ -208,7 +208,7 @@ header {
 
 header h1 {
   width: 66%;
-  margin-left: calc(-16.66667% - 16.66667px + 40px);
+  margin-left: calc( -16.66667% - 16.66667px + 40px);
 }
 
 @media screen and (min-width: 780px) {
@@ -263,11 +263,15 @@ header .hamburger {
   outline: none;
 }
 
-.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
   background-color: #ffffff !important;
 }
 
-.header--toggled .hamburger-inner, .header--toggled .hamburger-inner::before, .header--toggled .hamburger-inner::after {
+.header--toggled .hamburger-inner, .header--toggled
+.hamburger-inner::before, .header--toggled
+.hamburger-inner::after {
   background-color: #f36c9e !important;
 }
 
@@ -280,7 +284,7 @@ header .hamburger {
 .past-books__title {
   width: 100%;
   color: #ffffff;
-  margin-left: calc(-16.66667% - 16.66667px + 40px);
+  margin-left: calc( -16.66667% - 16.66667px + 40px);
 }
 
 .book--current {
@@ -450,7 +454,7 @@ header .hamburger {
 .event-details__attendees {
   background: #ffffff;
   padding: 0.33em 1em;
-  margin-left: calc(-25% - 15px + 40px);
+  margin-left: calc( -25% - 15px + 40px);
 }
 
 @media screen and (min-width: 780px) {

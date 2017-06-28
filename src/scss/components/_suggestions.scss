@@ -1,48 +1,47 @@
 .suggestions {
-	width: calc(100% + 10px);
-	background: $white;
-	color: $pink;
-	margin: 2em -20px 2em 10px;
-	padding: 0 20px;
-	float: left;
-	text-transform: uppercase;
+  width: calc(100% + 10px);
+  background: $white;
+  color: $pink;
+  margin: 2em -20px 2em 10px;
+  padding: 0 20px;
+  float: left;
+  text-transform: uppercase;
 }
 
 .suggestions ul {
-	display: flex;
-	flex-wrap: wrap;
-	margin: 0;
-	padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0 20px;
 }
 
 .suggestions li {
-	display: flex;
-	flex: 43%;
-	flex-direction: row;
-	flex-wrap: wrap;
-	list-style: none;
-	margin: 0 20px 2em;
-	border: 2px solid $pink;
-	text-align: center;
+  display: flex;
+  flex: 43%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0 20px 2em;
+  border: 2px solid $pink;
+  text-align: center;
 
-	@media screen and (min-width: 780px) {
-		width: 50%;
-		flex-direction: column;
-		justify-content: flex-end;
-	}
+  @media screen and (min-width: 780px) {
+    width: 50%;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
 }
 
 .suggestions li p {
-	// max-width: 80%;
+  // max-width: 80%;
 }
 
 .suggestions .book {
-
 }
 
 .suggestions .book__cover {
-	// width: 90%;
-	// max-height: 290px;
-	width: auto;
-	margin: 0 auto;
+  // width: 90%;
+  // max-height: 290px;
+  width: auto;
+  margin: 0 auto;
 }

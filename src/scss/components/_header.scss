@@ -1,139 +1,138 @@
 header {
-	display: flex;
-	align-items: center;
-	position: relative;
-	@include grid-column(10 of 12);
-	@include grid-push(1);
-	transition: all 0.3s ease-out;
+  display: flex;
+  align-items: center;
+  position: relative;
+  @include grid-column(10 of 12);
+  @include grid-push(1);
+  transition: all 0.3s ease-out;
 
-	@media screen and (min-width: 780px) {
-		width: 100%;
-		margin-bottom: 2rem;
-		margin-left: 0;
-	}
+  @media screen and (min-width: 780px) {
+    width: 100%;
+    margin-bottom: 2rem;
+    margin-left: 0;
+  }
 }
 
 .header--toggled {
-	width: 100%;
-	height: 50px;
-	position: fixed;
-	top: 0;
-	margin-left: 0;
-	padding: 0.33em 1em;
-	background: $white;
-	z-index: 9;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  margin-left: 0;
+  padding: 0.33em 1em;
+  background: $white;
+  z-index: 9;
 
-	@media screen and (min-width: 550px) {
-		left: 0;	
-	}
+  @media screen and (min-width: 550px) {
+    left: 0;
+  }
 }
 
 .header__menu {
-	position: 	fixed;
-	top: 125px;
-	left: 0;
-	width: 	100%;
-	height: 100vh;
-	background: $white;
-	text-align: center;
-	z-index:  2;
-	transform: translateX(100%);
-	transition: all 0.4s ease-in-out;
+  position: fixed;
+  top: 125px;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: $white;
+  text-align: center;
+  z-index: 2;
+  transform: translateX(100%);
+  transition: all 0.4s ease-in-out;
 
-	&.header__menu--open {
-		transform: translateX(0);
-	}
+  &.header__menu--open {
+    transform: translateX(0);
+  }
 
-	.header--toggled & {
- 		top: 50px;
+  .header--toggled & {
+    top: 50px;
 
- 		@media screen and (min-width: 780px) {
- 			top: 0;
- 		}
-	}
+    @media screen and (min-width: 780px) {
+      top: 0;
+    }
+  }
 
-	@media screen and (min-width: 600px) {
-		top: 100px;
-	}
+  @media screen and (min-width: 600px) {
+    top: 100px;
+  }
 
-	@media screen and (min-width: 662px) {
-		top: 75px;
-	}
+  @media screen and (min-width: 662px) {
+    top: 75px;
+  }
 
-	@media screen and (min-width: 780px) {
-		width: auto;
-		height: auto;
-		top: 0;
-		left: 0;
-		background: none;
-		position: relative;
-		margin-left: auto;
-		transform: none;
-	}
-
+  @media screen and (min-width: 780px) {
+    width: auto;
+    height: auto;
+    top: 0;
+    left: 0;
+    background: none;
+    position: relative;
+    margin-left: auto;
+    transform: none;
+  }
 }
 
 header h1 {
-	width: 66%;
-	@include grid-push(-2);
+  width: 66%;
+  @include grid-push(-2);
 
-	@media screen and (min-width: 780px) {
-		max-width: 225px;
-		margin-left: 0;
-	}
-	
+  @media screen and (min-width: 780px) {
+    max-width: 225px;
+    margin-left: 0;
+  }
 }
 
 header h1.toggled {
-	display: none;
-	margin-top: 0.5rem;
-	margin-left: 0;
-	color: #f36c9e;
-	transform: translateX(-100%);
-	transition: all 0.5s ease-out;
+  display: none;
+  margin-top: 0.5rem;
+  margin-left: 0;
+  color: #f36c9e;
+  transform: translateX(-100%);
+  transition: all 0.5s ease-out;
 }
 
 .header--toggled h1.toggled {
-	display: block;
-	transform: translateX(0);
+  display: block;
+  transform: translateX(0);
 }
 
 header button {
-	margin: 0 0 0 2em;
-	font-size: 1em;
+  margin: 0 0 0 2em;
+  font-size: 1em;
 }
 
 .header--toggled h1 {
-	display: none;		
+  display: none;
 }
-
 
 .header--toggled button,
 .header--toggled .button {
-	top: 0.75em;
-	right: 1em;
-	color: $pink !important;
-	border-color: $pink !important;
+  top: 0.75em;
+  right: 1em;
+  color: $pink !important;
+  border-color: $pink !important;
 }
 
 // hamburger
 
 header .hamburger {
-	color: $white;
+  color: $white;
 
-	@media screen and (min-width: 780px) {
-		display: none;
-	}
-} 
-
-.hamburger:focus {
-	outline: none;
+  @media screen and (min-width: 780px) {
+    display: none;
+  }
 }
 
-.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
-	background-color: $white !important;
+.hamburger:focus {
+  outline: none;
+}
 
-	.header--toggled & {
-		background-color: $pink !important;
-	}
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+  background-color: $white !important;
+
+  .header--toggled & {
+    background-color: $pink !important;
+  }
 }
