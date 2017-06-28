@@ -99,16 +99,16 @@ class Suggestions extends Component {
         // Yay, `j` is a JavaScript object
         if (book.items.length) {
           const foundBook = book.items[0].volumeInfo;
-          const title = foundBook.title;
-          const image = foundBook.imageLinks.thumbnail;
-          const author = '' || foundBook.authors[0];
-          const description = foundBook.description;
+          const Title = foundBook.title;
+          const Image = foundBook.imageLinks.thumbnail;
+          const Author = '' || foundBook.authors[0];
+          const Description = foundBook.description;
 
           const result = {
-            title,
-            image,
-            author,
-            description
+            Title,
+            Image,
+            Author,
+            Description
           };
 
           _this.setState({
@@ -219,10 +219,10 @@ class Suggestions extends Component {
     e.preventDefault();
 
     const book = {
-      title: this.state.searchBook.title,
-      author: this.state.searchBook.author,
-      image: this.state.searchBook.image,
-      description: this.state.searchBook.description
+      Title: this.state.searchBook.Title,
+      Author: this.state.searchBook.Author,
+      Image: this.state.searchBook.Image,
+      Description: this.state.searchBook.Description
     }
     const bookTitle = book.title;
     const pushString = `Suggestions`;
@@ -231,11 +231,8 @@ class Suggestions extends Component {
       submitting: true
     });
 
-    const opts = {
-      data: book
-    };
 
-    base.database().ref(pushString).push(opts, function (error) {
+    base.database().ref(pushString).push(book, function (error) {
       if (error) {
         console.log(error);
       } else {
@@ -276,9 +273,9 @@ class Suggestions extends Component {
                 <input type="text" name="suggestion" placeholder="Book Title" ref="suggestion" onChange={this.searchBooks} />
                 { this.state.searchBook !== "" &&  !this.state.submitted &&
                   <div className={this.state.chosen} onClick={this.chooseBook}>
-                    <p><strong>{this.state.searchBook.title}</strong><br />
-                    {this.state.searchBook.author}</p>
-                    <img src={this.state.searchBook.image} />
+                    <p><strong>{this.state.searchBook.Title}</strong><br />
+                    {this.state.searchBook.Author}</p>
+                    <img src={this.state.searchBook.Image} />
                   </div>
                 }
                 
