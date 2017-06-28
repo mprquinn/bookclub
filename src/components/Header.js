@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import  { Link } from 'react-router';
 import base from '../base';
 
 class Header extends Component {
@@ -87,12 +88,16 @@ class Header extends Component {
       <header>
           <h1>Prestige Worldwide Literary Society</h1>
           <h1 className="toggled">PWLS</h1>
+
+        <div className="header__menu">
+          <Link className="button" to="/suggest">Suggest a Book</Link>
           { this.state.authenticated === false ? (
             <button onClick={() => this.authenticate()}>Login</button>
             ) : (
             <button onClick={() => this.logout()}>Logout</button>
             )
           }
+        </div>
         <button className={mobileClass} onClick={this.toggleNav} type="button">
           <span className="hamburger-box">
             <span className="hamburger-inner"></span>
