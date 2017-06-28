@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Event from '../components/Event';
 import PastEvents from '../components/PastEvents';
 import Favourites from '../components/Favourites';
+import Book from '../components/Book';
 // import './App.css';
 import '../css/styles.css';
 import base from '../base.js';
@@ -25,6 +26,7 @@ class Suggestions extends Component {
       user: '',
       loaded: false,
       pastEvents: [],
+      suggestedBooks: [],
       searchBook: '',
       chosen: 'suggestion__choice',
       lastStamp: 0,
@@ -72,6 +74,18 @@ class Suggestions extends Component {
       });
     });
     
+    const suggestionsRef = base.database().ref('Suggestions');
+    const suggestedBooks = [];
+
+    suggestionsRef.on('value', (snapshot) => {
+      Object.keys(snapshot.val()).map(book => {
+        suggestedBooks.push(snapshot.val()[book]);
+      });
+      this.setState({
+        suggestedBooks
+      });
+    })
+
     const savedUser = JSON.parse(localStorage.getItem('authenticated'));
  
     if (savedUser !== null) {
@@ -141,10 +155,6 @@ class Suggestions extends Component {
     });
   }
 
-
-  getPast(events) {
-
-  }
 
 
   renderEvents() { 
@@ -222,7 +232,8 @@ class Suggestions extends Component {
       Title: this.state.searchBook.Title,
       Author: this.state.searchBook.Author,
       Image: this.state.searchBook.Image,
-      Description: this.state.searchBook.Description
+      Description: this.state.searchBook.Description,
+      User: this.state.user,
     }
     const bookTitle = book.title;
     const pushString = `Suggestions`;
@@ -297,6 +308,18 @@ class Suggestions extends Component {
               <p>
                 <strong>
                   View other suggestions
+                  <ul>
+                    {
+                      this.state.suggestedBooks.map(book => {
+                        return (
+                          <li key={book.Title}>
+                            <Book book={book} current={false} suggested={true} />
+                            <p>Submitted by {book.User}</p>
+                          </li>
+                        )
+                      })
+                    }
+                  </ul>
                 </strong>
               </p>
             </div>
