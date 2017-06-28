@@ -6,9 +6,6 @@ class Header extends Component {
   constructor(props) {
     super(props);
 
-    this.authenticate = this.authenticate.bind(this);
-    this.authHandler = this.authHandler.bind(this);
-    this.logout = this.logout.bind(this);
     this.toggleHeader = this.toggleHeader.bind(this);
     this.toggleNav = this.toggleNav.bind(this);
 
@@ -20,36 +17,6 @@ class Header extends Component {
   componentDidMount() {
     // console.log(this.props);
     this.toggleHeader();
-  }
-
-  authenticate() {
-    base.authWithOAuthPopup('facebook', this.authHandler);
-  }
-
-  authHandler(err, authData) {
-    if (err) {
-      return;
-    }
-
-
-    localStorage.setItem('authenticated', JSON.stringify({authenticated:true,user: authData.user.displayName}));
-
-    this.setState({
-      authenticated: true,
-      user: authData.user.displayName
-    });
-  }
-
-  logout() {
-    base.unauth();
-
-    this.setState({
-      authenticated: false,
-      user: ''
-    });
-
-    localStorage.setItem('authenticated', null);
-
   }
 
   toggleHeader() {
@@ -96,10 +63,10 @@ class Header extends Component {
           <Link className="button" to="/suggest">Suggest a Book</Link>
         </div>
         
-        { this.state.authenticated === false ? (
-          <button onClick={() => this.authenticate()}>Login</button>
+        { this.props.authenticated === false ? (
+          <button onClick={() => this.props.authenticate()}>Login</button>
           ) : (
-          <button onClick={() => this.logout()}>Logout</button>
+          <button onClick={() => this.props.logout()}>Logout</button>
           )
         }
         

@@ -16,6 +16,9 @@ class App extends Component {
     this.getCurrent = this.getCurrent.bind(this);
     this.renderPastEvents = this.renderPastEvents.bind(this);
     this.renderFavourites = this.renderFavourites.bind(this);
+    this.authenticate = this.authenticate.bind(this);
+    this.authHandler = this.authHandler.bind(this);
+    this.logout = this.logout.bind(this);
 
     this.state = {
       events: [],
@@ -25,6 +28,38 @@ class App extends Component {
       currentEvent: false,
       pastEvents: []
     }
+  }
+
+  authenticate() {
+    base.authWithOAuthPopup('facebook', this.authHandler);
+  }
+
+  authHandler(err, authData) {
+    if (err) {
+      return;
+    }
+
+
+    localStorage.setItem('authenticated', JSON.stringify({authenticated:true,user: authData.user.displayName}));
+
+    this.setState({
+      authenticated: true,
+      user: authData.user.displayName
+    });
+  }
+
+  logout() {
+    base.unauth();
+
+    this.setState({
+      authenticated: false,
+      user: ''
+    });
+
+    console.log(this.state.authenticated);
+
+    localStorage.setItem('authenticated', null);
+
   }
 
   componentDidMount() {
@@ -138,7 +173,7 @@ class App extends Component {
     return (
       <div className="app clearfix">
         
-        <Header />
+        <Header authenticate={this.authenticate} authHander={this.authHandler} logout={this.logout} authenticated={this.state.authenticated} />
         
         <div className="app__container">
           <section className="app__sidebar">
