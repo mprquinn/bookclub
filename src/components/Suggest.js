@@ -309,23 +309,19 @@ class Suggestions extends Component {
             }
 
             <div className="suggestions">
-              <p>
-                <strong>
-                  View other suggestions
-                  <ul>
-                    {
-                      this.state.suggestedBooks.map(book => {
-                        return (
-                          <li key={book.Title}>
-                            <Book book={book} current={false} suggested={true} />
-                            <p>Submitted by {book.User}</p>
-                          </li>
-                        )
-                      })
-                    }
-                  </ul>
-                </strong>
-              </p>
+              <p><strong>View other suggestions</strong></p>
+              <ul>
+                {
+                  this.state.suggestedBooks.map(book => {
+                    return (
+                      <li key={book.Title}>
+                        <Book book={book} current={false} suggested={true} />
+                        <p>Submitted by {book.User}</p>
+                      </li>
+                    )
+                  })
+                }
+              </ul>
             </div>
 
             <section className="app__footer">
