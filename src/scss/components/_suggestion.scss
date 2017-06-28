@@ -24,6 +24,7 @@
 	background: none;
 	margin-top: 0.3em;
 	border: 2px solid $white;
+	border-radius: 0;
 	text-transform: uppercase;
 
 	&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
