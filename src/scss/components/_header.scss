@@ -46,6 +46,10 @@ header {
 
 	.header--toggled & {
  		top: 50px;
+
+ 		@media screen and (min-width: 780px) {
+ 			top: 0;
+ 		}
 	}
 
 	@media screen and (min-width: 600px) {
@@ -104,11 +108,12 @@ header button {
 }
 
 
-.header--toggled button {
+.header--toggled button,
+.header--toggled .button {
 	top: 0.75em;
 	right: 1em;
-	color: #f36c9e;
-	border-color: #f36c9e;
+	color: $pink !important;
+	border-color: $pink !important;
 }
 
 // hamburger

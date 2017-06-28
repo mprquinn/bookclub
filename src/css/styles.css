@@ -175,6 +175,12 @@ header {
   top: 50px;
 }
 
+@media screen and (min-width: 780px) {
+  .header--toggled .header__menu {
+    top: 0;
+  }
+}
+
 @media screen and (min-width: 600px) {
   .header__menu {
     top: 100px;
@@ -235,11 +241,12 @@ header button {
   display: none;
 }
 
-.header--toggled button {
+.header--toggled button,
+.header--toggled .button {
   top: 0.75em;
   right: 1em;
-  color: #f36c9e;
-  border-color: #f36c9e;
+  color: #f36c9e !important;
+  border-color: #f36c9e !important;
 }
 
 header .hamburger {
