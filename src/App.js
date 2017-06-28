@@ -4,7 +4,6 @@ import Event from './components/Event';
 import PastEvents from './components/PastEvents';
 import Favourites from './components/Favourites';
 import { Link } from 'react-router';
-// import './App.css';
 import './css/styles.css';
 import base from './base.js';
 

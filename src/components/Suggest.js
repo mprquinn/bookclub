@@ -477,7 +477,7 @@ class Suggestions extends Component {
                 <strong>View other suggestions</strong>
               </p>
               <ul>
-                {this.state.suggestedBooks.map(book => {
+                {this.state.suggestedBooks.reverse().map(book => {
                   return (
                     <li key={book.Title}>
                       <Book book={book} current={false} suggested={true} />

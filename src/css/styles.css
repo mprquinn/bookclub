@@ -312,6 +312,10 @@ header .hamburger {
   }
 }
 
+.book--suggested {
+  margin: 0 auto;
+}
+
 .book__title {
   font-family: Montserrat, sans-serif;
   color: #111111;
