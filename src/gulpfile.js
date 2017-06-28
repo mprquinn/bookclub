@@ -7,15 +7,26 @@ gulp.task('default', function() {
   gulp.watch('./scss/**', ['scss']);
 });
 
-gulp.task('scss', function (){
-  return gulp.src('./scss/styles.sass')
-    .pipe(sourcemaps.init({
-			loadMaps: true,
-			identityMap: true
-    }))
-    .pipe(sass({ indentedSyntax: true, errLogToConsole: true, outputStyle: 'expanded' }))
-    .pipe(sourcemaps.write('.', {
-			sourceRoot: null
-    }))
+gulp.task('scss', function() {
+  return gulp
+    .src('./scss/styles.sass')
+    .pipe(
+      sourcemaps.init({
+        loadMaps: true,
+        identityMap: true
+      })
+    )
+    .pipe(
+      sass({
+        indentedSyntax: true,
+        errLogToConsole: true,
+        outputStyle: 'expanded'
+      })
+    )
+    .pipe(
+      sourcemaps.write('.', {
+        sourceRoot: null
+      })
+    )
     .pipe(gulp.dest('./css'));
 });

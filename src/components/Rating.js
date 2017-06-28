@@ -4,7 +4,7 @@ import base from '../base';
 class Rating extends Component {
   constructor(props) {
     super(props);
-    
+
     this.checkRated = this.checkRated.bind(this);
     this.handleRating = this.handleRating.bind(this);
 
@@ -12,8 +12,8 @@ class Rating extends Component {
       book: null,
       ratings: '',
       rated: false,
-      userRating: null,
-    }
+      userRating: null
+    };
   }
 
   componentWillMount() {
@@ -31,7 +31,7 @@ class Rating extends Component {
       base.fetch(checkString, {
         context: this,
         asArray: false,
-        then (rated) {
+        then(rated) {
           if (rated[user.displayName] !== undefined) {
             this.setState({
               userRating: rated[user.displayName]
@@ -40,7 +40,6 @@ class Rating extends Component {
         }
       });
     }
-    
   }
 
   handleRating(e) {
@@ -66,13 +65,15 @@ class Rating extends Component {
   }
 
   render() {
-     return (
+    return (
       <div className="rate-book">
-        
-          <label>Your Rating: <span className="user-rating">{this.state.userRating}</span></label>
-          { this.state.rated ? (
-            <p>Youve Rated this book!</p>) : (
-            <form>
+        <label>
+          Your Rating:{' '}
+          <span className="user-rating">{this.state.userRating}</span>
+        </label>
+        {this.state.rated
+          ? <p>Youve Rated this book!</p>
+          : <form>
               <select name="rating" ref="rating">
                 <option value="0">0</option>
                 <option value="1">1</option>
@@ -86,10 +87,13 @@ class Rating extends Component {
                 <option value="9">9</option>
                 <option value="10">10</option>
               </select>
-              <button className="button button--fill" onClick={this.handleRating}>Rate!</button>
-            </form>
-            )
-          }
+              <button
+                className="button button--fill"
+                onClick={this.handleRating}
+              >
+                Rate!
+              </button>
+            </form>}
       </div>
     );
   }
