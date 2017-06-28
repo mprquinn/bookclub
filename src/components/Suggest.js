@@ -14,7 +14,6 @@ class Suggestions extends Component {
     this.authenticate = this.authenticate.bind(this);
     this.logout = this.logout.bind(this);
     this.authHandler = this.authHandler.bind(this);
-    this.renderEvents = this.renderEvents.bind(this);
     this.renderPastEvents = this.renderPastEvents.bind(this);
     this.renderFavourites = this.renderFavourites.bind(this);
     this.searchBooks = this.searchBooks.bind(this);
@@ -22,15 +21,15 @@ class Suggestions extends Component {
     this.suggestBook = this.suggestBook.bind(this);
 
     this.state = {
-      events: [],
       authenticated: false,
       user: '',
       loaded: false,
-      currentEvent: false,
       pastEvents: [],
       searchBook: '',
       chosen: 'suggestion__choice',
       lastStamp: 0,
+      submitting: false,
+      submitted: false,
     }
   }
 
@@ -216,6 +215,7 @@ class Suggestions extends Component {
   }
 
   suggestBook(e) {
+    const _this = this;
     e.preventDefault();
 
     const book = {
@@ -227,8 +227,23 @@ class Suggestions extends Component {
     const bookTitle = book.title;
     const pushString = `Suggestions`;
 
-    base.push(pushString, {
+    this.setState({
+      submitting: true
+    });
+
+    const opts = {
       data: book
+    };
+
+    base.database().ref(pushString).push(opts, function (error) {
+      if (error) {
+        console.log(error);
+      } else {
+       _this.setState({
+          submitting: false,
+          submitted: true
+        }); 
+      }
     });
   }
 
@@ -259,14 +274,23 @@ class Suggestions extends Component {
               <form className="suggestion__form" onSubmit={this.suggestBook}>
                 <label htmlFor="suggestion">Book Title</label><br />
                 <input type="text" name="suggestion" placeholder="Book Title" ref="suggestion" onChange={this.searchBooks} />
-                { this.state.searchBook !== "" &&
+                { this.state.searchBook !== "" &&  !this.state.submitted &&
                   <div className={this.state.chosen} onClick={this.chooseBook}>
                     <p><strong>{this.state.searchBook.title}</strong><br />
                     {this.state.searchBook.author}</p>
                     <img src={this.state.searchBook.image} />
                   </div>
                 }
-                {this.state.chosen === 'suggestion__choice suggestion__choice--chosen' &&
+                
+                { this.state.submitting && !this.state.submitted &&
+                  <p><strong>Submitting...</strong></p>
+                }
+                
+                { this.state.submitted && !this.state.submitting && 
+                    <p><strong>Submitted!</strong></p>
+                }
+                
+                {this.state.chosen === 'suggestion__choice suggestion__choice--chosen' && !this.state.submitted &&
                   <input type="submit" className="button button--fill button--fill--white" />
                 }
               </form>
