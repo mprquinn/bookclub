@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from './components/Header';
 import Event from './components/Event';
 import PastEvents from './components/PastEvents';
 import Favourites from './components/Favourites';
@@ -11,9 +12,6 @@ class App extends Component {
   constructor () {
     super();
 
-    this.authenticate = this.authenticate.bind(this);
-    this.logout = this.logout.bind(this);
-    this.authHandler = this.authHandler.bind(this);
     this.renderEvents = this.renderEvents.bind(this);
     this.getCurrent = this.getCurrent.bind(this);
     this.renderPastEvents = this.renderPastEvents.bind(this);
@@ -27,36 +25,6 @@ class App extends Component {
       currentEvent: false,
       pastEvents: []
     }
-  }
-
-  authenticate() {
-    base.authWithOAuthPopup('facebook', this.authHandler);
-  }
-
-  authHandler(err, authData) {
-    if (err) {
-      return;
-    }
-
-
-    localStorage.setItem('authenticated', JSON.stringify({authenticated:true,user: authData.user.displayName}));
-
-    this.setState({
-      authenticated: true,
-      user: authData.user.displayName
-    });
-  }
-
-  logout() {
-    base.unauth();
-
-    this.setState({
-      authenticated: false,
-      user: ''
-    });
-
-    localStorage.setItem('authenticated', null);
-
   }
 
   componentDidMount() {
@@ -77,26 +45,8 @@ class App extends Component {
         user: savedUser.user
       });
     }
-
-    this.toggleHeader();
   }
 
-  toggleHeader() {
-    const header = document.querySelector('header'),
-          body = document.querySelector('body'),
-          trigger = Math.abs(header.getBoundingClientRect().top - header.getBoundingClientRect().bottom) /2;
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-
-      if (scrolled >= trigger) {
-        header.classList.add('header--toggled');
-        body.classList.add('body--push');
-      } else {
-        header.classList.remove('header--toggled');
-        body.classList.remove('body--push');
-      }
-    });
-  }
 
   getCurrent(events) {
     // obj loop
@@ -169,22 +119,8 @@ class App extends Component {
   render() {
     return (
       <div className="app clearfix">
-        <header>
-          <h1>Prestige Worldwide Literary Society</h1>
-          <h1 className="toggled">PWLS</h1>
-          <div className="header__menu">
-            { this.state.authenticated &&
-              <Link to={`suggest`} className="button button--suggest">SUggest a Book</Link>
-            }
-            { this.state.authenticated === false ? (
-              <button onClick={() => this.authenticate()}>Login</button>
-              ) : (
-              <button onClick={() => this.logout()}>Logout</button>
-              )
-            }
-          </div>
-          
-        </header>
+        
+        <Header />
         
         <div className="app__container">
           <section className="app__sidebar">

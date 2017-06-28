@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
+import Header from '../components/Header';
 import Event from '../components/Event';
 import PastEvents from '../components/PastEvents';
 import Favourites from '../components/Favourites';
 import Book from '../components/Book';
 // import './App.css';
 import '../css/styles.css';
-import base from '../base.js';
+import base from '../base';
 import gBooksKey from '../gbooks';
 
 class Suggestions extends Component {
   constructor () {
     super();
 
-    this.authenticate = this.authenticate.bind(this);
-    this.logout = this.logout.bind(this);
-    this.authHandler = this.authHandler.bind(this);
     this.renderPastEvents = this.renderPastEvents.bind(this);
     this.renderFavourites = this.renderFavourites.bind(this);
     this.searchBooks = this.searchBooks.bind(this);
@@ -35,35 +33,7 @@ class Suggestions extends Component {
     }
   }
 
-  authenticate() {
-    base.authWithOAuthPopup('facebook', this.authHandler);
-  }
 
-  authHandler(err, authData) {
-    if (err) {
-      return;
-    }
-
-
-    localStorage.setItem('authenticated', JSON.stringify({authenticated:true,user: authData.user.displayName}));
-
-    this.setState({
-      authenticated: true,
-      user: authData.user.displayName
-    });
-  }
-
-  logout() {
-    base.unauth();
-
-    this.setState({
-      authenticated: false,
-      user: ''
-    });
-
-    localStorage.setItem('authenticated', null);
-
-  }
 
   componentDidMount() {
     const eventsRef = base.database().ref('Events');
@@ -95,7 +65,6 @@ class Suggestions extends Component {
       });
     }
 
-    this.toggleHeader();
   }
 
   searchBooks(e) {
@@ -137,25 +106,6 @@ class Suggestions extends Component {
       lastStamp: e.timeStamp
     });
   }
-
-  toggleHeader() {
-    const header = document.querySelector('header'),
-          body = document.querySelector('body'),
-          trigger = Math.abs(header.getBoundingClientRect().top - header.getBoundingClientRect().bottom) /2;
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-
-      if (scrolled >= trigger) {
-        header.classList.add('header--toggled');
-        body.classList.add('body--push');
-      } else {
-        header.classList.remove('header--toggled');
-        body.classList.remove('body--push');
-      }
-    });
-  }
-
-
 
   renderEvents() { 
     if (this.state.loaded && this.state.currentEvent) {
@@ -259,17 +209,8 @@ class Suggestions extends Component {
   render() {
     return (
       <div className="app clearfix">
-        <header>
-          <h1>Prestige Worldwide Literary Society</h1>
-          <h1 className="toggled">PWLS</h1>
-          { this.state.authenticated === false ? (
-            <button onClick={() => this.authenticate()}>Login</button>
-            ) : (
-            <button onClick={() => this.logout()}>Logout</button>
-            )
-          }
-          
-        </header>
+        
+        <Header />
         
         <div className="app__container">
           <section className="app__sidebar">
