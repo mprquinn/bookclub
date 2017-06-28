@@ -29,7 +29,40 @@ header {
 }
 
 .header__menu {
-	margin-left: auto;
+	position: 	fixed;
+	top: 125px;
+	left: 0;
+	width: 	100%;
+	height: 100vh;
+	background: $white;
+	text-align: center;
+	z-index:  2;
+	transform: translateX(100%);
+	transition: all 0.4s ease-in-out;
+
+	&.header__menu--open {
+		transform: translateX(0);
+	}
+
+	@media screen and (min-width: 600px) {
+		top: 100px;
+	}
+
+	@media screen and (min-width: 662px) {
+		top: 75px;
+	}
+
+	@media screen and (min-width: 780px) {
+		width: auto;
+		height: auto;
+		top: 0;
+		left: 0;
+		background: none;
+		position: relative;
+		margin-left: auto;
+		transform: none;
+	}
+
 }
 
 header h1 {
@@ -76,9 +109,13 @@ header button {
 
 // hamburger
 
-.hamburger {
+header .hamburger {
 	color: $white;
-}
+
+	@media screen and (min-width: 780px) {
+		display: none;
+	}
+} 
 
 .hamburger:focus {
 	outline: none;

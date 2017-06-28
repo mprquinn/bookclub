@@ -77,11 +77,14 @@ class Header extends Component {
 
 
   render() {
-    let mobileClass = 'hamburger hamburger--squeeze mobile-toggle ';
+    let mobileClass = 'hamburger hamburger--elastic mobile-toggle ';
+    let menuClass = 'header__menu'
     if (this.state.toggled) {
-      mobileClass = 'hamburger hamburger--squeeze mobile-toggle  is-active';
+      mobileClass = 'hamburger hamburger--elastic mobile-toggle  is-active';
+      menuClass = 'header__menu header__menu--open';
     } else {
-      mobileClass = 'hamburger hamburger--squeeze mobile-toggle'
+      mobileClass = 'hamburger hamburger--elastic mobile-toggle'
+      menuClass = 'header__menu';
     }
 
     return (
@@ -89,15 +92,17 @@ class Header extends Component {
           <h1>Prestige Worldwide Literary Society</h1>
           <h1 className="toggled">PWLS</h1>
 
-        <div className="header__menu">
+        <div className={menuClass}>
           <Link className="button" to="/suggest">Suggest a Book</Link>
-          { this.state.authenticated === false ? (
-            <button onClick={() => this.authenticate()}>Login</button>
-            ) : (
-            <button onClick={() => this.logout()}>Logout</button>
-            )
-          }
         </div>
+        
+        { this.state.authenticated === false ? (
+          <button onClick={() => this.authenticate()}>Login</button>
+          ) : (
+          <button onClick={() => this.logout()}>Logout</button>
+          )
+        }
+        
         <button className={mobileClass} onClick={this.toggleNav} type="button">
           <span className="hamburger-box">
             <span className="hamburger-inner"></span>

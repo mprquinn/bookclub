@@ -155,7 +155,45 @@ header {
 }
 
 .header__menu {
-  margin-left: auto;
+  position: fixed;
+  top: 125px;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #ffffff;
+  text-align: center;
+  z-index: 2;
+  transform: translateX(100%);
+  transition: all 0.4s ease-in-out;
+}
+
+.header__menu.header__menu--open {
+  transform: translateX(0);
+}
+
+@media screen and (min-width: 600px) {
+  .header__menu {
+    top: 100px;
+  }
+}
+
+@media screen and (min-width: 662px) {
+  .header__menu {
+    top: 75px;
+  }
+}
+
+@media screen and (min-width: 780px) {
+  .header__menu {
+    width: auto;
+    height: auto;
+    top: 0;
+    left: 0;
+    background: none;
+    position: relative;
+    margin-left: auto;
+    transform: none;
+  }
 }
 
 header h1 {
@@ -200,8 +238,14 @@ header button {
   border-color: #f36c9e;
 }
 
-.hamburger {
+header .hamburger {
   color: #ffffff;
+}
+
+@media screen and (min-width: 780px) {
+  header .hamburger {
+    display: none;
+  }
 }
 
 .hamburger:focus {
@@ -450,6 +494,22 @@ button.button--event,
 .button--fill--white {
   background: #ffffff;
   color: #f36c9e;
+}
+
+.header__menu .button {
+  display: inline-block;
+  width: auto;
+  color: #f36c9e;
+  margin: 2em 0;
+  border-color: #f36c9e;
+}
+
+@media screen and (min-width: 780px) {
+  .header__menu .button {
+    color: #ffffff;
+    border-color: #ffffff;
+    margin: 0;
+  }
 }
 
 .rate-book {

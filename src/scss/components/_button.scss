@@ -46,3 +46,17 @@ button,
 	background: $white;
 	color: $pink;
 }
+
+.header__menu .button {
+	display: inline-block;
+	width: 	auto;
+	color: $pink;
+	margin: 2em 0;
+	border-color: $pink;
+
+	@media screen and (min-width: 780px) {
+		color: $white;
+		border-color: $white;
+		margin: 0;
+	}
+}
