@@ -9,7 +9,8 @@ class Header extends Component {
     this.authHandler = this.authHandler.bind(this);
     this.logout = this.logout.bind(this);
     this.toggleHeader = this.toggleHeader.bind(this);
-    
+    this.toggleNav = this.toggleNav.bind(this);
+
     this.state = {
       toggled: false
     }
@@ -67,8 +68,21 @@ class Header extends Component {
     });
   }
 
+  toggleNav() {
+    this.setState({
+      toggled: !this.state.toggled
+    });
+  }
+
 
   render() {
+    let mobileClass = 'hamburger hamburger--squeeze mobile-toggle ';
+    if (this.state.toggled) {
+      mobileClass = 'hamburger hamburger--squeeze mobile-toggle  is-active';
+    } else {
+      mobileClass = 'hamburger hamburger--squeeze mobile-toggle'
+    }
+
     return (
       <header>
           <h1>Prestige Worldwide Literary Society</h1>
@@ -79,6 +93,11 @@ class Header extends Component {
             <button onClick={() => this.logout()}>Logout</button>
             )
           }
+        <button className={mobileClass} onClick={this.toggleNav} type="button">
+          <span className="hamburger-box">
+            <span className="hamburger-inner"></span>
+          </span>
+        </button>
         </header>
     );
   }
