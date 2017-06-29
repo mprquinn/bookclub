@@ -18,6 +18,8 @@ button,
     position: relative;
     margin: 1em auto;
     float: none;
+    color: $black;
+    border-color: $black;
     text-align: center;
 
     @media screen and (min-width: 630px) {
@@ -35,7 +37,8 @@ button,
   border: none;
   // border-image: linear-gradient(to right, $purple, 20%) 0%, $blue 100%);
   // background: linear-gradient(to right, darken($blue, 20%) 0%, $purple 100%);
-  background: linear-gradient(to right, #f36c9e 0%, #f093fa 100%);
+  // background: linear-gradient(to right, #f36c9e 0%, #f093fa 100%);
+  background: $black;
 }
 
 .button--suggest {
@@ -49,9 +52,9 @@ button,
 .header__menu .button {
   display: inline-block;
   width: auto;
-  color: $pink;
+  color: $white;
   margin: 2em 0;
-  border-color: $pink;
+  border-color: $white;
 
   @media screen and (min-width: 780px) {
     color: $white;

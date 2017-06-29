@@ -155,15 +155,19 @@ class Event extends Component {
             </div>
             {this.props.current &&
               this.props.user !== '' &&
-              <ul className="event-details__attendees">
-                {this.state.attendees.map(attendee => {
-                  return (
-                    <li key={attendee.id} className="event-details__attendee">
-                      {attendee.name}
-                    </li>
-                  );
-                })}
-              </ul>}
+              <div>
+                <h2>Attendees:</h2>
+                <ul className="event-details__attendees">
+                  {this.state.attendees.map(attendee => {
+                    return (
+                      <li key={attendee.id} className="event-details__attendee">
+                        {attendee.name}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            }
           </div>
         </div>
       );

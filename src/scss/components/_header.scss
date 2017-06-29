@@ -1,13 +1,13 @@
 header {
   display: flex;
   align-items: center;
+  @include grid-column(12 of 12);
   position: relative;
-  @include grid-column(10 of 12);
-  @include grid-push(1);
   transition: all 0.3s ease-out;
 
   @media screen and (min-width: 780px) {
     width: 100%;
+    max-width: 960px;
     margin-bottom: 2rem;
     margin-left: 0;
   }
@@ -15,10 +15,12 @@ header {
 
 .header--toggled {
   width: 100%;
+  max-width: 100%;
   height: 50px;
   position: fixed;
   top: 0;
-  margin-left: 0;
+  right: 0;
+  left: 0;
   padding: 0.33em 1em;
   background: $white;
   z-index: 9;
@@ -34,7 +36,7 @@ header {
   left: 0;
   width: 100%;
   height: 100vh;
-  background: $white;
+  background: $black;
   text-align: center;
   z-index: 2;
   transform: translateX(100%);
@@ -46,6 +48,7 @@ header {
 
   .header--toggled & {
     top: 50px;
+    background: $white;
 
     @media screen and (min-width: 780px) {
       top: 0;
@@ -74,7 +77,6 @@ header {
 
 header h1 {
   width: 66%;
-  @include grid-push(-2);
 
   @media screen and (min-width: 780px) {
     max-width: 225px;
@@ -86,7 +88,7 @@ header h1.toggled {
   display: none;
   margin-top: 0.5rem;
   margin-left: 0;
-  color: #f36c9e;
+  color: $black;
   transform: translateX(-100%);
   transition: all 0.5s ease-out;
 }
@@ -109,8 +111,8 @@ header button {
 .header--toggled .button {
   top: 0.75em;
   right: 1em;
-  color: $pink !important;
-  border-color: $pink !important;
+  color: $black !important;
+  border-color: $black !important;
 }
 
 // hamburger
@@ -133,6 +135,6 @@ header .hamburger {
   background-color: $white !important;
 
   .header--toggled & {
-    background-color: $pink !important;
+    background-color: $black !important;
   }
 }
