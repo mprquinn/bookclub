@@ -150,7 +150,7 @@ class App extends Component {
               <path
                 d="M20 25L80 25L80 75L20 75Z"
                 fill="#ffffff"
-                stroke="#f373af"
+                stroke="#1d1d1d"
                 strokeWidth="2"
               />
               <path
@@ -158,7 +158,7 @@ class App extends Component {
                 strokeLinejoin="round"
                 strokeLinecap="round"
                 fill="#ffffff"
-                stroke="#f373af"
+                stroke="#1d1d1d"
                 strokeWidth="2"
               >
                 <animate
@@ -185,7 +185,7 @@ class App extends Component {
                 strokeLinejoin="round"
                 strokeLinecap="round"
                 fill="#ffffff"
-                stroke="#f373af"
+                stroke="#1d1d1d"
                 strokeWidth="2"
               >
                 <animate
@@ -212,7 +212,7 @@ class App extends Component {
                 strokeLinejoin="round"
                 strokeLinecap="round"
                 fill="#ffffff"
-                stroke="#f373af"
+                stroke="#1d1d1d"
                 strokeWidth="2"
               >
                 <animate
@@ -239,7 +239,7 @@ class App extends Component {
                 strokeLinejoin="round"
                 strokeLinecap="round"
                 fill="#ffffff"
-                stroke="#f373af"
+                stroke="#1d1d1d"
                 strokeWidth="2"
               >
                 <animate
@@ -266,7 +266,7 @@ class App extends Component {
                 strokeLinejoin="round"
                 strokeLinecap="round"
                 fill="#ffffff"
-                stroke="#f373af"
+                stroke="#1d1d1d"
                 strokeWidth="2"
               >
                 <animate
@@ -293,7 +293,7 @@ class App extends Component {
                 strokeLinejoin="round"
                 strokeLinecap="round"
                 fill="#ffffff"
-                stroke="#f373af"
+                stroke="#1d1d1d"
                 strokeWidth="2"
               >
                 <animate
