@@ -15,6 +15,7 @@
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.0",
     "gulp-util": "^3.0.8",
+    "prettier": "^1.5.2",
     "react-scripts": "0.9.5"
   },
   "scripts": {
@@ -22,6 +23,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "clean": "prettier --single-quote --write 'src/**/*.js'; prettier --single-quote --write 'src/**/*.scss'"
+    "clean-css": "prettier --single-quote --write 'src/**/*.scss'",
+    "clean-js": "prettier --single-quote --write 'src/**/*.js'"
   }
 }

@@ -166,8 +166,7 @@ class Event extends Component {
                     );
                   })}
                 </ul>
-              </div>
-            }
+              </div>}
           </div>
         </div>
       );
