@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "hamburgers": "^0.8.1",
+    "prettier": "^1.5.2",
     "re-base": "^2.7.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -19,6 +21,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "clean": "prettier --single-quote --write 'src/**/*.js'; prettier --single-quote --write 'src/**/*.scss'"
   }
 }

@@ -2,7 +2,7 @@
 
 ## A quick SPA for our bookclub
 
-Let's call this an Alpha
+Building in order to get comfortable with React. I'm sure there's lots of ugly stuff in here since it's my first React project
 
 ---
 
@@ -16,4 +16,11 @@ TODO
 - ~Auto update the attending state on login~
 - ~Add Book rating~
 - ~Fav Books~
+- ~Suggestions~
+- ~Suggestions order~
+- Remove suggestion
+- Change pink. (feature_reskin)
+- DRY up App and Suggest
+- Reader status
+- Vote on suggestions
 - Comments?
