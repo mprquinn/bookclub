@@ -494,7 +494,8 @@ button.button--event,
 
 .button--fill--white {
   background: #efefef;
-  color: #f36c9e;
+  color: #1d1d1d;
+  border: 2px solid #1d1d1d;
 }
 
 .header__menu .button {
@@ -598,11 +599,13 @@ button.button--event,
 
 .suggestion h1 {
   color: #1d1d1d;
+  text-align: center;
 }
 
 .suggestion__form {
-  margin: 0 20px;
+  margin: 0;
   color: #1d1d1d;
+  text-align: center;
 }
 
 .suggestion__form label {
@@ -650,18 +653,19 @@ button.button--event,
 
 .suggestion__choice {
   width: 75%;
+  max-width: 350px;
   padding: 0 20px 20px;
   margin: 2em auto;
-  border: 2px solid #efefef;
-  color: #efefef;
+  border: 2px solid #1d1d1d;
+  color: #1d1d1d;
   cursor: pointer;
   text-align: center;
 }
 
 .suggestion__choice.suggestion__choice--chosen {
-  background: #efefef;
-  color: #1d1d1d;
-  box-shadow: 5px 5px 0px #1d1d1d;
+  background: #1d1d1d;
+  color: #efefef;
+  border: 2px solid #efefef;
 }
 
 .suggestion__choice img {
@@ -713,7 +717,7 @@ button.button--event,
   display: flex;
   flex-wrap: wrap;
   margin: 0;
-  padding: 0 20px;
+  padding: 0;
 }
 
 .suggestions li {

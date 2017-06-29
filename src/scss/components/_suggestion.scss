@@ -4,11 +4,13 @@
 
 .suggestion h1 {
   color: $black;
+  text-align: center;
 }
 
 .suggestion__form {
-  margin: 0 20px;
+  margin: 0;
   color: $black;
+  text-align: center;
 }
 
 .suggestion__form label {
@@ -53,17 +55,18 @@
 
 .suggestion__choice {
   width: 75%;
+  max-width: 350px;
   padding: 0 20px 20px;
   margin: 2em auto;
-  border: 2px solid $white;
-  color: $white;
+  border: 2px solid $black;
+  color: $black;
   cursor: pointer;
   text-align: center;
 
   &.suggestion__choice--chosen {
-    background: $white;
-    color: $black;
-    box-shadow: 5px 5px 0px $black;
+    background: $black;
+    color: $white;
+    border: 2px solid $white;
   }
 }
 
