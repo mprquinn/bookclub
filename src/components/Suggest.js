@@ -136,7 +136,7 @@ class Suggestions extends Component {
             const foundBook = book.items[0].volumeInfo;
             const Title = foundBook.title;
             const Image = foundBook.imageLinks.smallThumbnail;
-            const Author = "" || foundBook.authors[0];
+            const Author = foundBook.authors[0] || "";
             const Description = foundBook.description;
 
             const result = {
@@ -413,6 +413,11 @@ class Suggestions extends Component {
           submitted: true
         });
       }
+      window.setTimeout(function () {
+        _this.setState({
+          submitted: false
+        })
+      }, 1500)
     });
   }
 

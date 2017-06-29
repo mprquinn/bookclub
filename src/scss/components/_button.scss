@@ -46,7 +46,8 @@ button,
 
 .button--fill--white {
   background: $white;
-  color: $pink;
+  color: $black;
+  border: 2px solid $black;
 }
 
 .header__menu .button {
