@@ -16,19 +16,14 @@ class App extends Component {
     this.renderFavourites = this.renderFavourites.bind(this);
     this.authenticate = this.authenticate.bind(this);
 
-
-    
     this.authHandler = this.authHandler.bind(this);
     this.logout = this.logout.bind(this);
 
     this.state = {
       events: [],
       authenticated: false,
-      user: '',
+      user: "",
       loaded: false,
-
-
-
 
       currentEvent: false,
       pastEvents: []
@@ -36,7 +31,7 @@ class App extends Component {
   }
 
   authenticate() {
-    base.authWithOAuthPopup('facebook', this.authHandler);
+    base.authWithOAuthPopup("facebook", this.authHandler);
   }
 
   authHandler(err, authData) {
@@ -45,7 +40,7 @@ class App extends Component {
     }
 
     localStorage.setItem(
-      'authenticated',
+      "authenticated",
       JSON.stringify({ authenticated: true, user: authData.user.displayName })
     );
 
@@ -60,17 +55,15 @@ class App extends Component {
 
     this.setState({
       authenticated: false,
-      user: ''
+      user: ""
     });
 
-    console.log(this.state.authenticated);
-
-    localStorage.setItem('authenticated', null);
+    localStorage.setItem("authenticated", null);
   }
 
   componentDidMount() {
-    const eventsRef = base.database().ref('Events');
-    eventsRef.on('value', snapshot => {
+    const eventsRef = base.database().ref("Events");
+    eventsRef.on("value", snapshot => {
       this.setState({
         events: snapshot.val(),
         loaded: true
@@ -78,7 +71,7 @@ class App extends Component {
       this.getCurrent(snapshot.val());
     });
 
-    const savedUser = JSON.parse(localStorage.getItem('authenticated'));
+    const savedUser = JSON.parse(localStorage.getItem("authenticated"));
 
     if (savedUser !== null) {
       this.setState({
@@ -91,22 +84,22 @@ class App extends Component {
   }
 
   toggleHeader() {
-    const header = document.querySelector('header'),
-      body = document.querySelector('body'),
+    const header = document.querySelector("header"),
+      body = document.querySelector("body"),
       trigger =
         Math.abs(
           header.getBoundingClientRect().top -
             header.getBoundingClientRect().bottom
         ) / 2;
-    window.addEventListener('scroll', () => {
+    window.addEventListener("scroll", () => {
       const scrolled = window.pageYOffset;
 
       if (scrolled >= trigger) {
-        header.classList.add('header--toggled');
-        body.classList.add('body--push');
+        header.classList.add("header--toggled");
+        body.classList.add("body--push");
       } else {
-        header.classList.remove('header--toggled');
-        body.classList.remove('body--push');
+        header.classList.remove("header--toggled");
+        body.classList.remove("body--push");
       }
     });
   }
@@ -188,10 +181,10 @@ class App extends Component {
           </section>
         </div>
         <p className="disclaimer">
-          &copy; 2017,{' '}
+          &copy; 2017,{" "}
           <a href="https://github.com/mprquinn" target="_blank">
             Mike Quinn
-          </a>{' '}
+          </a>{" "}
           📚
         </p>
       </div>
