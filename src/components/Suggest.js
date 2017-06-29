@@ -1,31 +1,38 @@
 import React, { Component } from 'react';
-import Header from './components/Header';
-import Event from './components/Event';
-import PastEvents from './components/PastEvents';
-import Favourites from './components/Favourites';
-import { Link } from 'react-router';
-import './css/styles.css';
-import base from './base.js';
+import Header from '../components/Header';
+import Event from '../components/Event';
+import PastEvents from '../components/PastEvents';
+import Favourites from '../components/Favourites';
+import Book from '../components/Book';
+// import './App.css';
+import '../css/styles.css';
+import base from '../base';
+import gBooksKey from '../gbooks';
 
-class App extends Component {
+class Suggestions extends Component {
   constructor() {
     super();
 
-    this.renderEvents = this.renderEvents.bind(this);
-    this.getCurrent = this.getCurrent.bind(this);
-    this.renderPastEvents = this.renderPastEvents.bind(this);
-    this.renderFavourites = this.renderFavourites.bind(this);
     this.authenticate = this.authenticate.bind(this);
     this.authHandler = this.authHandler.bind(this);
     this.logout = this.logout.bind(this);
+    this.renderPastEvents = this.renderPastEvents.bind(this);
+    this.renderFavourites = this.renderFavourites.bind(this);
+    this.searchBooks = this.searchBooks.bind(this);
+    this.chooseBook = this.chooseBook.bind(this);
+    this.suggestBook = this.suggestBook.bind(this);
 
     this.state = {
-      events: [],
       authenticated: false,
       user: '',
       loaded: false,
-      currentEvent: false,
-      pastEvents: []
+      pastEvents: [],
+      suggestedBooks: [],
+      searchBook: '',
+      chosen: 'suggestion__choice',
+      lastStamp: 0,
+      submitting: false,
+      submitted: false
     };
   }
 
@@ -69,7 +76,18 @@ class App extends Component {
         events: snapshot.val(),
         loaded: true
       });
-      this.getCurrent(snapshot.val());
+    });
+
+    const suggestionsRef = base.database().ref('Suggestions');
+    const suggestedBooks = [];
+
+    suggestionsRef.on('value', snapshot => {
+      Object.keys(snapshot.val()).map(book => {
+        suggestedBooks.push(snapshot.val()[book]);
+      });
+      this.setState({
+        suggestedBooks: suggestedBooks.reverse()
+      });
     });
 
     const savedUser = JSON.parse(localStorage.getItem('authenticated'));
@@ -80,42 +98,52 @@ class App extends Component {
         user: savedUser.user
       });
     }
-
-    this.toggleHeader();
   }
 
-  toggleHeader() {
-    const header = document.querySelector('header'),
-      body = document.querySelector('body'),
-      trigger =
-        Math.abs(
-          header.getBoundingClientRect().top -
-            header.getBoundingClientRect().bottom
-        ) / 2;
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
+  searchBooks(e) {
+    const _this = this;
+    e.preventDefault();
 
-      if (scrolled >= trigger) {
-        header.classList.add('header--toggled');
-        body.classList.add('body--push');
-      } else {
-        header.classList.remove('header--toggled');
-        body.classList.remove('body--push');
-      }
-    });
-  }
+    const string = e.target.value;
+    const searchString = `https://www.googleapis.com/books/v1/volumes?q=${string}&maxResults=1&key=${gBooksKey}`;
 
-  getCurrent(events) {
-    // obj loop
-    const current = Object.keys(events).filter(event => {
-      return events[event].Current;
-    });
+    if (
+      this.state.lastStamp !== 0 &&
+      e.timeStamp - this.state.lastStamp > 100 &&
+      string !== ''
+    ) {
+      fetch(searchString)
+        .then(function(response) {
+          // Convert to JSON
+          return response.json();
+        })
+        .then(function(book) {
+          // Yay, `j` is a JavaScript object
+          if (book.items.length) {
+            const foundBook = book.items[0].volumeInfo;
+            const Title = foundBook.title;
+            const Image = foundBook.imageLinks.smallThumbnail;
+            const Author = '' || foundBook.authors[0];
+            const Description = foundBook.description;
+
+            const result = {
+              Title,
+              Image,
+              Author,
+              Description
+            };
+
+            _this.setState({
+              searchBook: result
+            });
+          }
+        });
+    }
+
     this.setState({
-      currentEvent: this.state.events[current]
+      lastStamp: e.timeStamp
     });
   }
-
-  getPast(events) {}
 
   renderEvents() {
     if (this.state.loaded && this.state.currentEvent) {
@@ -333,6 +361,49 @@ class App extends Component {
     }
   }
 
+  chooseBook(e) {
+    if (this.state.chosen === 'suggestion__choice') {
+      this.setState({
+        chosen: 'suggestion__choice suggestion__choice--chosen'
+      });
+    } else {
+      this.setState({
+        chosen: 'suggestion__choice'
+      });
+    }
+  }
+
+  suggestBook(e) {
+    const _this = this;
+    e.preventDefault();
+
+    const book = {
+      Title: this.state.searchBook.Title,
+      Author: this.state.searchBook.Author,
+      Image: this.state.searchBook.Image,
+      Description: this.state.searchBook.Description,
+      User: this.state.user
+    };
+    const bookTitle = book.title;
+    const pushString = `Suggestions`;
+
+    this.setState({
+      submitting: true
+    });
+
+    base.database().ref(pushString).push(book, function(error) {
+      if (error) {
+        console.log(error);
+      } else {
+        _this.setState({
+          submitting: false,
+          submitted: true
+        });
+        _this.reset();
+      }
+    });
+  }
+
   render() {
     return (
       <div className="app clearfix">
@@ -350,7 +421,76 @@ class App extends Component {
           </section>
 
           <section className="app__main">
-            {this.renderEvents()}
+            {this.state.user !== '' &&
+              <div className="suggestion">
+                <h1>Submit a new Book</h1>
+                <form className="suggestion__form" onSubmit={this.suggestBook}>
+                  <label htmlFor="suggestion">Book Title</label>
+                  <br />
+                  <input
+                    type="text"
+                    name="suggestion"
+                    placeholder="Book Title"
+                    ref="suggestion"
+                    onChange={this.searchBooks}
+                  />
+                  {this.state.searchBook !== '' &&
+                    !this.state.submitted &&
+                    <div
+                      className={this.state.chosen}
+                      onClick={this.chooseBook}
+                    >
+                      <p>
+                        <strong>
+                          {this.state.searchBook.Title }
+
+                          
+                        </strong>
+                        <br />
+                        {this.state.searchBook.Author}
+                      </p>
+                      <img src={this.state.searchBook.Image} />
+                    </div>}
+
+                  {this.state.submitting &&
+                    !this.state.submitted &&
+                    <p>
+                      <strong>Submitting...</strong>
+                    </p>}
+
+                  {this.state.submitted &&
+                    !this.state.submitting &&
+                    <p>
+                      <strong>Submitted!</strong>
+                    </p>}
+
+                  {this.state.chosen ===
+                    'suggestion__choice suggestion__choice--chosen' &&
+                    !this.state.submitted &&
+                    <input
+                      type="submit"
+                      className="button button--fill button--fill--white"
+                    />}
+                </form>
+              </div>}
+
+            <div className="suggestions">
+              <p>
+                <strong>View other suggestions</strong>
+              </p>
+              <ul>
+                {this.state.suggestedBooks.map(book => {
+                  return (
+                    <li key={book.Title}>
+                      <Book book={book} current={false} suggested={true} />
+                      <p>
+                        Submitted by {book.User}
+                      </p>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
 
             <section className="app__footer">
               {this.renderFavourites()}
@@ -362,4 +502,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Suggestions;

@@ -1,38 +1,38 @@
 // General typography
 
 body {
-	font-family: Montserrat, sans-serif !important;
-	font-size: 18px;
-	line-height: 1.2em;
+  font-family: Montserrat, sans-serif !important;
+  font-size: 18px;
+  line-height: 1.2em;
 }
 
 h1 {
-	color: $white;
-	font-size: 1.5rem;
-	line-height: 1em;
-	text-transform: uppercase;
-	letter-spacing: 1px;
+  color: $white;
+  font-size: 1.5rem;
+  line-height: 1em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .fill {
-	font-size: 1em;
-	color: #f36c9e;
-	padding: 0.33em 1em;
-	background: $white;
-	// background: linear-gradient(to right, #f093fa 0%, #f36c9e 100%);
+  font-size: 1em;
+  color: #f36c9e;
+  padding: 0.33em 1em;
+  background: $white;
+  // background: linear-gradient(to right, #f093fa 0%, #f36c9e 100%);
 
-	.book & {
-		@media screen and (min-width: 620px) {
-			display: inline-block;
-			width: 50%;
-		}
-	}
+  .book & {
+    @media screen and (min-width: 620px) {
+      display: inline-block;
+      width: 50%;
+    }
+  }
 
-	.favourite-books__book &.fill {
-		width: 100%;
-		font-size: 0.8em;
-		float: left;
-		margin-right: auto;
-		margin-left: 0;
-	}
+  .favourite-books__book &.fill {
+    width: 100%;
+    font-size: 0.8em;
+    float: left;
+    margin-right: auto;
+    margin-left: 0;
+  }
 }

@@ -17,14 +17,16 @@ class Event extends Component {
       loaded: false,
       attendees: [],
       attending: false,
-      userId: '',
-    }
+      userId: ''
+    };
   }
 
   componentDidMount() {
     const _this = this;
-    const attendeesRef = base.database().ref(`Events/${this.props.book.Title}/Attendees`);
-    attendeesRef.on('value', (snapshot) => {
+    const attendeesRef = base
+      .database()
+      .ref(`Events/${this.props.book.Title}/Attendees`);
+    attendeesRef.on('value', snapshot => {
       let attendees = snapshot.val();
       let newAttendees = [];
       for (let attendee in attendees) {
@@ -43,16 +45,17 @@ class Event extends Component {
     });
   }
 
-
   componentDidUpdate(nextProps, nextState) {
-    if (nextState.attendees.length !== this.state.attendees.length || nextState.userId !== this.state.userId) {
-      if (this.props.user !== "" && this.state.attendees.length) {
+    if (
+      nextState.attendees.length !== this.state.attendees.length ||
+      nextState.userId !== this.state.userId
+    ) {
+      if (this.props.user !== '' && this.state.attendees.length) {
         this.determineAttending(this.props.user);
         return;
       } else {
         return;
       }
-
     }
   }
 
@@ -83,7 +86,9 @@ class Event extends Component {
   leaveEvent(e) {
     e.preventDefault();
     const user = this.props.user;
-    const attendeeRef = base.database().ref(`Events/${this.props.book.Title}/Attendees/${this.state.userId}`);
+    const attendeeRef = base
+      .database()
+      .ref(`Events/${this.props.book.Title}/Attendees/${this.state.userId}`);
 
     const userCheck = this.state.attendees.find(this.checkAttending);
 
@@ -93,7 +98,6 @@ class Event extends Component {
         attending: false
       });
     }
-    
   }
 
   checkAttending(attendee) {
@@ -102,13 +106,20 @@ class Event extends Component {
 
   renderButton() {
     let button;
-    if (this.state.attending && this.props.user !== "") {
-      return <a href="#" onClick={this.leaveEvent} className="button button--event">Leave Event</a>;
-    } else if (!this.state.attending && this.props.user !== "") {
-      return <a href="#" onClick={this.joinEvent} className="button button--event">Join Event</a>;
+    if (this.state.attending && this.props.user !== '') {
+      return (
+        <a href="#" onClick={this.leaveEvent} className="button button--event">
+          Leave Event
+        </a>
+      );
+    } else if (!this.state.attending && this.props.user !== '') {
+      return (
+        <a href="#" onClick={this.joinEvent} className="button button--event">
+          Join Event
+        </a>
+      );
     }
   }
-
 
   renderBook() {
     let Book;
@@ -121,44 +132,43 @@ class Event extends Component {
 
   render() {
     if (this.state.loaded) {
-      return ( 
+      return (
         <div className="event clearfix">
-            <div className="event-details">
-              {this.props.current && 
-                <h1 className="event-details__title">Next Event:</h1>
-              }
-              {this.props.type !== "favourites" && 
-                <p className="event-details__date">{this.props.date}</p>
-              }
-              {this.props.current && 
-                <p>
-                  {this.renderButton()}
-                </p>
-              }
-              <div className="event-details__book">
-                <Book book={this.props.book} user={this.props.user} current={this.props.current} type={this.props.type} />
-              </div>
-              {this.props.current && this.props.user !=="" &&
-                <ul className="event-details__attendees">
-                  {
-                    this.state.attendees.map(attendee => {
-                      return (
-                        <li key={attendee.id} className="event-details__attendee">
-                          {attendee.name}
-                        </li>
-                      )
-                    })
-                  }
-                </ul>
-              }
+          <div className="event-details">
+            {this.props.current &&
+              <h1 className="event-details__title">Next Event:</h1>}
+            {this.props.type !== 'favourites' &&
+              <p className="event-details__date">
+                {this.props.date}
+              </p>}
+            {this.props.current &&
+              <p>
+                {this.renderButton()}
+              </p>}
+            <div className="event-details__book">
+              <Book
+                book={this.props.book}
+                user={this.props.user}
+                current={this.props.current}
+                type={this.props.type}
+              />
             </div>
-            
+            {this.props.current &&
+              this.props.user !== '' &&
+              <ul className="event-details__attendees">
+                {this.state.attendees.map(attendee => {
+                  return (
+                    <li key={attendee.id} className="event-details__attendee">
+                      {attendee.name}
+                    </li>
+                  );
+                })}
+              </ul>}
+          </div>
         </div>
       );
     } else {
-      return (
-        <p>Loading</p>
-      )
+      return <p>Loading</p>;
     }
   }
 }

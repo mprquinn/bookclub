@@ -1,44 +1,61 @@
 button,
 .button {
-	background: none;
-	font-family: Montserrat, sans-serif;
-	color: $white;
-	font-weight: 700;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	padding: 0.33em 1em;
-	border: 2px solid $white;
-	text-decoration: none;
-	// border-image: linear-gradient(to right, lighten($purple, 20%) 0%, $blue 100%);
-	// border-image-slice: 1;
+  background: none;
+  font-family: Montserrat, sans-serif;
+  color: $white;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0.33em 1em;
+  border: 2px solid $white;
+  text-decoration: none;
+  // border-image: linear-gradient(to right, lighten($purple, 20%) 0%, $blue 100%);
+  // border-image-slice: 1;
 
-	&.button--event {
-		display: block;
-		width: 100%;
-		position: relative;
-		margin: 1em auto;
-		float: none;
-		text-align: center;
-		
-		@media screen and (min-width: 630px) {
-			position: absolute;
-			top: 20px;
-			right: 20px;
-			width: auto;
-			text-align: left;
-		}
-	}
+  &.button--event {
+    display: block;
+    width: 100%;
+    position: relative;
+    margin: 1em auto;
+    float: none;
+    text-align: center;
+
+    @media screen and (min-width: 630px) {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: auto;
+      text-align: left;
+    }
+  }
 }
 
 .button--fill {
-	border-image: none;
-	border: none;
-	// border-image: linear-gradient(to right, $purple, 20%) 0%, $blue 100%);
-	// background: linear-gradient(to right, darken($blue, 20%) 0%, $purple 100%);
-	background: linear-gradient(to right, #f36c9e 0%, #f093fa 100%);
+  border-image: none;
+  border: none;
+  // border-image: linear-gradient(to right, $purple, 20%) 0%, $blue 100%);
+  // background: linear-gradient(to right, darken($blue, 20%) 0%, $purple 100%);
+  background: linear-gradient(to right, #f36c9e 0%, #f093fa 100%);
+}
+
+.button--suggest {
 }
 
 .button--fill--white {
-	background: $white;
-	color: $pink;
+  background: $white;
+  color: $pink;
+}
+
+.header__menu .button {
+  display: inline-block;
+  width: auto;
+  color: $pink;
+  margin: 2em 0;
+  border-color: $pink;
+
+  @media screen and (min-width: 780px) {
+    color: $white;
+    border-color: $white;
+    margin: 0;
+  }
 }

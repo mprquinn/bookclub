@@ -1,12 +1,11 @@
 .past-books {
-	
-	@media screen and (min-width: 780px) {
-		padding-left: 20px;
-	}
+  @media screen and (min-width: 780px) {
+    padding-left: 20px;
+  }
 }
 
 .past-books__title {
-	width: 100%;
-	color: $white;
-	@include grid-push(-2);
+  width: 100%;
+  color: $white;
+  @include grid-push(-2);
 }

@@ -13,20 +13,18 @@ class Book extends Component {
       avgRating: [],
       authenticated: this.props.authenticated,
       attending: false
-    }
+    };
   }
-
 
   generateAverageRating(ratings) {
     if (ratings.length) {
-      const sum = ratings.reduce((a,b) => parseInt(a,10) + parseInt(b,10));
+      const sum = ratings.reduce((a, b) => parseInt(a, 10) + parseInt(b, 10));
       const avg = sum / ratings.length;
 
       this.setState({
         avgRating: avg
       });
     }
-    
   }
 
   componentWillMount() {
@@ -38,7 +36,6 @@ class Book extends Component {
         this.generateAverageRating(ratings);
       }
     });
-    
   }
 
   componentDidMount() {
@@ -53,42 +50,41 @@ class Book extends Component {
     });
   }
 
-  
-
   render() {
     let bookClass = 'book clearfix';
     if (this.props.current) {
       bookClass = 'book book--current clearfix';
-    } else if (!this.props.current && this.props.type === "favourites") {
+    } else if (!this.props.current && this.props.type === 'favourites') {
       bookClass = 'book book--favourites clearfix';
+    } else if (this.props.suggested) {
+      bookClass = 'book book--suggested clearfix';
     } else {
       bookClass = 'book book--past clearfix';
     }
-     return (
+    return (
       <div className={bookClass}>
-        {this.props.type !== "favourites" &&
+        {this.props.type !== 'favourites' &&
           <p className="book__title">
             <strong>
               {this.props.book.Title}
             </strong>
-          </p>
-        }
-        {this.props.type !== "favourites" &&
-          <p className="book__author">  
+          </p>}
+        {this.props.type !== 'favourites' &&
+          <p className="book__author">
             {this.props.book.Author}
-          </p>
-        }  
-          <img src={`${this.props.book.Image}`} alt="" className="book__cover"/>
-          {this.props.current && 
-            <p className="book__description">
-              {this.props.book.Description}
-            </p>
-          }
-          {
-            this.props.user && this.props.current &&
-            <Rating bookToRate={this.props.book.Title} />
-          }
-          <p className="fill">Average Rating: {this.state.avgRating}</p>
+          </p>}
+        <img src={`${this.props.book.Image}`} alt="" className="book__cover" />
+        {this.props.current &&
+          <p className="book__description">
+            {this.props.book.Description}
+          </p>}
+        {this.props.user &&
+          this.props.current &&
+          <Rating bookToRate={this.props.book.Title} />}
+        {!this.props.suggested &&
+          <p className="fill">
+            Average Rating: {this.state.avgRating}
+          </p>}
       </div>
     );
   }
