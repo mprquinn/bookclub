@@ -1,13 +1,14 @@
 .suggestion {
+  padding: 0 20px;
 }
 
 .suggestion h1 {
-  margin-left: -40px;
+  color: $black;
 }
 
 .suggestion__form {
   margin: 0 20px;
-  color: $white;
+  color: $black;
 }
 
 .suggestion__form label {
@@ -20,33 +21,33 @@
   padding: 0.6em;
   font-size: 1em;
   font-weight: 800;
-  color: $white;
+  color: $black;
   background: none;
   margin-top: 0.3em;
-  border: 2px solid $white;
+  border: 2px solid $black;
   border-radius: 0;
   text-transform: uppercase;
 
   &::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
-    color: $white;
+    color: $black;
   }
   &::-moz-placeholder {
     /* Firefox 19+ */
-    color: $white;
+    color: $black;
   }
   &:-ms-input-placeholder {
     /* IE 10+ */
-    color: $white;
+    color: $black;
   }
   &:-moz-placeholder {
     /* Firefox 18- */
-    color: $white;
+    color: $black;
   }
 
   &:focus {
-    background: $white;
-    color: $pink;
+    background: $black;
+    color: $white;
   }
 }
 
@@ -61,8 +62,8 @@
 
   &.suggestion__choice--chosen {
     background: $white;
-    color: $pink;
-    box-shadow: 5px 5px 0px $pink;
+    color: $black;
+    box-shadow: 5px 5px 0px $black;
   }
 }
 
@@ -71,7 +72,7 @@
 }
 
 .suggestion__choice--chosen img {
-  border: 2px solid $pink;
+  border: 2px solid $black;
 }
 
 .suggestion .button {
@@ -79,4 +80,24 @@
   float: none;
   margin: 0 auto;
   cursor: pointer;
+}
+
+.suggestion {
+  position: relative;
+}
+
+.suggestion__remove {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: block;
+  width: 35px;
+  height: 35px;
+  color: $white;
+  font-size: 0.6em;
+  font-weight: 800;
+  line-height: 35px;
+  background: $black;
+  text-align: center;
+  text-decoration: none;
 }

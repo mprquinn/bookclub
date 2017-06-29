@@ -39,7 +39,9 @@
   }
 
   .book--suggested & {
+    max-width: 70%;
     color: $black;
+    margin: 1em auto;
   }
 
   .book--current & {
