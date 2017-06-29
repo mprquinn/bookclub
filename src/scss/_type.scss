@@ -14,17 +14,23 @@ h1 {
   letter-spacing: 1px;
 }
 
+h2 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 .fill {
   font-size: 1em;
-  color: #f36c9e;
+  color: $black;
   padding: 0.33em 1em;
   background: $white;
-  // background: linear-gradient(to right, #f093fa 0%, #f36c9e 100%);
+  border: 2px solid $black;
 
   .book & {
     @media screen and (min-width: 620px) {
       display: inline-block;
-      width: 50%;
+      width: 80%;
     }
   }
 
@@ -35,4 +41,19 @@ h1 {
     margin-right: auto;
     margin-left: 0;
   }
+}
+
+.disclaimer {
+  width: 100%;
+  float: left;
+  font-size: 1rem;
+  font-style: italic;
+  color: $white;
+  text-align: center;
+  margin: 2em auto;
+}
+
+.disclaimer a {
+  color: $white;
+  text-decoration: none;
 }

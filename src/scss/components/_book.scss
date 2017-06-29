@@ -2,33 +2,24 @@
 }
 
 .book--current {
-  width: calc(100% + 40px);
-  // background: $white;
-  // border: 2px solid $white;
+  width: 100%;
   background: $white;
   padding: 0.33em 20px;
-  // box-shadow: 2px 2px 30px rgba(0,0,0,0.3);
-
-  @media screen and (min-width: 780px) {
-    width: calc(100% + 30px);
-  }
 }
 
 .book--past {
   &:after {
     width: calc(100% + 20px);
-    height: 5px;
+    height: 2px;
     margin-right: -20px;
-    background: $white;
-    margin-bottom: 2rem;
+    background: $black;
+    margin-bottom: 0;
   }
 
   @media screen and (min-width: 780px) {
     &:after {
       width: 100%;
-      margin-top: 2em;
-      margin-right: -30px;
-      margin-left: auto;
+      margin-top: 1em;
     }
   }
 }
@@ -44,11 +35,11 @@
   letter-spacing: 1px;
 
   .book--past & {
-    color: $white;
+    color: $black;
   }
 
   .book--suggested & {
-    color: $pink;
+    color: $black;
   }
 
   .book--current & {
@@ -67,21 +58,21 @@
     left: -5px;
     width: 20px;
     height: 2px;
-    background: $white;
+    background: $black;
   }
 
   .book--past & {
-    color: $white;
+    color: $black;
     &:before {
-      background: $white;
+      background: $black;
     }
   }
 
   .book--suggested & {
-    color: $pink;
+    color: $black;
     &:before {
       left: 50%;
-      background: $pink;
+      background: $black;
     }
   }
 
@@ -91,44 +82,29 @@
 }
 
 .book__cover {
-  width: calc(100% + 40px);
-  margin-left: -20px;
+  width: 100%;
 
   .book--current & {
-    box-shadow: 10px 10px 0 #f093fa;
-    @media screen and (min-width: 530px) {
-      width: 50%;
-      float: left;
-      margin-right: 20px;
-      margin-left: 0;
-    }
+    width: 50%;
+    float: left;
   }
 
   .book--past & {
-    box-shadow: 10px 10px 0 $white;
-
-    @media screen and (min-width: 780px) {
-      width: calc(100% + 20px);
-      margin-left: -30px;
-    }
   }
 
   .favourite-books__book & {
-    width: auto;
-    margin-left: 0;
-    margin-right: auto;
-    max-height: 150px;
   }
 }
 
 .book__description {
+  width: 50%;
   font-size: 1rem;
   color: $black;
+  float: left;
+  padding-left: 20px;
   // text-shadow: 0.5px 0.5px 0px rgba(0,0,0,0.3);
 }
 
 .book--past .fill {
   display: inline-block;
-  width: calc(100% + 40px);
-  margin-left: -10px;
 }

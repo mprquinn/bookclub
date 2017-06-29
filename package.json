@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "hamburgers": "^0.8.1",
     "re-base": "^2.7.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -13,12 +14,15 @@
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.0",
     "gulp-util": "^3.0.8",
+    "prettier": "^1.5.2",
     "react-scripts": "0.9.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "clean-css": "prettier --single-quote --write 'src/**/*.scss'",
+    "clean-js": "prettier --single-quote --write 'src/**/*.js'"
   }
 }

@@ -86,7 +86,7 @@ class Suggestions extends Component {
         suggestedBooks.push(snapshot.val()[book]);
       });
       this.setState({
-        suggestedBooks
+        suggestedBooks: suggestedBooks.reverse()
       });
     });
 
@@ -442,9 +442,7 @@ class Suggestions extends Component {
                     >
                       <p>
                         <strong>
-                          {this.state.searchBook.Title }
-
-                          
+                          {this.state.searchBook.Title}
                         </strong>
                         <br />
                         {this.state.searchBook.Author}
@@ -479,7 +477,7 @@ class Suggestions extends Component {
                 <strong>View other suggestions</strong>
               </p>
               <ul>
-                {this.state.suggestedBooks.reverse().map(book => {
+                {this.state.suggestedBooks.map(book => {
                   return (
                     <li key={book.Title}>
                       <Book book={book} current={false} suggested={true} />
