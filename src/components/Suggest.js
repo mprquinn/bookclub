@@ -7,7 +7,7 @@ import Book from "../components/Book";
 // import './App.css';
 import "../css/styles.css";
 import base from "../base";
-import gBooksKey from "../gbooks";
+// import gBooksKey from "../gbooks";
 
 class Suggestions extends Component {
   constructor() {
@@ -118,7 +118,7 @@ class Suggestions extends Component {
     e.preventDefault();
 
     const string = e.target.value;
-    const searchString = `https://www.googleapis.com/books/v1/volumes?q=${string}&maxResults=1&key=${gBooksKey}`;
+    const searchString = `https://www.googleapis.com/books/v1/volumes?q=${string}&maxResults=1`;
 
     if (
       this.state.lastStamp !== 0 &&
