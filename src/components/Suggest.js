@@ -81,10 +81,10 @@ class Suggestions extends Component {
     });
 
     const suggestionsRef = base.database().ref("Suggestions");
-    const suggestedBooks = [];
-    const bookKeys = {};
 
     suggestionsRef.on("value", snapshot => {
+      const suggestedBooks = [];
+      const bookKeys = {};
       Object.keys(snapshot.val()).map(book => {
         const bookTitle = snapshot.val()[book].Title;
         suggestedBooks.push(snapshot.val()[book]);
@@ -108,8 +108,9 @@ class Suggestions extends Component {
 
   removeBook(title) {
     const bookId = this.state.bookKeys[title];
-    console.log(bookId);
-    const removeString = '';
+    const bookRef = base.database().ref(`Suggestions/${bookId}`);
+
+    bookRef.remove();
   }
 
   searchBooks(e) {
@@ -411,7 +412,6 @@ class Suggestions extends Component {
           submitting: false,
           submitted: true
         });
-        _this.reset();
       }
     });
   }
@@ -490,12 +490,15 @@ class Suggestions extends Component {
               </p>
               <ul>
                 {this.state.suggestedBooks.map(book => {
-                  console.log(this.state.bookKeys);
                   return (
-                    <li key={book.Title} className="suggestion">
-                      {this.state.user === book.User && 
-                        <a href="#" className="suggestion__remove" onClick={this.removeBook(book.Title)}>x</a>
-                      }
+                    <li key={Math.random() * 69420} className="suggestion">
+                      {this.state.user === book.User &&
+                        <a
+                          className="suggestion__remove"
+                          onClick={() => this.removeBook(book.Title)}
+                        >
+                          x
+                        </a>}
                       <Book book={book} current={false} suggested={true} />
                       <p>
                         Submitted by {book.User}
