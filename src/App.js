@@ -357,6 +357,10 @@ class App extends Component {
             </section>
           </section>
         </div>
+        <p className="disclaimer">
+          &copy; 2017, <a href="https://github.com/mprquinn" target="_blank">Mike Quinn</a> 📚
+
+        </p>
       </div>
     );
   }
