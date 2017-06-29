@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import Header from '../components/Header';
-import Event from '../components/Event';
-import PastEvents from '../components/PastEvents';
-import Favourites from '../components/Favourites';
-import Book from '../components/Book';
+import React, { Component } from "react";
+import Header from "../components/Header";
+import Event from "../components/Event";
+import PastEvents from "../components/PastEvents";
+import Favourites from "../components/Favourites";
+import Book from "../components/Book";
 // import './App.css';
-import '../css/styles.css';
-import base from '../base';
-import gBooksKey from '../gbooks';
+import "../css/styles.css";
+import base from "../base";
+import gBooksKey from "../gbooks";
 
 class Suggestions extends Component {
   constructor() {
@@ -21,15 +21,17 @@ class Suggestions extends Component {
     this.searchBooks = this.searchBooks.bind(this);
     this.chooseBook = this.chooseBook.bind(this);
     this.suggestBook = this.suggestBook.bind(this);
+    this.removeBook = this.removeBook.bind(this);
 
     this.state = {
       authenticated: false,
-      user: '',
+      user: "",
       loaded: false,
       pastEvents: [],
       suggestedBooks: [],
-      searchBook: '',
-      chosen: 'suggestion__choice',
+      bookKeys: {},
+      searchBook: "",
+      chosen: "suggestion__choice",
       lastStamp: 0,
       submitting: false,
       submitted: false
@@ -37,7 +39,7 @@ class Suggestions extends Component {
   }
 
   authenticate() {
-    base.authWithOAuthPopup('facebook', this.authHandler);
+    base.authWithOAuthPopup("facebook", this.authHandler);
   }
 
   authHandler(err, authData) {
@@ -46,7 +48,7 @@ class Suggestions extends Component {
     }
 
     localStorage.setItem(
-      'authenticated',
+      "authenticated",
       JSON.stringify({ authenticated: true, user: authData.user.displayName })
     );
 
@@ -61,36 +63,40 @@ class Suggestions extends Component {
 
     this.setState({
       authenticated: false,
-      user: ''
+      user: ""
     });
 
     console.log(this.state.authenticated);
 
-    localStorage.setItem('authenticated', null);
+    localStorage.setItem("authenticated", null);
   }
 
   componentDidMount() {
-    const eventsRef = base.database().ref('Events');
-    eventsRef.on('value', snapshot => {
+    const eventsRef = base.database().ref("Events");
+    eventsRef.on("value", snapshot => {
       this.setState({
         events: snapshot.val(),
         loaded: true
       });
     });
 
-    const suggestionsRef = base.database().ref('Suggestions');
+    const suggestionsRef = base.database().ref("Suggestions");
     const suggestedBooks = [];
+    const bookKeys = {};
 
-    suggestionsRef.on('value', snapshot => {
+    suggestionsRef.on("value", snapshot => {
       Object.keys(snapshot.val()).map(book => {
+        const bookTitle = snapshot.val()[book].Title;
         suggestedBooks.push(snapshot.val()[book]);
+        bookKeys[bookTitle] = book;
       });
       this.setState({
-        suggestedBooks: suggestedBooks.reverse()
+        suggestedBooks: suggestedBooks.reverse(),
+        bookKeys
       });
     });
 
-    const savedUser = JSON.parse(localStorage.getItem('authenticated'));
+    const savedUser = JSON.parse(localStorage.getItem("authenticated"));
 
     if (savedUser !== null) {
       this.setState({
@@ -98,6 +104,12 @@ class Suggestions extends Component {
         user: savedUser.user
       });
     }
+  }
+
+  removeBook(title) {
+    const bookId = this.state.bookKeys[title];
+    console.log(bookId);
+    const removeString = '';
   }
 
   searchBooks(e) {
@@ -110,7 +122,7 @@ class Suggestions extends Component {
     if (
       this.state.lastStamp !== 0 &&
       e.timeStamp - this.state.lastStamp > 100 &&
-      string !== ''
+      string !== ""
     ) {
       fetch(searchString)
         .then(function(response) {
@@ -123,7 +135,7 @@ class Suggestions extends Component {
             const foundBook = book.items[0].volumeInfo;
             const Title = foundBook.title;
             const Image = foundBook.imageLinks.smallThumbnail;
-            const Author = '' || foundBook.authors[0];
+            const Author = "" || foundBook.authors[0];
             const Description = foundBook.description;
 
             const result = {
@@ -362,13 +374,13 @@ class Suggestions extends Component {
   }
 
   chooseBook(e) {
-    if (this.state.chosen === 'suggestion__choice') {
+    if (this.state.chosen === "suggestion__choice") {
       this.setState({
-        chosen: 'suggestion__choice suggestion__choice--chosen'
+        chosen: "suggestion__choice suggestion__choice--chosen"
       });
     } else {
       this.setState({
-        chosen: 'suggestion__choice'
+        chosen: "suggestion__choice"
       });
     }
   }
@@ -421,7 +433,7 @@ class Suggestions extends Component {
           </section>
 
           <section className="app__main">
-            {this.state.user !== '' &&
+            {this.state.user !== "" &&
               <div className="suggestion">
                 <h1>Submit a new Book</h1>
                 <form className="suggestion__form" onSubmit={this.suggestBook}>
@@ -434,7 +446,7 @@ class Suggestions extends Component {
                     ref="suggestion"
                     onChange={this.searchBooks}
                   />
-                  {this.state.searchBook !== '' &&
+                  {this.state.searchBook !== "" &&
                     !this.state.submitted &&
                     <div
                       className={this.state.chosen}
@@ -463,7 +475,7 @@ class Suggestions extends Component {
                     </p>}
 
                   {this.state.chosen ===
-                    'suggestion__choice suggestion__choice--chosen' &&
+                    "suggestion__choice suggestion__choice--chosen" &&
                     !this.state.submitted &&
                     <input
                       type="submit"
@@ -478,8 +490,12 @@ class Suggestions extends Component {
               </p>
               <ul>
                 {this.state.suggestedBooks.map(book => {
+                  console.log(this.state.bookKeys);
                   return (
-                    <li key={book.Title}>
+                    <li key={book.Title} className="suggestion">
+                      {this.state.user === book.User && 
+                        <a href="#" className="suggestion__remove" onClick={this.removeBook(book.Title)}>x</a>
+                      }
                       <Book book={book} current={false} suggested={true} />
                       <p>
                         Submitted by {book.User}
