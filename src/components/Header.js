@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import base from '../base';
 
 class Header extends Component {
   constructor(props) {

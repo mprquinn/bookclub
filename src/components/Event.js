@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import Book from './Book';
 import base from '../base';
-import getKeyByValue from '../helpers/getKeyByValue';
 
 class Event extends Component {
   constructor() {
     super();
 
-    this.renderBook = this.renderBook.bind(this);
     this.joinEvent = this.joinEvent.bind(this);
     this.leaveEvent = this.leaveEvent.bind(this);
     this.checkAttending = this.checkAttending.bind(this);
@@ -105,7 +103,6 @@ class Event extends Component {
   }
 
   renderButton() {
-    let button;
     if (this.state.attending && this.props.user !== '') {
       return (
         <a href="#" onClick={this.leaveEvent} className="button button--event">
@@ -118,15 +115,6 @@ class Event extends Component {
           Join Event
         </a>
       );
-    }
-  }
-
-  renderBook() {
-    let Book;
-    if (this.state.loaded) {
-      return <h1>Fart</h1>;
-    } else {
-      return <p>Loading</p>;
     }
   }
 

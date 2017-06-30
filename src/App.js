@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import Header from "./components/Header";
-import Event from "./components/Event";
-import PastEvents from "./components/PastEvents";
-import Favourites from "./components/Favourites";
-import { Link } from "react-router";
-import "./css/styles.css";
-import base from "./base.js";
+import React, { Component } from 'react';
+import Header from './components/Header';
+import Event from './components/Event';
+import PastEvents from './components/PastEvents';
+import Favourites from './components/Favourites';
+import './css/styles.css';
+import base from './base.js';
+
 
 class App extends Component {
   constructor() {
