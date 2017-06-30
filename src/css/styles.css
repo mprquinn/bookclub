@@ -457,6 +457,7 @@ header .hamburger {
 }
 
 .book--past .fill {
+  width: 100%;
   display: inline-block;
 }
 
