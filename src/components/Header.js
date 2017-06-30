@@ -15,7 +15,6 @@ class Header extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     this.toggleHeader();
   }
 
