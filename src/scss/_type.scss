@@ -47,10 +47,13 @@ h2 {
 
   .favourite-books__book &.fill {
     width: 100%;
+    background: $black;
+    color: $white;
     font-size: 0.8em;
     float: left;
     margin-right: auto;
     margin-left: 0;
+    border: none;
   }
 }
 

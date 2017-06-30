@@ -1,10 +1,12 @@
 .event {
 
   .app__main & {
+    background: $white;
     border-bottom: 10px solid $black;
   }
 
   .app__footer & {
+    background: none;
     border-bottom: none;
   }
 }

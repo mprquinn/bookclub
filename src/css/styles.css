@@ -9,7 +9,8 @@
 }
 
 body {
-  background: #1d1d1d;
+  background: url("../images/eli-francis-100644.jpg") center center;
+  background-size: cover;
 }
 
 body.body--push {
@@ -35,7 +36,6 @@ body.body--push {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  background: #efefef;
 }
 
 @media screen and (min-width: 780px) {
@@ -49,6 +49,7 @@ body.body--push {
 .app__sidebar {
   flex: 1;
   order: 2;
+  background: #efefef;
   margin-top: 2rem;
   margin-right: 20px;
 }
@@ -71,14 +72,15 @@ body.body--push {
     flex: 4;
     order: 2;
     background: none;
-    border-left: 10px solid #1d1d1d;
   }
 }
 
 .app__footer {
   width: 100%;
-  order: 3;
+  float: left;
+  order: 4;
   flex-wrap: wrap;
+  background: none;
 }
 
 body {
@@ -132,10 +134,13 @@ h2 {
 
 .favourite-books__book .fill.fill {
   width: 100%;
+  background: #1d1d1d;
+  color: #efefef;
   font-size: 0.8em;
   float: left;
   margin-right: auto;
   margin-left: 0;
+  border: none;
 }
 
 .disclaimer {
@@ -353,6 +358,11 @@ header .hamburger {
   }
 }
 
+.book--favourites {
+  padding: 10px;
+  border: 5px solid #efefef;
+}
+
 .book--past:after {
   width: calc(100% + 20px);
   height: 2px;
@@ -463,10 +473,12 @@ header .hamburger {
 }
 
 .app__main .event {
+  background: #efefef;
   border-bottom: 10px solid #1d1d1d;
 }
 
 .app__footer .event {
+  background: none;
   border-bottom: none;
 }
 
@@ -632,7 +644,7 @@ button.button--event,
 }
 
 .favourite-books__wrapper h1 {
-  color: #1d1d1d;
+  color: #efefef;
   margin-top: 2em;
   padding: 0 20px;
 }

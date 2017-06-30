@@ -10,7 +10,9 @@
 
 body {
   // background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-  background: #1d1d1d;
+  // background: #1d1d1d;
+  background: url('../images/eli-francis-100644.jpg') center center;
+  background-size: cover;
 }
 
 body.body--push {
@@ -32,7 +34,6 @@ body.body--push {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  background: $white;
 
   @media screen and (min-width: 780px) {
     width: 100%;
@@ -44,15 +45,13 @@ body.body--push {
 .app__sidebar {
   flex: 1;
   order: 2;
-
-  // background: $white;
+  background: $white;
   margin-top: 2rem;
   margin-right: 20px;
 
   @media screen and (min-width: 780px) {
     flex: 1;
     order: 1;
-
     margin-top: 0;
   }
 }
@@ -66,12 +65,14 @@ body.body--push {
     flex: 4;
     order: 2;
     background: none;
-    border-left: 10px solid $black;
   }
 }
 
 .app__footer {
   width: 100%;
-  order: 3;
+  float: left;
+  order: 4;
   flex-wrap: wrap;
+  background: none;
+
 }

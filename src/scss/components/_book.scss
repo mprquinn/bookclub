@@ -11,6 +11,11 @@
   }
 }
 
+.book--favourites {
+  padding: 10px;
+  border: 5px solid $white;
+}
+
 .book--past {
   &:after {
     width: calc(100% + 20px);
