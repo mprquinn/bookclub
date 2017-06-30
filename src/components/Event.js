@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import Book from "./Book";
-import base from "../base";
+import React, { Component } from 'react';
+import Book from './Book';
+import base from '../base';
 
 class Event extends Component {
   constructor() {
@@ -103,7 +103,7 @@ class Event extends Component {
   }
 
   renderButton() {
-    if (this.state.attending && this.props.user !== "") {
+    if (this.state.attending && this.props.user !== '') {
       return (
         <a href="#" onClick={this.leaveEvent} className="button button--event">
           Leave Event
