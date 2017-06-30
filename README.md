@@ -18,8 +18,8 @@ TODO
 - ~Fav Books~
 - ~Suggestions~
 - ~Suggestions order~
-- Remove suggestion
-- Change pink. (feature_reskin)
+- ~Remove suggestion~
+- ~Change pink. (feature_reskin)~
 - DRY up App and Suggest
 - Reader status
 - Vote on suggestions
