@@ -8,13 +8,15 @@
 }
 
 .favourite-books {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: space-between;
   list-style: none;
   margin-left: 0;
   padding: 0;
 }
 
 .favourite-books__book {
-  display: inline-block;
   width: 50%;
   float: left;
   text-align: center;
