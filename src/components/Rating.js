@@ -27,7 +27,7 @@ class Rating extends Component {
     const user = base.auth().currentUser;
 
     if (user) {
-      const checkString = `Books/${this.props.bookToRate}/rated/`;
+      const checkString = `Events/${this.props.bookToRate}/Book/Ratings/`;
       base.fetch(checkString, {
         context: this,
         asArray: false,
@@ -48,11 +48,11 @@ class Rating extends Component {
     const rating = this.refs.rating.value;
 
     const user = base.auth().currentUser.displayName;
-    const pushString = `Books/${this.props.bookToRate}/rated/${user}`;
+    const pushString = `Events/${this.props.bookToRate}/Book/Ratings/${user}`;
     // const pushStringRate = `Books/${this.props.bookToRate}/ratings/`
 
     base.post(pushString, {
-      data: rating,
+      data: parseInt(rating),
       then(err) {
         // console.log(err);
       }

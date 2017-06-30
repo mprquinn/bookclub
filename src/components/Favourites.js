@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Event from './Event';
+import React, { Component } from "react";
+import Event from "./Event";
 
 class Favourites extends Component {
   constructor(props) {
@@ -31,7 +31,9 @@ class Favourites extends Component {
 
   renderFavEvents() {
     const fullEventsArray = Object.keys(this.props.events).map(event => {
-      return { event: this.props.events[event] };
+      if (!this.props.events[event].NoBook) {
+        return { event: this.props.events[event] };
+      }
     });
 
     const favEventsSorted = fullEventsArray.sort(
@@ -43,19 +45,21 @@ class Favourites extends Component {
     );
 
     return favEventsSorted.map(event => {
-      return (
-        <li key={event.event.Book.Title} className="favourite-books__book">
-          <Event
-            type="favourites"
-            key={event.event.Book.Title}
-            user={this.props.user}
-            date={event.event.Date}
-            book={event.event.Book}
-            current={false}
-            ratings={event.event.Book.Ratings}
-          />
-        </li>
-      );
+      if (event !== undefined) {
+        return (
+          <li key={event.event.Book.Title} className="favourite-books__book">
+            <Event
+              type="favourites"
+              key={event.event.Book.Title}
+              user={this.props.user}
+              date={event.event.Date}
+              book={event.event.Book}
+              current={false}
+              ratings={event.event.Book.Ratings}
+            />
+          </li>
+        );
+      }
     });
   }
 

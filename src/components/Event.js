@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import Book from './Book';
-import base from '../base';
+import React, { Component } from "react";
+import Book from "./Book";
+import base from "../base";
 
 class Event extends Component {
   constructor() {
@@ -15,7 +15,7 @@ class Event extends Component {
       loaded: false,
       attendees: [],
       attending: false,
-      userId: ''
+      userId: ""
     };
   }
 
@@ -24,7 +24,7 @@ class Event extends Component {
     const attendeesRef = base
       .database()
       .ref(`Events/${this.props.book.Title}/Attendees`);
-    attendeesRef.on('value', snapshot => {
+    attendeesRef.on("value", snapshot => {
       let attendees = snapshot.val();
       let newAttendees = [];
       for (let attendee in attendees) {
@@ -48,7 +48,7 @@ class Event extends Component {
       nextState.attendees.length !== this.state.attendees.length ||
       nextState.userId !== this.state.userId
     ) {
-      if (this.props.user !== '' && this.state.attendees.length) {
+      if (this.props.user !== "" && this.state.attendees.length) {
         this.determineAttending(this.props.user);
         return;
       } else {
@@ -103,13 +103,13 @@ class Event extends Component {
   }
 
   renderButton() {
-    if (this.state.attending && this.props.user !== '') {
+    if (this.state.attending && this.props.user !== "") {
       return (
         <a href="#" onClick={this.leaveEvent} className="button button--event">
           Leave Event
         </a>
       );
-    } else if (!this.state.attending && this.props.user !== '') {
+    } else if (!this.state.attending && this.props.user !== "") {
       return (
         <a href="#" onClick={this.joinEvent} className="button button--event">
           Join Event
@@ -125,7 +125,7 @@ class Event extends Component {
           <div className="event-details">
             {this.props.current &&
               <h1 className="event-details__title">Next Event:</h1>}
-            {this.props.type !== 'favourites' &&
+            {this.props.type !== "favourites" &&
               <p className="event-details__date">
                 {this.props.date}
               </p>}
@@ -139,10 +139,11 @@ class Event extends Component {
                 user={this.props.user}
                 current={this.props.current}
                 type={this.props.type}
+                noBook={this.props.noBook}
               />
             </div>
             {this.props.current &&
-              this.props.user !== '' &&
+              this.props.user !== "" &&
               <div>
                 <h2>Attendees:</h2>
                 <ul className="event-details__attendees">
