@@ -21,6 +21,7 @@ header {
   top: 0;
   right: 0;
   left: 0;
+  margin: 0;
   padding: 0.33em 1em;
   background: $white;
   z-index: 9;
@@ -76,7 +77,12 @@ header {
 }
 
 header h1 {
+  font-size: 1rem;
   width: 66%;
+
+  @media screen and (min-width: 500px) {
+    font-size: 1.5rem;
+  }
 
   @media screen and (min-width: 780px) {
     max-width: 225px;
