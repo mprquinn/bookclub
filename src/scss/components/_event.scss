@@ -1,4 +1,12 @@
 .event {
+
+  .app__main & {
+    border-bottom: 10px solid $black;
+  }
+
+  .app__footer & {
+    border-bottom: none;
+  }
 }
 
 .event-details {

@@ -71,6 +71,7 @@ body.body--push {
     flex: 4;
     order: 2;
     background: none;
+    border-left: 10px solid #1d1d1d;
   }
 }
 
@@ -459,6 +460,14 @@ header .hamburger {
 .book--past .fill {
   width: 100%;
   display: inline-block;
+}
+
+.app__main .event {
+  border-bottom: 10px solid #1d1d1d;
+}
+
+.app__footer .event {
+  border-bottom: none;
 }
 
 .event-details {
