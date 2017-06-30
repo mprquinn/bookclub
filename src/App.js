@@ -24,7 +24,7 @@ class App extends Component {
       authenticated: false,
       user: "",
       loaded: false,
-
+      noBook: false,
       currentEvent: false,
       pastEvents: []
     };
@@ -66,7 +66,7 @@ class App extends Component {
     eventsRef.on("value", snapshot => {
       this.setState({
         events: snapshot.val(),
-        loaded: true
+        loaded: true,
       });
       this.getCurrent(snapshot.val());
     });
@@ -109,8 +109,10 @@ class App extends Component {
     const current = Object.keys(events).filter(event => {
       return events[event].Current;
     });
+
     this.setState({
-      currentEvent: this.state.events[current]
+      currentEvent: this.state.events[current],
+      noBook: this.state.events[current].NoBook
     });
   }
 
@@ -125,6 +127,7 @@ class App extends Component {
           date={this.state.currentEvent.Date}
           book={this.state.currentEvent.Book}
           current={true}
+          noBook={this.state.noBook}
         />
       );
     } else {
