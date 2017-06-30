@@ -7,7 +7,6 @@ import Book from "../components/Book";
 // import './App.css';
 import "../css/styles.css";
 import base from "../base";
-// import gBooksKey from "../gbooks";
 
 class Suggestions extends Component {
   constructor() {
