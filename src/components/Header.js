@@ -15,7 +15,7 @@ class Header extends Component {
   }
 
   componentDidMount() {
-    // console.log(this.props);
+    console.log(this.props);
     this.toggleHeader();
   }
 
@@ -59,7 +59,9 @@ class Header extends Component {
 
     return (
       <header>
-        <h1>Prestige Worldwide Literary Society</h1>
+        <Link to={`/`}>
+          <h1>Prestige Worldwide Literary Society</h1>
+        </Link>
         <h1 className="toggled">PWLS</h1>
 
         <div className={menuClass}>

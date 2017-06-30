@@ -206,6 +206,25 @@ header {
 
 .header__menu.header__menu--open {
   transform: translateX(0);
+  top: 80px;
+}
+
+@media screen and (min-width: 500px) {
+  .header__menu.header__menu--open {
+    top: 120px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .header__menu.header__menu--open {
+    top: 100px;
+  }
+}
+
+@media screen and (min-width: 780px) {
+  .header__menu.header__menu--open {
+    top: 0;
+  }
 }
 
 .header--toggled .header__menu {
@@ -216,18 +235,6 @@ header {
 @media screen and (min-width: 780px) {
   .header--toggled .header__menu {
     top: 0;
-  }
-}
-
-@media screen and (min-width: 600px) {
-  .header__menu {
-    top: 100px;
-  }
-}
-
-@media screen and (min-width: 662px) {
-  .header__menu {
-    top: 75px;
   }
 }
 
@@ -260,6 +267,10 @@ header h1 {
     max-width: 225px;
     margin-left: 0;
   }
+}
+
+header a {
+  text-decoration: none;
 }
 
 header h1.toggled {
