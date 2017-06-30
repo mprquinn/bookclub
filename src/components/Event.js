@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import Book from './Book';
 import base from '../base';
-<<<<<<< 51628f8c4c0f83130dba2f75bec663fe7654049d
-=======
-
->>>>>>> clean up errors
 
 class Event extends Component {
   constructor() {
