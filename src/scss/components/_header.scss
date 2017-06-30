@@ -45,6 +45,19 @@ header {
 
   &.header__menu--open {
     transform: translateX(0);
+    top: 80px;
+
+    @media screen and (min-width: 500px) {
+      top: 120px;
+    }
+
+    @media screen and (min-width: 700px) {
+      top: 100px;
+    }
+
+    @media screen and (min-width: 780px) {
+      top: 0;
+    }
   }
 
   .header--toggled & {
@@ -54,14 +67,6 @@ header {
     @media screen and (min-width: 780px) {
       top: 0;
     }
-  }
-
-  @media screen and (min-width: 600px) {
-    top: 100px;
-  }
-
-  @media screen and (min-width: 662px) {
-    top: 75px;
   }
 
   @media screen and (min-width: 780px) {
@@ -88,6 +93,10 @@ header h1 {
     max-width: 225px;
     margin-left: 0;
   }
+}
+
+header a {
+  text-decoration: none;
 }
 
 header h1.toggled {
