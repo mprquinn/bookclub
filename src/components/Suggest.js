@@ -171,9 +171,7 @@ class Suggestions extends Component {
     } else {
       return (
         <div>
-          <p>
-            Loading...
-          </p>
+          <p>Loading...</p>
         </div>
       );
     }
@@ -220,7 +218,7 @@ class Suggestions extends Component {
       Description: this.state.searchBook.Description,
       User: this.state.user
     };
-    const bookTitle = book.title;
+
     const pushString = `Suggestions`;
 
     this.setState({
@@ -287,7 +285,7 @@ class Suggestions extends Component {
                         <br />
                         {this.state.searchBook.Author}
                       </p>
-                      <img src={this.state.searchBook.Image} />
+                      <img src={this.state.searchBook.Image} alt={this.state.searchBook.Title} />
                     </div>}
 
                   {this.state.submitting &&
