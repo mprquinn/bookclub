@@ -21,14 +21,11 @@ class PastEvents extends Component {
     const fullEventsArray = Object.keys(this.props.events).map(event => {
       return { event: this.props.events[event] };
     });
-    // fullEventsArray.map(event => {
-    //   console.log(event);
-    // })
     const pastEvents = fullEventsArray.filter(
       event => event.event.Current !== true
     );
     const pastEventsSorted = pastEvents.sort(
-      (eventA, eventB) => (eventA.event.Date > eventB.event.Date ? -1 : 1)
+      (eventA, eventB) => new Date(eventA.event.Date) > new Date(eventB.event.Date) ? -1 : 1
     );
     return pastEventsSorted.map(event => {
       return (
